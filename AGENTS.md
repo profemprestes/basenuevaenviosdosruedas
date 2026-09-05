@@ -1,70 +1,101 @@
-# AGENTS.md — AI Agent Guidelines & Repository Architecture
+# AGENTS.md — AI Agent & Developer Guidelines for Envíos DosRuedas
 
-This document provides instructions, technical conventions, and architectural context for AI agents working on this repository.
+This document outlines the architecture, coding conventions, technical standards, and operational workflows for AI agents and human developers working on the **Envíos DosRuedas** codebase.
 
 ---
 
 ## 📌 Project Overview
 
-**Project Name:** Envíos DosRuedas — Mensajería y Logística MDQ
-**Type:** Web Application / E-Commerce Logistics Platform
-**Target Market:** Mar del Plata (MDQ) & surrounding region (urban logistics, same-day delivery, Mercado Envíos Flex).
+**Project Name:** Envíos DosRuedas — Mensajería Urbana y Logística MDQ
+**Type:** Modern Web Application / E-Commerce Logistics Platform
+**Target Market:** Mar del Plata (MDQ) and surrounding regions (same-day delivery, urban logistics, Mercado Envíos Flex integration, last-mile delivery).
 
 ---
 
-## 🛠️ Technical Stack & Framework Standards
+## 🛠️ Explicit Technology Stack
 
-- **Framework:** Next.js 15 (`app/` directory App Router).
-- **React Version:** React 19 (Server Components by default, Client Components marked with `'use client'`).
-- **Language:** TypeScript 5.x with strict type checking enabled.
-- **Styling:** Tailwind CSS v4 (`@tailwindcss/postcss`). Use utility classes and `clsx` / `tailwind-merge` (`cn` helper) for dynamic class combination.
-- **Animations:** Motion (`motion/react` or `framer-motion` APIs) & Lucide icons (`lucide-react`).
-- **AI Integration:** `@google/genai` (Google Gemini API SDK). Server-side or controlled client-side interactions.
+| Layer / Tool | Technology / Version |
+|---|---|
+| **Framework** | Next.js 15 (App Router architecture) |
+| **UI Library** | React 19 (Server Components default, Client Components with `'use client'`) |
+| **Language** | TypeScript 5 (Strict Mode enabled) |
+| **Styling & CSS** | Tailwind CSS v4 (`@tailwindcss/postcss`), PostCSS 8, `clsx`, `tailwind-merge` |
+| **Animations & Icons** | Motion (`motion/react` / `framer-motion`), Lucide React (`lucide-react`) |
+| **Forms & Validation** | `react-hook-form` + `@hookform/resolvers` |
+| **AI Integration** | `@google/genai` (Google Gemini API Official SDK) |
+| **Linting & Quality** | ESLint 9 (`eslint-config-next`) |
 
 ---
 
-## 📐 Architecture & Coding Conventions
+## 📐 Architecture & Directory Structure
 
-### 1. Component Design & Patterns
-- Place reusable UI components in `src/components/`.
-- Use functional React components with explicit TypeScript interfaces/types for `props`.
-- Always mark interactive or state-driven components with `'use client';` at the top of the file.
-- Keep components modular, accessible, and self-contained.
+```text
+ai-studio-applet/
+├── public/                 # Static assets (logos, images, icons, favicons)
+├── src/
+│   ├── app/                # Next.js App Router (Layouts, Pages, Global Styles)
+│   │   ├── globals.css     # Tailwind v4 import and global CSS variables
+│   │   ├── layout.tsx      # Root layout & Metadata configuration
+│   │   └── page.tsx        # Main Landing Page component
+│   ├── components/         # Modular React components (Hero, Features, Calculator, Bento, Modals)
+│   ├── hooks/              # Reusable custom React hooks
+│   ├── lib/                # Domain logic, helpers, constants, and AI agent services
+│   │   ├── constants/      # Static configuration data (rates, coverage zones, contact details)
+│   │   ├── domain/         # Domain business logic (e.g., WhatsApp message generator)
+│   │   └── utils.ts        # Helper functions (e.g., `cn` for Tailwind class merging)
+│   └── types/              # TypeScript definitions and interfaces
+├── metadata.json           # Applet capabilities and metadata configuration
+├── next.config.ts          # Next.js configuration
+├── package.json            # NPM dependencies and script definitions
+├── postcss.config.mjs      # PostCSS configuration for Tailwind v4
+└── tsconfig.json           # TypeScript configuration with `@/*` path alias
+```
 
-### 2. Styling Rules
+---
+
+## 📐 Coding Conventions & Guidelines
+
+### 1. React & Component Patterns
+- **Server Components First:** Default to React Server Components (RSC) unless interactivity or state requires Client Components.
+- **Client Directives:** Always place `'use client';` at the top of files that use React hooks (`useState`, `useEffect`, `useCallback`) or browser events.
+- **Component Design:** Modular, self-contained, and typed with explicit TypeScript interfaces for `props`.
+- **Path Aliases:** Always use `@/*` for imports mapping to `./src/*` (e.g., `import { cn } from '@/lib/utils'`).
+
+### 2. Styling Rules (Tailwind CSS v4)
 - Use Tailwind CSS v4 utility classes.
-- Maintain responsive design (`sm:`, `md:`, `lg:`, `xl:`) across all components.
-- Do not add inline custom CSS styles unless required for dynamic runtime values.
+- Use the `cn(...)` utility helper (`clsx` + `tailwind-merge`) for conditional or dynamic class merging.
+- Ensure full responsiveness (`sm:`, `md:`, `lg:`, `xl:`) across mobile, tablet, and desktop viewports.
+- Maintain brand color consistency: Primary Accent `#7C3AED` / Purple palette, neutral grays, dark backgrounds.
 
-### 3. State Management & Hooks
-- Place custom hooks in `src/hooks/`.
-- Use React state hooks (`useState`, `useReducer`, `useCallback`, `useMemo`) for local state.
+### 3. State Management & Side Effects
+- Keep local state close to the components that require it.
+- Store static constants and reusable logic in `src/lib/constants/` or `src/lib/domain/`.
 
-### 4. Code Quality & Formatting
-- Follow ESLint 9 rules configured in `eslint.config.mjs` and `.eslintrc.json`.
-- Ensure clean code imports without unused variables or unresolved paths.
-- Prefer explicit return types on utility functions in `src/lib/`.
+### 4. AI & External Service Integrations
+- All Gemini API calls (`@google/genai`) must handle environment keys safely (`process.env.GEMINI_API_KEY`).
+- Never hardcode secrets, passwords, or API keys directly in source code.
 
 ---
 
-## 🧪 Verification & Command Instructions
+## 🧪 Verification & QA Workflow
 
-Whenever code changes are made, run the following verification steps:
+Before committing or submitting any change, run the following verification pipeline in bash:
 
-1. **Linting Check:**
+1. **Lint Check:**
    ```bash
    npm run lint
    ```
-2. **Type Checking & Production Build:**
+2. **Type Check & Production Build:**
    ```bash
    npm run build
    ```
 
+All builds and lint checks must complete with zero errors.
+
 ---
 
-## 🔒 Safety & Best Practices for AI Agents
+## 🔒 Security & Environment Rules
 
-1. **Never commit hardcoded secrets or API keys.** Secrets must be loaded via `process.env`.
-2. **Never modify generated build directories** such as `.next/`, `dist/`, or `out/`. Modify source code in `src/`.
-3. **Always verify modified files** using read-only tools to confirm accurate edits before marking tasks complete.
-4. **Maintain UI/UX consistency** with existing brand colors (purple `#7C3AED` / primary themes) and layout structures.
+1. Secrets must always be referenced via `process.env`.
+2. Do not edit build artifacts or auto-generated folders (`.next/`, `node_modules/`, `dist/`).
+3. Always verify changes using read-only tools or test execution before marking steps complete.

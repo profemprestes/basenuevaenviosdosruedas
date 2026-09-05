@@ -1,0 +1,6 @@
+{
+  "name": "Envíos DosRuedas - Mensajería y Logística MDQ",
+  "description": "Soluciones de mensajería urbana, envíos en el día y delivery de última milla para e-commerce en Mar del Plata. Flota propia y seguimiento en tiempo real.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

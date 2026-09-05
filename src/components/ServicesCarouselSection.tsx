@@ -1,99 +1,51 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Zap, ChevronLeft, ChevronRight, Truck, Info, Clock, DollarSign, Weight, ArrowRight } from 'lucide-react';
+import { Zap, ChevronLeft, ChevronRight, Truck, Info, Clock, DollarSign, ArrowRight } from 'lucide-react';
+import { LOGISTICS_SERVICES } from '@/lib/constants/services';
 
 interface ServicesCarouselSectionProps {
   onOpenQuoteModal: (preselectedService?: string) => void;
   onOpenFichaTecnica: () => void;
 }
 
+const ICON_MAP = {
+  express: Zap,
+  lowcost: Clock,
+  flex: Truck,
+  '3pl': DollarSign,
+};
+
 export default function ServicesCarouselSection({
   onOpenQuoteModal,
   onOpenFichaTecnica,
 }: ServicesCarouselSectionProps) {
-  const [currentIndex, setCurrentIndex] = useState(2); // Start at Envíos Flex (index 2) like in Image 8
+  const [currentIndex, setCurrentIndex] = useState(2); // Start at Envíos Flex (index 2)
   const [autoRotate, setAutoRotate] = useState(true);
-
-  const services = [
-    {
-      id: 'express',
-      title: 'ENVÍOS EXPRESS',
-      badge: 'DIRECTO MDQ',
-      location: 'PUNTO A PUNTO URBANO',
-      description: 'Mensajería en moto con entregas inmediatas de alta prioridad en toda la ciudad de Mar del Plata.',
-      isHighlight: false,
-      pills: [
-        { label: 'ENTREGA', value: '30-60 MIN' },
-        { label: 'TARIFA', value: '$3.700 BASE' },
-        { label: 'PESO', value: 'HASTA 5KG' },
-      ],
-      icon: Zap,
-    },
-    {
-      id: 'lowcost',
-      title: 'ENVÍOS LOWCOST',
-      badge: 'ECONÓMICO',
-      location: 'TODO GRAL. PUEYRREDÓN',
-      description: 'Envíos económicos planificados con retiro y entrega agrupada para reducir costos de distribución.',
-      isHighlight: false,
-      pills: [
-        { label: 'ENTREGA', value: 'SAME / NEXT DAY' },
-        { label: 'TARIFA', value: '$3.000 BASE' },
-        { label: 'PESO', value: 'HASTA 10KG' },
-      ],
-      icon: Clock,
-    },
-    {
-      id: 'flex',
-      title: 'ENVÍOS FLEX',
-      badge: 'MERCADOLIBRE FLEX',
-      location: 'MAR DEL PLATA Y BATÁN',
-      description: 'Entregas en el día integradas para tus ventas de MercadoLibre con homologación oficial.',
-      isHighlight: true, // Yellow standout card
-      pills: [
-        { label: 'ENTREGA', value: 'EN EL DÍA' },
-        { label: 'TARIFA', value: 'ZONIFICADO LOCAL' },
-        { label: 'PESO', value: 'APTO MOTO / AUTO' },
-      ],
-      icon: Truck,
-    },
-    {
-      id: '3pl',
-      title: 'ECOMMERCE & 3PL',
-      badge: 'LOGÍSTICA INTEGRAL',
-      location: 'DEPÓSITO FRIULI 1972',
-      description: 'Logística integral para marcas: almacenamiento, preparación de pedidos (pick & pack) y distribución.',
-      isHighlight: false,
-      pills: [
-        { label: 'ENTREGA', value: 'STOCK / PICK' },
-        { label: 'TARIFA', value: 'PLANES A MEDIDA' },
-        { label: 'PESO', value: 'SIN LÍMITE' },
-      ],
-      icon: DollarSign,
-    },
-  ];
 
   useEffect(() => {
     if (!autoRotate) return;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % services.length);
+      setCurrentIndex((prev) => (prev + 1) % LOGISTICS_SERVICES.length);
     }, 4500);
     return () => clearInterval(interval);
-  }, [autoRotate, services.length]);
+  }, [autoRotate]);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+    setCurrentIndex((prev) => (prev - 1 + LOGISTICS_SERVICES.length) % LOGISTICS_SERVICES.length);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % services.length);
+    setCurrentIndex((prev) => (prev + 1) % LOGISTICS_SERVICES.length);
   };
 
   return (
-    <section id="servicios-carousel" className="w-full py-20 lg:py-28 bg-[#0950F6] bg-tech-grid relative overflow-hidden">
+    <section
+      id="servicios-carousel"
+      aria-label="Catálogo de servicios de mensajería"
+      className="w-full py-20 lg:py-28 bg-[#0950F6] bg-tech-grid relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Header and Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
@@ -108,50 +60,57 @@ export default function ServicesCarouselSection({
             </h2>
           </div>
 
-          {/* Top Right Controls (Image 8) */}
+          {/* Top Right Controls */}
           <div className="flex items-center gap-3 self-start md:self-end">
             <button
+              type="button"
               onClick={() => setAutoRotate(!autoRotate)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full font-bebas text-sm tracking-wider uppercase transition-all shadow ${
+              aria-pressed={autoRotate}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-bebas text-sm tracking-wider uppercase transition-all shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00] ${
                 autoRotate
                   ? 'bg-[#ffcc00] text-[#002273] font-bold glow-yellow'
                   : 'bg-[#002273] text-blue-200 border border-blue-400/30'
               }`}
-              title="Alternar rotación automática"
+              title="Alternar rotación automática del carrusel"
             >
-              <Zap className="w-3.5 h-3.5 fill-current" />
+              <Zap className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
               <span>ROTACIÓN AUTOMÁTICA</span>
             </button>
 
             <button
+              type="button"
               onClick={handlePrev}
-              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer"
-              aria-label="Anterior servicio"
+              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
+              aria-label="Servicio anterior"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
             </button>
 
             <button
+              type="button"
               onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer"
+              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
               aria-label="Siguiente servicio"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
         </div>
 
         {/* Carousel Showcase Grid */}
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-            {services.map((svc, idx) => {
+        <div
+          className="relative"
+          aria-roledescription="carousel"
+          aria-label="Tarjetas de servicios logísticos"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch" aria-live="polite">
+            {LOGISTICS_SERVICES.map((svc, idx) => {
               const isSelected = idx === currentIndex;
-              const IconComp = svc.icon;
+              const IconComp = ICON_MAP[svc.id as keyof typeof ICON_MAP] || Zap;
 
               if (svc.isHighlight) {
-                // Yellow Standout Card (Envíos Flex Meli)
                 return (
-                  <div
+                  <article
                     key={svc.id}
                     onClick={() => setCurrentIndex(idx)}
                     className={`rounded-[32px] p-6 sm:p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 relative ${
@@ -160,11 +119,10 @@ export default function ServicesCarouselSection({
                         : 'bg-[#ffd633]/90 text-[#002273] opacity-90 hover:opacity-100'
                     }`}
                   >
-                    {/* Header */}
                     <div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-11 h-11 rounded-2xl bg-[#002273] text-[#ffcc00] flex items-center justify-center shadow">
-                          <IconComp className="w-6 h-6" />
+                          <IconComp className="w-6 h-6" aria-hidden="true" />
                         </div>
                         <div className="px-3 py-1 rounded-full bg-[#002273] text-white font-bebas text-xs tracking-wider uppercase">
                           {svc.badge}
@@ -172,7 +130,7 @@ export default function ServicesCarouselSection({
                       </div>
 
                       <div className="flex items-center gap-1.5 text-xs font-mono-data uppercase tracking-wider text-[#002273]/80 mb-1">
-                        <span>📍</span>
+                        <span aria-hidden="true">📍</span>
                         <span>{svc.location}</span>
                       </div>
 
@@ -184,7 +142,6 @@ export default function ServicesCarouselSection({
                         {svc.description}
                       </p>
 
-                      {/* 3 Metric Pills */}
                       <div className="grid grid-cols-3 gap-1.5 mb-6 text-center">
                         {svc.pills.map((pill, pIdx) => (
                           <div
@@ -202,37 +159,37 @@ export default function ServicesCarouselSection({
                       </div>
                     </div>
 
-                    {/* Ficha técnica & Cotizar Actions */}
                     <div className="pt-2 flex flex-col gap-2">
                       <button
+                        type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           onOpenFichaTecnica();
                         }}
-                        className="flex items-center justify-center gap-1.5 text-xs font-bebas text-[#002273] hover:underline uppercase tracking-wider py-1"
+                        className="flex items-center justify-center gap-1.5 text-xs font-bebas text-[#002273] hover:underline uppercase tracking-wider py-1 cursor-pointer focus:outline-none"
                       >
-                        <Info className="w-3.5 h-3.5" />
+                        <Info className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>MIRÁ LA FICHA TÉCNICA</span>
                       </button>
 
                       <button
+                        type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           onOpenQuoteModal('flex');
                         }}
-                        className="w-full py-2.5 rounded-full bg-[#002273] text-white font-bebas text-base tracking-wider uppercase flex items-center justify-center gap-1.5 shadow"
+                        className="w-full py-2.5 rounded-full bg-[#002273] text-white font-bebas text-base tracking-wider uppercase flex items-center justify-center gap-1.5 shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
                       >
                         <span>COTIZAR FLEX</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                       </button>
                     </div>
-                  </div>
+                  </article>
                 );
               }
 
-              // Standard Cards (Dark Blue Glass)
               return (
-                <div
+                <article
                   key={svc.id}
                   onClick={() => setCurrentIndex(idx)}
                   className={`rounded-[32px] p-6 sm:p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 relative border ${
@@ -244,7 +201,7 @@ export default function ServicesCarouselSection({
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="w-11 h-11 rounded-2xl bg-blue-600/50 border border-blue-400/30 flex items-center justify-center text-[#ffcc00]">
-                        <IconComp className="w-5 h-5" />
+                        <IconComp className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div className="px-3 py-1 rounded-full bg-blue-950 border border-blue-400/30 text-blue-200 font-bebas text-xs tracking-wider uppercase">
                         {svc.badge}
@@ -252,7 +209,7 @@ export default function ServicesCarouselSection({
                     </div>
 
                     <div className="flex items-center gap-1.5 text-xs font-mono-data uppercase tracking-wider text-blue-300 mb-1">
-                      <span>📍</span>
+                      <span aria-hidden="true">📍</span>
                       <span>{svc.location}</span>
                     </div>
 
@@ -264,7 +221,6 @@ export default function ServicesCarouselSection({
                       {svc.description}
                     </p>
 
-                    {/* 3 Metric Pills */}
                     <div className="grid grid-cols-3 gap-1.5 mb-6 text-center">
                       {svc.pills.map((pill, pIdx) => (
                         <div
@@ -284,28 +240,30 @@ export default function ServicesCarouselSection({
 
                   <div className="pt-2">
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         onOpenQuoteModal(svc.id);
                       }}
-                      className="w-full py-2.5 rounded-full bg-blue-600/50 hover:bg-[#ffcc00] hover:text-[#002273] text-white border border-blue-400/30 font-bebas text-base tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors"
+                      className="w-full py-2.5 rounded-full bg-blue-600/50 hover:bg-[#ffcc00] hover:text-[#002273] text-white border border-blue-400/30 font-bebas text-base tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
                     >
                       <span>COTIZAR ESTE PLAN</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                     </button>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
 
           {/* Dots Indicator */}
           <div className="flex items-center justify-center gap-2 mt-8">
-            {services.map((_, dotIdx) => (
+            {LOGISTICS_SERVICES.map((_, dotIdx) => (
               <button
                 key={dotIdx}
+                type="button"
                 onClick={() => setCurrentIndex(dotIdx)}
-                className={`transition-all ${
+                className={`transition-all focus:outline-none cursor-pointer ${
                   dotIdx === currentIndex
                     ? 'w-8 h-2.5 rounded-full bg-[#ffcc00]'
                     : 'w-2.5 h-2.5 rounded-full bg-blue-300/40 hover:bg-blue-200'
@@ -315,7 +273,6 @@ export default function ServicesCarouselSection({
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

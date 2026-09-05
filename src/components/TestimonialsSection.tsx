@@ -3,131 +3,131 @@
 import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, Heart, TrendingUp, MessageSquare, ExternalLink, Quote } from 'lucide-react';
 
+const STATS = [
+  {
+    icon: Star,
+    iconBg: 'bg-[#ffcc00]',
+    iconColor: 'text-[#002273]',
+    value: '5.0',
+    stars: 5,
+    label: '15 OPINIONES EN GOOGLE MAPS',
+  },
+  {
+    icon: Heart,
+    iconBg: 'bg-[#0950F6]',
+    iconColor: 'text-white',
+    value: '100%',
+    label: 'FLOTA PROPIA SIN TERCERIZAR',
+  },
+  {
+    icon: TrendingUp,
+    iconBg: 'bg-blue-50 border border-blue-200',
+    iconColor: 'text-[#0950F6]',
+    value: '+7',
+    label: 'AÑOS DE TRAYECTORIA EN MDQ',
+  },
+];
+
+const CATEGORIES = [
+  { id: 'TODAS', label: 'TODAS', count: 12 },
+  { id: 'DESTACADAS', label: 'DESTACADAS' },
+  { id: 'EXPRESS & FLEX', label: 'EXPRESS & FLEX' },
+  { id: 'COMERCIOS & PYMES', label: 'COMERCIOS & PYMES' },
+  { id: 'CARA HUMANA', label: 'CARA HUMANA' },
+];
+
+const ALL_REVIEWS = [
+  {
+    id: 1,
+    category: ['TODAS', 'DESTACADAS', 'CARA HUMANA'],
+    stars: 5,
+    badge: 'Encargo Especial',
+    title: '“MI HÉROE LOGÍSTICO POR SEGUNDO AÑO CONSECUTIVO”',
+    text: 'Matías de Envíos DosRuedas se convirtió en mi héroe logístico 🍻. Tenía un encargo especial: comprar alfajores Havanna de temporada en MDQ, embalarlos con mimo y enviármelos para que viajen conmigo hasta Europa. Rapidez, comunicación clara y calidez humana.',
+    author: 'Sol R',
+    badgeUser: 'LOCAL GUIDE',
+    time: 'Hace 26 semanas',
+    avatar: 'S',
+    avatarBg: 'bg-[#002273] text-white',
+    cardTheme: 'white-border',
+  },
+  {
+    id: 2,
+    category: ['TODAS', 'DESTACADAS', 'EXPRESS & FLEX'],
+    stars: 5,
+    badge: 'Resolución Inmediata',
+    title: '“RESOLVIERON MI PROBLEMA CON LA MEJOR PREDISPOSICIÓN”',
+    text: 'Excelente el servicio, rápidos, muy atentos, resolvieron mi problema con la mejor predisposición, los recomiendo ampliamente.',
+    author: 'Karen Herrera',
+    badgeUser: '',
+    time: 'Hace 13 semanas',
+    avatar: 'K',
+    avatarBg: 'bg-[#ffcc00] text-[#002273]',
+    cardTheme: 'blue-dark',
+  },
+  {
+    id: 3,
+    category: ['TODAS', 'COMERCIOS & PYMES', 'EXPRESS & FLEX'],
+    stars: 5,
+    badge: 'Comercio Local',
+    title: '“IMPECABLE PARA LLEVAR PEDIDOS A MIS CLIENTES”',
+    text: 'Lo usé varias veces para llevar pedidos de mi tienda en Mar del Plata. Impecable el servicio. Además hacen cobro contra entrega sin problemas. ¡Unos genios!',
+    author: 'Agustin Torres',
+    badgeUser: 'CLIENTE FRECUENTE',
+    time: 'Hace 48 semanas',
+    avatar: 'A',
+    avatarBg: 'bg-[#0950F6] text-white',
+    cardTheme: 'white',
+  },
+  {
+    id: 4,
+    category: ['TODAS', 'DESTACADAS', 'COMERCIOS & PYMES'],
+    stars: 5,
+    badge: 'MercadoLibre Flex',
+    title: '“ENTREGAS FLEX EN EL DÍA SIN DEMORAS”',
+    text: 'Tengo local en el centro y vendemos por MercadoLibre. Desde que trabajamos con Envíos DosRuedas nuestras calificaciones de envíos están 100% en verde. Jamás un paquete demorado.',
+    author: 'Luciana Berardi',
+    badgeUser: 'VENDEDOR LÍDER',
+    time: 'Hace 8 semanas',
+    avatar: 'L',
+    avatarBg: 'bg-emerald-600 text-white',
+    cardTheme: 'white',
+  },
+  {
+    id: 5,
+    category: ['TODAS', 'EXPRESS & FLEX'],
+    stars: 5,
+    badge: 'Urgencia Repuestos',
+    title: '“ME SALVARON UN DESPACHO EN MENOS DE 30 MINUTOS”',
+    text: 'Se nos rompió una pieza clave en el taller y el cadete de DosRuedas retiró en Champagnat y me lo trajo volando. Super recomendados en toda la ciudad.',
+    author: 'Marcos Díaz',
+    badgeUser: 'TALLER MDQ',
+    time: 'Hace 15 semanas',
+    avatar: 'M',
+    avatarBg: 'bg-[#ffcc00] text-[#002273]',
+    cardTheme: 'blue-dark',
+  },
+  {
+    id: 6,
+    category: ['TODAS', 'CARA HUMANA'],
+    stars: 5,
+    badge: 'Trámite Bancario',
+    title: '“MÁXIMA CONFIANZA Y PUNTUALIDAD”',
+    text: 'Manejamos firmas notariales y trámites confidenciales. Siempre puntuales con el remito firmado de vuelta. Un equipo con verdadera vocación de servicio.',
+    author: 'Dra. Florencia Gómez',
+    badgeUser: 'ESTUDIO JURÍDICO',
+    time: 'Hace 20 semanas',
+    avatar: 'F',
+    avatarBg: 'bg-[#002273] text-white',
+    cardTheme: 'white-border',
+  },
+];
+
 export default function TestimonialsSection() {
   const [activeCategory, setActiveCategory] = useState('TODAS');
   const [currentPage, setCurrentPage] = useState(0);
 
-  const stats = [
-    {
-      icon: Star,
-      iconBg: 'bg-[#ffcc00]',
-      iconColor: 'text-[#002273]',
-      value: '5.0',
-      stars: 5,
-      label: '15 OPINIONES EN GOOGLE MAPS',
-    },
-    {
-      icon: Heart,
-      iconBg: 'bg-[#0950F6]',
-      iconColor: 'text-white',
-      value: '100%',
-      label: 'FLOTA PROPIA SIN TERCERIZAR',
-    },
-    {
-      icon: TrendingUp,
-      iconBg: 'bg-blue-50 border border-blue-200',
-      iconColor: 'text-[#0950F6]',
-      value: '+7',
-      label: 'AÑOS DE TRAYECTORIA EN MDQ',
-    },
-  ];
-
-  const categories = [
-    { id: 'TODAS', label: 'TODAS', count: 12 },
-    { id: 'DESTACADAS', label: 'DESTACADAS' },
-    { id: 'EXPRESS & FLEX', label: 'EXPRESS & FLEX' },
-    { id: 'COMERCIOS & PYMES', label: 'COMERCIOS & PYMES' },
-    { id: 'CARA HUMANA', label: 'CARA HUMANA' },
-  ];
-
-  const allReviews = [
-    {
-      id: 1,
-      category: ['TODAS', 'DESTACADAS', 'CARA HUMANA'],
-      stars: 5,
-      badge: 'Encargo Especial',
-      title: '“MI HÉROE LOGÍSTICO POR SEGUNDO AÑO CONSECUTIVO”',
-      text: 'Matías de Envíos DosRuedas se convirtió en mi héroe logístico 🍻. Tenía un encargo especial: comprar alfajores Havanna de temporada en MDQ, embalarlos con mimo y enviármelos para que viajen conmigo hasta Europa. Rapidez, comunicación clara y calidez humana.',
-      author: 'Sol R',
-      badgeUser: 'LOCAL GUIDE',
-      time: 'Hace 26 semanas',
-      avatar: 'S',
-      avatarBg: 'bg-[#002273] text-white',
-      cardTheme: 'white-border',
-    },
-    {
-      id: 2,
-      category: ['TODAS', 'DESTACADAS', 'EXPRESS & FLEX'],
-      stars: 5,
-      badge: 'Resolución Inmediata',
-      title: '“RESOLVIERON MI PROBLEMA CON LA MEJOR PREDISPOSICIÓN”',
-      text: 'Excelente el servicio, rápidos, muy atentos, resolvieron mi problema con la mejor predisposición, los recomiendo ampliamente.',
-      author: 'Karen Herrera',
-      badgeUser: '',
-      time: 'Hace 13 semanas',
-      avatar: 'K',
-      avatarBg: 'bg-[#ffcc00] text-[#002273]',
-      cardTheme: 'blue-dark',
-    },
-    {
-      id: 3,
-      category: ['TODAS', 'COMERCIOS & PYMES', 'EXPRESS & FLEX'],
-      stars: 5,
-      badge: 'Comercio Local',
-      title: '“IMPECABLE PARA LLEVAR PEDIDOS A MIS CLIENTES”',
-      text: 'Lo usé varias veces para llevar pedidos de mi tienda en Mar del Plata. Impecable el servicio. Además hacen cobro contra entrega sin problemas. ¡Unos genios!',
-      author: 'Agustin Torres',
-      badgeUser: 'CLIENTE FRECUENTE',
-      time: 'Hace 48 semanas',
-      avatar: 'A',
-      avatarBg: 'bg-[#0950F6] text-white',
-      cardTheme: 'white',
-    },
-    {
-      id: 4,
-      category: ['TODAS', 'DESTACADAS', 'COMERCIOS & PYMES'],
-      stars: 5,
-      badge: 'MercadoLibre Flex',
-      title: '“ENTREGAS FLEX EN EL DÍA SIN DEMORAS”',
-      text: 'Tengo local en el centro y vendemos por MercadoLibre. Desde que trabajamos con Envíos DosRuedas nuestras calificaciones de envíos están 100% en verde. Jamás un paquete demorado.',
-      author: 'Luciana Berardi',
-      badgeUser: 'VENDEDOR LÍDER',
-      time: 'Hace 8 semanas',
-      avatar: 'L',
-      avatarBg: 'bg-emerald-600 text-white',
-      cardTheme: 'white',
-    },
-    {
-      id: 5,
-      category: ['TODAS', 'EXPRESS & FLEX'],
-      stars: 5,
-      badge: 'Urgencia Repuestos',
-      title: '“ME SALVARON UN DESPACHO EN MENOS DE 30 MINUTOS”',
-      text: 'Se nos rompió una pieza clave en el taller y el cadete de DosRuedas retiró en Champagnat y me lo trajo volando. Super recomendados en toda la ciudad.',
-      author: 'Marcos Díaz',
-      badgeUser: 'TALLER MDQ',
-      time: 'Hace 15 semanas',
-      avatar: 'M',
-      avatarBg: 'bg-[#ffcc00] text-[#002273]',
-      cardTheme: 'blue-dark',
-    },
-    {
-      id: 6,
-      category: ['TODAS', 'CARA HUMANA'],
-      stars: 5,
-      badge: 'Trámite Bancario',
-      title: '“MÁXIMA CONFIANZA Y PUNTUALIDAD”',
-      text: 'Manejamos firmas notariales y trámites confidenciales. Siempre puntuales con el remito firmado de vuelta. Un equipo con verdadera vocación de servicio.',
-      author: 'Dra. Florencia Gómez',
-      badgeUser: 'ESTUDIO JURÍDICO',
-      time: 'Hace 20 semanas',
-      avatar: 'F',
-      avatarBg: 'bg-[#002273] text-white',
-      cardTheme: 'white-border',
-    },
-  ];
-
-  const filteredReviews = allReviews.filter((r) => r.category.includes(activeCategory));
+  const filteredReviews = ALL_REVIEWS.filter((r) => r.category.includes(activeCategory));
 
   const itemsPerPage = 3;
   const maxPages = Math.ceil(filteredReviews.length / itemsPerPage);
@@ -194,7 +194,7 @@ export default function TestimonialsSection() {
 
         {/* Top 3 Stats Bento Cards (Image 9) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-          {stats.map((stat, sIdx) => {
+          {STATS.map((stat, sIdx) => {
             const IconC = stat.icon;
             return (
               <div
@@ -228,7 +228,7 @@ export default function TestimonialsSection() {
 
         {/* Category Filters (Image 9) */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-10">
-          {categories.map((cat) => {
+          {CATEGORIES.map((cat) => {
             const isActive = cat.id === activeCategory;
             return (
               <button

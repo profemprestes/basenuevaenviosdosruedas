@@ -1,113 +1,151 @@
-# Envíos DosRuedas — Mensajería y Logística MDQ
+# 🚴 Envíos DosRuedas — Mensajería y Logística en Mar del Plata (MDQ)
 
-Plataforma web oficial de **Envíos DosRuedas**, la solución líder en logística urbana, mensajería express y entregas de última milla para e-commerce en Mar del Plata y zonas de influencia.
+Plataforma web oficial y portal interactivo de **Envíos DosRuedas**, la empresa líder en soluciones de mensajería urbana, entregas express en el día (Same-Day Delivery) y logística de última milla optimizada para e-commerce y comercios locales en **Mar del Plata y zonas aledañas**.
 
 ---
 
-## 🚀 Características Principales
+## 📋 Descripción del Servicio
 
-- **Cotizador Express e Interactivo:** Simulación de envíos en tiempo real con integración directa a WhatsApp para atención inmediata.
-- **Especialización Mercado Envíos Flex:** Flujo optimizado para vendedores de Mercado Libre y e-commerce locales.
-- **Ficha Técnica & Modales Interactivos:** Visualización detallada de servicios, zonas de cobertura y capacidades operativas.
-- **Sección Bento Grid & Métricas:** Métricas de rendimiento, testimonios reales e indicadores de calidad de servicio.
-- **Diseño Responsivo y Moderno:** Interfaz estilizada con animación fluida utilizando Tailwind CSS v4 y Framer Motion (Motion).
-- **Integración con IA (Google Gemini API):** Funcionalidades impulsadas por inteligencia artificial para asistencia y cálculo logístico.
+**Envíos DosRuedas** conecta e-commerce, locales gastronómicos, comercios tradicionales y usuarios particulares con un servicio de cadetería y logística eficiente, transparente y confiable.
+
+### Principales Soluciones:
+- ⚡ **Envíos Express e Inmediatos:** Mensajería urbana puerta a puerta en tiempo récord.
+- 📦 **Mercado Envíos Flex (ML Flex):** Solución homologada para vendedores de Mercado Libre con recolección diaria y entregas garantizadas en el día.
+- 🛍️ **Logística de Última Milla para E-Commerce:** Tarifas corporativas, entregas programadas y logística inversa.
+- 🧮 **Cotizador Interactivo en Tiempo Real:** Cálculo instantáneo de envíos con canal directo a WhatsApp para coordinación inmediata.
+- 🤖 **Asistente Inteligente Integrado:** Integración con Google Gemini AI para asesoramiento logístico adaptado.
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-- **Framework:** [Next.js 15](https://nextjs.org/) (App Router, React Server Components & Client Components)
-- **Biblioteca UI:** [React 19](https://react.dev/)
-- **Lenguaje:** [TypeScript 5](https://www.typescriptlang.org/)
-- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/) + `@tailwindcss/postcss` + `tw-animate-css`
-- **Iconos y Animaciones:** [Lucide React](https://lucide.dev/) & [Motion](https://motion.dev/)
-- **Integración IA:** `@google/genai` (SDK Oficial de Google Gemini)
-- **Formularios & Validación:** `react-hook-form` con `@hookform/resolvers`
-- **Calidad de Código:** ESLint 9
+| Componente | Tecnología |
+|---|---|
+| **Framework Web** | [Next.js 15](https://nextjs.org/) (App Router, Server & Client Components) |
+| **Librería UI** | [React 19](https://react.dev/) |
+| **Lenguaje** | [TypeScript 5](https://www.typescriptlang.org/) |
+| **Motor de Estilos** | [Tailwind CSS v4](https://tailwindcss.com/) + `@tailwindcss/postcss` |
+| **Animaciones & UI** | [Motion](https://motion.dev/) & [Lucide React](https://lucide.dev/) |
+| **Formularios & Validación** | `react-hook-form` + `@hookform/resolvers` |
+| **Inteligencia Artificial** | `@google/genai` (SDK Oficial de Google Gemini) |
+| **Calidad de Código** | ESLint 9 |
 
 ---
 
 ## 📁 Estructura del Proyecto
 
 ```text
-├── metadata.json           # Metadatos del applet / proyecto
+├── public/                 # Recursos estáticos (imágenes, logos, favicons)
+├── src/
+│   ├── app/                # Rutas y páginas de Next.js (App Router)
+│   │   ├── globals.css     # Estilos globales y configuración de Tailwind CSS v4
+│   │   ├── layout.tsx      # Layout principal con metadatos de SEO
+│   │   └── page.tsx        # Página de inicio (Landing Page)
+│   ├── components/         # Componentes React reutilizables
+│   │   ├── ContactQuoteSection.tsx     # Cotizador interactivo y formulario
+│   │   ├── EcommerceGrowthSection.tsx  # Beneficios para e-commerce
+│   │   ├── HeroSection.tsx             # Sección principal con llamadas a la acción
+│   │   ├── MetricsBentoSection.tsx     # Bento grid con métricas clave
+│   │   └── ...
+│   ├── hooks/              # Custom React Hooks
+│   ├── lib/                # Configuración, constantes, utilidades y servicios de IA
+│   │   ├── constants/      # Zonas de cobertura, servicios y tarifas
+│   │   ├── domain/         # Generador de enlaces y formato de mensajes para WhatsApp
+│   │   └── utils.ts        # Helper para concatenación de clases Tailwind (`cn`)
+│   └── types/              # Definiciones e interfaces TypeScript
+├── metadata.json           # Configuración del applet / proyecto
 ├── next.config.ts          # Configuración de Next.js
-├── package.json            # Dependencias y scripts de NPM
-├── postcss.config.mjs      # Configuración de PostCSS
-├── tsconfig.json           # Configuración de TypeScript
-├── public/                 # Recursos estáticos (imágenes, favicons, logos)
-└── src/
-    ├── app/                # Next.js App Router (Páginas, Layouts, Estilos Globales)
-    │   ├── globals.css     # Configuración de Tailwind CSS y estilos globales
-    │   ├── layout.tsx      # Layout principal de la aplicación
-    │   └── page.tsx        # Landing Page principal
-    ├── components/         # Componentes React (Navbar, Hero, Modales, Secciones)
-    ├── hooks/              # Custom Hooks reutilizables
-    └── lib/                # Utilidades, asistentes de IA y configuraciones
+├── package.json            # Scripts e historia de dependencias NPM
+├── postcss.config.mjs      # Configuración PostCSS 8
+└── tsconfig.json           # Configuración de TypeScript (`@/*` alias)
 ```
 
 ---
 
-## ⚡ Instalación y Configuración
+## 🚀 Guía de Instalación y Ejecución
 
 ### Requisitos Previos
 
 - **Node.js:** `>= 20.0.0`
-- **NPM** o **PNPM / Yarn / Bun**
+- **Gestor de paquetes:** `npm` (incluido con Node) o `pnpm` / `yarn` / `bun`.
 
-### Pasos de Instalación
+### 1. Clonar el Repositorio
 
-1. **Clonar el repositorio:**
+```bash
+git clone https://github.com/tu-usuario/envios-dosruedas.git
+cd envios-dosruedas
+```
 
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd ai-studio-applet
-   ```
+### 2. Instalar Dependencias
 
-2. **Instalar dependencias:**
+```bash
+npm install
+```
 
-   ```bash
-   npm install
-   ```
+### 3. Configurar Variables de Entorno
 
-3. **Configurar variables de entorno:**
+Copia el archivo `.env.example` para crear tu entorno local `.env.local`:
 
-   Copia el archivo `.env.example` a `.env.local` y asigna tus credenciales:
+```bash
+cp .env.example .env.local
+```
 
-   ```bash
-   cp .env.example .env.local
-   ```
+Asegúrate de definir las variables correspondientes en `.env.local`:
 
-   Variables requeridas:
+```env
+GEMINI_API_KEY="tu_clave_api_gemini_aqui"
+APP_URL="http://localhost:3000"
+```
 
-   ```env
-   GEMINI_API_KEY="TU_CLAVE_API_DE_GEMINI"
-   APP_URL="http://localhost:3000"
-   ```
+### 4. Ejecutar en Entorno de Desarrollo
 
-4. **Iniciar el servidor de desarrollo:**
+```bash
+npm run dev
+```
 
-   ```bash
-   npm run dev
-   ```
-
-   Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
+Navega a [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación en ejecución.
 
 ---
 
-## 📜 Scripts Disponibles
+## 📦 Compilación y Despliegue
 
-En el archivo `package.json` encontrarás los siguientes comandos:
+### Construcción para Producción
 
-- `npm run dev`: Inicia el servidor de desarrollo en modo caliente (Hot Reloading).
-- `npm run build`: Compila la aplicación optimizada para producción.
-- `npm run start`: Inicia el servidor en modo producción a partir de la build generada.
-- `npm run lint`: Ejecuta el linter ESLint para validar la calidad del código.
-- `npm run clean`: Limpia el cache de Next.js (`.next`).
+Para compilar y validar la aplicación lista para producción:
+
+```bash
+npm run build
+```
+
+### Probar Servidor de Producción Localmente
+
+```bash
+npm run start
+```
+
+### Despliegue (Deployment)
+
+La plataforma está optimizada para desplegarse sin contratiempos en plataformas como **Vercel**, **Netlify**, **Cloud Run** o **Render**:
+
+1. Vincula el repositorio a tu proveedor de hosting.
+2. Agrega las variables de entorno (`GEMINI_API_KEY`, `APP_URL`, etc.) en el panel de administración de tu plataforma de hosting.
+3. El comando de build estándar es `npm run build` y el directorio de salida por defecto es `.next`.
 
 ---
 
-## 🛡️ Licencia y Derechos
+## 📜 Scripts NPM Disponibles
 
-© Envíos DosRuedas — Todos los derechos reservados.
+- `npm run dev`: Inicia el servidor de desarrollo en modo Hot-Reloading.
+- `npm run build`: Ejecuta la verificación de tipos y compila la app para producción.
+- `npm run start`: Inicia la aplicación previamente compilada.
+- `npm run lint`: Analiza el código buscando posibles errores con ESLint.
+- `npm run clean`: Limpia los artefactos generados en la carpeta `.next`.
+
+---
+
+## 📄 Licencia y Contacto
+
+© **Envíos DosRuedas MDQ** — Todos los derechos reservados.
+- 📍 **Ubicación:** Mar del Plata, Provincia de Buenos Aires, Argentina.
+- 📧 **Email:** matiascejas@enviosdosruedas.com
+- 💬 **WhatsApp Directo:** [+54 9 223 660-2699](https://wa.me/5492236602699)

@@ -8,10 +8,13 @@ import EcommerceGrowthSection from '@/components/EcommerceGrowthSection';
 import ServicesCarouselSection from '@/components/ServicesCarouselSection';
 import IndustriesShowcaseSection from '@/components/IndustriesShowcaseSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import CarruselRedes from '@/components/CarruselRedes';
 import ContactQuoteSection from '@/components/ContactQuoteSection';
 import PreFooterAndFooter from '@/components/PreFooterAndFooter';
 import ExpressQuoteModal from '@/components/ExpressQuoteModal';
 import FichaTecnicaModal from '@/components/FichaTecnicaModal';
+
+
 
 export default function Home() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -64,10 +67,13 @@ export default function Home() {
       {/* 7. Google Reviews & Testimonials Section */}
       <TestimonialsSection />
 
-      {/* 8. Contact & Immediate WhatsApp Quote Section */}
+      {/* 8. Carrusel / Grid de Redes Sociales */}
+      <CarruselRedes />
+
+      {/* 9. Contact & Immediate WhatsApp Quote Section */}
       <ContactQuoteSection />
 
-      {/* 9. Pre-Footer Banner & Master Footer */}
+      {/* 10. Pre-Footer Banner & Master Footer */}
       <PreFooterAndFooter onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
       {/* Interactive Modals */}

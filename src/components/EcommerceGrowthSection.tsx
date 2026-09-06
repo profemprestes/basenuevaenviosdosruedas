@@ -4,10 +4,108 @@ import React from 'react';
 import { Store, ShoppingBag, Building2, Check, ArrowRight } from 'lucide-react';
 import { ECOMMERCE_GROWTH_CONTENT } from '@/content/home';
 import { LOCAL_PARTNER_BRANDS } from '@/content/services';
+import { Badge, Button, Card, IconBadge } from '@/components/atoms';
+import { cn } from '@/lib/utils';
 
-interface EcommerceGrowthSectionProps {
-  onOpenQuoteModal: () => void;
-  onOpenFichaTecnica: () => void;
+interface BenefitItemProps {
+  text: string;
+}
+
+function BenefitItem({ text }: BenefitItemProps) {
+  return (
+    <li className="flex items-center gap-3">
+      <div className="w-6 h-6 rounded-lg bg-blue-600/50 border border-blue-400/40 flex items-center justify-center flex-shrink-0">
+        <Check className="w-4 h-4 text-[#F2E40A] stroke-[3]" aria-hidden="true" />
+      </div>
+      <span className="font-outfit text-sm sm:text-base text-blue-50 font-medium">
+        {text}
+      </span>
+    </li>
+  );
+}
+
+interface EcommerceCardProps {
+  variant: 'dark' | 'yellow' | 'white';
+  icon: React.ReactNode;
+  badge: string;
+  title: string;
+  description: string;
+  benefits?: BenefitItemProps['text'][];
+  ctaText: string;
+  onCtaClick: () => void;
+  ctaVariant?: 'primary' | 'dark' | 'yellow-outline';
+  className?: string;
+}
+
+function EcommerceCard({
+  variant,
+  icon,
+  badge,
+  title,
+  description,
+  benefits,
+  ctaText,
+  onCtaClick,
+  ctaVariant = 'primary',
+  className,
+}: EcommerceCardProps) {
+  const variantStyles = {
+    dark: 'bg-[#00277e]/90 border border-blue-400/30 text-white',
+    yellow: 'bg-[#F2E40A] text-[#002273]',
+    white: 'bg-white text-slate-900 border border-slate-200/90',
+  };
+
+  const badgeStyles = {
+    dark: 'bg-blue-950 border border-blue-400/30 text-[#F2E40A]',
+    yellow: 'bg-[#002273] text-white',
+    white: 'bg-blue-50 text-[#0C59F2] border border-blue-200',
+  };
+
+  const iconBadgeStyles = {
+    dark: 'bg-[#F2E40A] text-[#002273]',
+    yellow: 'bg-[#002273] text-[#F2E40A]',
+    white: 'bg-[#F2E40A] text-[#002273]',
+  };
+
+  const titleColor = variant === 'dark' ? 'text-white' : variant === 'yellow' ? 'text-[#002273]' : 'text-[#0C59F2]';
+  const descColor = variant === 'dark' ? 'text-blue-100/90' : variant === 'yellow' ? 'text-[#002273]/85' : 'text-slate-600';
+
+  return (
+    <Card variant="default" padding="xl" hover className={cn('rounded-[32px] flex flex-col justify-between relative overflow-hidden', variantStyles[variant], className)}>
+      <div>
+        <div className="flex items-center justify-between mb-5">
+          <IconBadge variant={iconBadgeStyles[variant] as any} size="lg">
+            {icon}
+          </IconBadge>
+          <Badge variant={badgeStyles[variant] as any} className="text-xs">
+            {badge}
+          </Badge>
+        </div>
+
+        <h3 className={cn('font-anton uppercase tracking-tight mb-3 text-3xl sm:text-4xl', titleColor)}>
+          {title}
+        </h3>
+
+        <p className={cn('font-outfit text-base leading-relaxed mb-6', descColor)}>
+          {description}
+        </p>
+
+        {benefits && benefits.length > 0 && (
+          <ul className="space-y-4 mb-8">
+            {benefits.map((b, bIdx) => (
+              <BenefitItem key={bIdx} text={b} />
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="pt-4 border-t border-current/20">
+        <Button variant={ctaVariant} size="lg" leftIcon={<ArrowRight className="w-4 h-4" />} onClick={onCtaClick}>
+          {ctaText}
+        </Button>
+      </div>
+    </Card>
+  );
 }
 
 export default function EcommerceGrowthSection({
@@ -25,17 +123,15 @@ export default function EcommerceGrowthSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F2E40A]/20 border border-[#F2E40A] text-[#F2E40A] mb-4">
-            <span className="font-bebas text-sm tracking-wider uppercase font-bold">
-              {ec.badge}
-            </span>
-          </div>
+          <Badge variant="category-light" className="mb-4">
+            {ec.badge}
+          </Badge>
 
           <h2 className="font-anton uppercase text-white text-4xl sm:text-5xl lg:text-[60px] leading-[1.0] tracking-tight mb-4 flex flex-wrap items-center gap-x-3">
             <span>{ec.titlePrefix}</span>
-            <span className="inline-flex items-center justify-center px-4 py-1 rounded-full bg-[#F2E40A] text-[#002273] text-3xl sm:text-4xl lg:text-[46px] font-anton leading-none my-1">
+            <Badge variant="yellow" className="text-3xl sm:text-4xl lg:text-[46px] font-anton leading-none my-1 px-4 py-1">
               {ec.titlePill}
-            </span>
+            </Badge>
             <span>{ec.titleSuffix}</span>
           </h2>
 
@@ -49,123 +145,42 @@ export default function EcommerceGrowthSection({
         {/* Bento Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-20">
           {/* Left Column: Big E-commerce Card */}
-          <article className="lg:col-span-6 bg-[#00277e]/90 border border-blue-400/30 rounded-[32px] p-7 sm:p-9 text-white shadow-2xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden">
-            <div
-              className="absolute -bottom-10 -right-10 w-64 h-64 opacity-5 pointer-events-none"
-              aria-hidden="true"
-            >
-              <Store className="w-full h-full text-white" />
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#F2E40A] flex items-center justify-center shadow-md">
-                  <Store className="w-6 h-6 text-[#002273]" aria-hidden="true" />
-                </div>
-                <div className="px-3 py-1 rounded-full bg-blue-950 border border-blue-400/30 text-[#F2E40A] font-bebas text-xs tracking-wider uppercase">
-                  {ec.mainCard.badge}
-                </div>
-              </div>
-
-              <h3 className="font-anton uppercase text-white text-3xl sm:text-4xl tracking-tight mb-4">
-                {ec.mainCard.title}
-              </h3>
-
-              <p className="font-outfit text-blue-100/90 text-base leading-relaxed mb-8">
-                {ec.mainCard.description}
-              </p>
-
-              <ul className="space-y-4 mb-8">
-                {ec.mainCard.benefits.map((b, bIdx) => (
-                  <li key={bIdx} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-lg bg-blue-600/50 border border-blue-400/40 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#F2E40A] stroke-[3]" aria-hidden="true" />
-                    </div>
-                    <span className="font-outfit text-sm sm:text-base text-blue-50 font-medium">
-                      {b.text}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="pt-4 border-t border-blue-400/20">
-              <button
-                type="button"
-                onClick={onOpenQuoteModal}
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] shadow-lg glow-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
-              >
-                <span>{ec.mainCard.ctaText}</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" aria-hidden="true" />
-              </button>
-            </div>
-          </article>
+          <EcommerceCard
+            variant="dark"
+            icon={<Store className="w-6 h-6" />}
+            badge={ec.mainCard.badge}
+            title={ec.mainCard.title}
+            description={ec.mainCard.description}
+            benefits={ec.mainCard.benefits.map(b => b.text)}
+            ctaText={ec.mainCard.ctaText}
+            onCtaClick={onOpenQuoteModal}
+            ctaVariant="primary"
+            className="lg:col-span-6"
+          />
 
           {/* Right Column: 2 Cards */}
           <div className="lg:col-span-6 flex flex-col gap-6">
-            <article className="bg-[#F2E40A] rounded-[32px] p-7 sm:p-8 text-[#002273] shadow-xl relative overflow-hidden flex flex-col justify-between group hover:scale-[1.01] transition-transform">
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-[#002273] flex items-center justify-center text-white shadow">
-                    <ShoppingBag className="w-6 h-6 text-[#F2E40A]" aria-hidden="true" />
-                  </div>
-                  <div className="px-3.5 py-1 rounded-full bg-[#002273] text-white font-bebas text-xs tracking-wider uppercase">
-                    {ec.flexCard.badge}
-                  </div>
-                </div>
+            <EcommerceCard
+              variant="yellow"
+              icon={<ShoppingBag className="w-6 h-6" />}
+              badge={ec.flexCard.badge}
+              title={ec.flexCard.title}
+              description={ec.flexCard.description}
+              ctaText={ec.flexCard.ctaText}
+              onCtaClick={onOpenFichaTecnica}
+              ctaVariant="dark"
+            />
 
-                <h3 className="font-anton uppercase text-[#002273] text-3xl sm:text-4xl tracking-tight mb-3">
-                  {ec.flexCard.title}
-                </h3>
-
-                <p className="font-outfit text-[#002273]/85 text-base leading-relaxed mb-6">
-                  {ec.flexCard.description}
-                </p>
-              </div>
-
-              <div>
-                <button
-                  type="button"
-                  onClick={onOpenFichaTecnica}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#002273] hover:bg-[#00174e] text-white font-bebas text-lg tracking-wider uppercase transition-all shadow-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
-                >
-                  <span>{ec.flexCard.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 stroke-[2]" aria-hidden="true" />
-                </button>
-              </div>
-            </article>
-
-            <article className="bg-white rounded-[32px] p-7 sm:p-8 text-slate-900 shadow-xl border border-slate-200/90 flex flex-col justify-between group hover:scale-[1.01] transition-transform">
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-[#F2E40A] flex items-center justify-center text-[#002273] shadow-sm">
-                    <Building2 className="w-6 h-6 text-[#002273]" aria-hidden="true" />
-                  </div>
-                  <div className="px-3.5 py-1 rounded-full bg-blue-50 text-[#0C59F2] font-bebas text-xs tracking-wider uppercase border border-blue-200">
-                    {ec.corporateCard.badge}
-                  </div>
-                </div>
-
-                <h3 className="font-anton uppercase text-[#0C59F2] text-3xl sm:text-4xl tracking-tight mb-3">
-                  {ec.corporateCard.title}
-                </h3>
-
-                <p className="font-outfit text-slate-600 text-base leading-relaxed mb-6">
-                  {ec.corporateCard.description}
-                </p>
-              </div>
-
-              <div>
-                <button
-                  type="button"
-                  onClick={onOpenQuoteModal}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-lg tracking-wider uppercase transition-all shadow-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
-                >
-                  <span>{ec.corporateCard.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 text-[#002273] stroke-[2]" aria-hidden="true" />
-                </button>
-              </div>
-            </article>
+            <EcommerceCard
+              variant="white"
+              icon={<Building2 className="w-6 h-6" />}
+              badge={ec.corporateCard.badge}
+              title={ec.corporateCard.title}
+              description={ec.corporateCard.description}
+              ctaText={ec.corporateCard.ctaText}
+              onCtaClick={onOpenQuoteModal}
+              ctaVariant="primary"
+            />
           </div>
         </div>
 
@@ -189,4 +204,9 @@ export default function EcommerceGrowthSection({
       </div>
     </section>
   );
+}
+
+interface EcommerceGrowthSectionProps {
+  onOpenQuoteModal: () => void;
+  onOpenFichaTecnica: () => void;
 }

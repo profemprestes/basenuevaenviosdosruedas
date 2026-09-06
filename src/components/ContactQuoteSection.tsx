@@ -4,12 +4,20 @@ import React from 'react';
 import { User, Store, Package, MessageCircle, Clock, CheckCircle, Sparkles } from 'lucide-react';
 import { useContactForm } from '@/hooks/useContactForm';
 import { CONTACT_FORM_CONTENT } from '@/content/quote';
+import { InputField, SelectField } from '@/components/atoms';
+import { Button, Badge } from '@/components/atoms';
+import { cn } from '@/lib/utils';
 
 export default function ContactQuoteSection() {
   const { name, setName, business, setBusiness, volume, setVolume, submitted, handleSubmit } =
     useContactForm();
 
   const content = CONTACT_FORM_CONTENT;
+
+  const volumeOptions = content.volumeOptions.map((opt, idx) => ({
+    value: opt,
+    label: opt,
+  }));
 
   return (
     <section
@@ -22,12 +30,10 @@ export default function ContactQuoteSection() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Column: Heading & Information */}
             <div className="lg:col-span-6 flex flex-col items-start">
-              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-sm mb-6">
+              <Badge variant="signal" className="mb-6">
                 <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" aria-hidden="true" />
-                <span className="font-bebas text-sm tracking-wider uppercase font-bold">
-                  {content.badge}
-                </span>
-              </div>
+                {content.badge}
+              </Badge>
 
               <h2 className="font-anton uppercase text-[#0C59F2] text-4xl sm:text-5xl lg:text-[58px] leading-[0.98] tracking-tight mb-6">
                 {content.headline}
@@ -37,121 +43,72 @@ export default function ContactQuoteSection() {
                 {content.description}
               </p>
 
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-[#0C59F2]">
+              <Badge variant="category-light" className="px-4 py-2 rounded-xl">
                 <Clock className="w-4 h-4 text-[#0C59F2]" aria-hidden="true" />
-                <span className="font-bebas text-sm sm:text-base tracking-wider uppercase">
-                  {content.supportTimeBadge}
-                </span>
-              </div>
+                {content.supportTimeBadge}
+              </Badge>
             </div>
 
             {/* Right Column: Form Container */}
             <div className="lg:col-span-6">
               <div className="bg-white rounded-[32px] p-6 sm:p-9 border border-slate-200 shadow-xl relative">
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Field 1: Tu Nombre */}
-                  <div>
-                    <label
-                      htmlFor="contact-name-input"
-                      className="block font-bebas text-[#0C59F2] text-sm tracking-wider uppercase mb-2"
-                    >
-                      {content.nameLabel}
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <User className="w-5 h-5 text-[#0C59F2]" aria-hidden="true" />
-                      </div>
-                      <input
-                        id="contact-name-input"
-                        type="text"
-                        required
-                        aria-required="true"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder={content.namePlaceholder}
-                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0C59F2] focus:border-transparent transition-all"
-                      />
-                    </div>
-                  </div>
+                  <InputField
+                    label={content.nameLabel}
+                    icon={<User className="w-5 h-5" />}
+                    id="contact-name-input"
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder={content.namePlaceholder}
+                  />
 
-                  {/* Field 2: Empresa / Negocio */}
-                  <div>
-                    <label
-                      htmlFor="contact-business-input"
-                      className="block font-bebas text-[#0C59F2] text-sm tracking-wider uppercase mb-2"
-                    >
-                      {content.businessLabel}
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Store className="w-5 h-5 text-[#0C59F2]" aria-hidden="true" />
-                      </div>
-                      <input
-                        id="contact-business-input"
-                        type="text"
-                        required
-                        aria-required="true"
-                        value={business}
-                        onChange={(e) => setBusiness(e.target.value)}
-                        placeholder={content.businessPlaceholder}
-                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0C59F2] focus:border-transparent transition-all"
-                      />
-                    </div>
-                  </div>
+                  <InputField
+                    label={content.businessLabel}
+                    icon={<Store className="w-5 h-5" />}
+                    id="contact-business-input"
+                    type="text"
+                    required
+                    value={business}
+                    onChange={(e) => setBusiness(e.target.value)}
+                    placeholder={content.businessPlaceholder}
+                  />
 
-                  {/* Field 3: Volumen Estimado Mensual */}
-                  <div>
-                    <label
-                      htmlFor="contact-volume-select"
-                      className="block font-bebas text-[#0C59F2] text-sm tracking-wider uppercase mb-2"
-                    >
-                      {content.volumeLabel}
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Package className="w-5 h-5 text-[#0C59F2]" aria-hidden="true" />
-                      </div>
-                      <select
-                        id="contact-volume-select"
-                        required
-                        aria-required="true"
-                        value={volume}
-                        onChange={(e) => setVolume(e.target.value)}
-                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base focus:outline-none focus:ring-2 focus:ring-[#0C59F2] focus:border-transparent transition-all appearance-none cursor-pointer"
-                      >
-                        <option value="" disabled>
-                          {content.volumePlaceholder}
-                        </option>
-                        {content.volumeOptions.map((opt, idx) => (
-                          <option key={idx} value={opt}>
-                            {opt}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+                  <SelectField
+                    label={content.volumeLabel}
+                    icon={<Package className="w-5 h-5" />}
+                    id="contact-volume-select"
+                    required
+                    options={volumeOptions}
+                    placeholder={content.volumePlaceholder}
+                    value={volume}
+                    onChange={(e) => setVolume(e.target.value)}
+                  />
 
                   {/* Submit Button */}
                   <div className="pt-2">
-                    <button
+                    <Button
                       type="submit"
-                      className="w-full py-4 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl sm:text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-xl glow-yellow font-bold flex items-center justify-center gap-3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
+                      variant="primary"
+                      size="xl"
+                      fullWidth
+                      leftIcon={<MessageCircle className="w-5 h-5 stroke-[2.5]" />}
                     >
-                      <span>{content.submitButtonText}</span>
-                      <MessageCircle className="w-5 h-5 stroke-[2.5]" aria-hidden="true" />
-                    </button>
+                      {content.submitButtonText}
+                    </Button>
                   </div>
-                </form>
 
-                {submitted && (
-                  <div
-                    aria-live="polite"
-                    className="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-emerald-800 text-xs font-outfit"
-                  >
-                    <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" aria-hidden="true" />
-                    <span>{content.successMessage}</span>
-                  </div>
-                )}
+                  {submitted && (
+                    <div
+                      aria-live="polite"
+                      className="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-emerald-800 text-xs font-outfit"
+                    >
+                      <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" aria-hidden="true" />
+                      <span>{content.successMessage}</span>
+                    </div>
+                  )}
+                </form>
               </div>
             </div>
           </div>

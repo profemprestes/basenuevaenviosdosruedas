@@ -16,17 +16,8 @@ import {
 } from 'lucide-react';
 import Logo from './Logo';
 import { SITE_CONFIG } from '@/content/site';
-
-interface PreFooterAndFooterProps {
-  onOpenQuoteModal: (serviceId?: string) => void;
-}
-
-const SERVICE_ICON_MAP = {
-  express: Zap,
-  lowcost: TrendingDown,
-  flex: Clock,
-  '3pl': Package,
-};
+import { Button, Badge } from '@/components/atoms';
+import { cn } from '@/lib/utils';
 
 function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
   return (
@@ -64,6 +55,70 @@ function FacebookIcon({ className = 'w-4 h-4' }: { className?: string }) {
   );
 }
 
+const SERVICE_ICON_MAP = {
+  express: Zap,
+  lowcost: TrendingDown,
+  flex: Clock,
+  '3pl': Package,
+};
+
+interface ServiceLinkProps {
+  item: { label: string; action: string };
+  onOpenQuoteModal: (serviceId?: string) => void;
+}
+
+function ServiceLink({ item, onOpenQuoteModal }: ServiceLinkProps) {
+  const IconComponent = SERVICE_ICON_MAP[item.action as keyof typeof SERVICE_ICON_MAP] || Zap;
+
+  return (
+    <li>
+      <Button
+        variant="ghost"
+        size="sm"
+        className="w-full justify-start text-blue-100 hover:text-[#F2E40A] font-outfit text-sm"
+        leftIcon={<IconComponent className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />}
+        onClick={() => onOpenQuoteModal(item.action)}
+      >
+        {item.label}
+      </Button>
+    </li>
+  );
+}
+
+interface InfoCardProps {
+  icon: React.ReactNode;
+  label: string;
+  value: React.ReactNode;
+  subItems?: React.ReactNode[];
+}
+
+function InfoCard({ icon, label, value, subItems }: InfoCardProps) {
+  return (
+    <div className="flex items-start gap-3 p-3 rounded-2xl bg-blue-900/40 border border-blue-400/20">
+      <div className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" aria-hidden="true">
+        {icon}
+      </div>
+      <div>
+        <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
+          {label}
+        </p>
+        <div className="font-outfit text-white hover:text-[#F2E40A] transition">
+          {value}
+        </div>
+        {subItems && (
+          <div className="space-y-1 mt-2">
+            {subItems.map((item, idx) => (
+              <div key={idx} className="flex justify-between text-xs text-blue-100 font-mono-data">
+                {item}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFooterProps) {
   const { footer, tagline, phoneNumber, email, address, whatsappNumber, defaultWhatsAppMessage } =
     SITE_CONFIG;
@@ -88,9 +143,9 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-2xl">
               {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-900/80 border border-blue-400/30 text-[#F2E40A] font-bebas text-xs tracking-wider uppercase mb-4">
+              <Badge variant="blue-dark" className="mb-4 text-xs">
                 {footer.preFooter.badge}
-              </div>
+              </Badge>
 
               {/* Title */}
               <h3 className="font-anton uppercase text-3xl sm:text-4xl lg:text-[44px] leading-tight tracking-tight text-white mb-2">
@@ -105,23 +160,23 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
 
             {/* Buttons on right */}
             <div className="flex flex-wrap items-center gap-4 flex-shrink-0">
-              <button
-                type="button"
+              <Button
+                variant="primary"
+                size="lg"
+                leftIcon={<ArrowUpRight className="w-5 h-5 stroke-[2.5]" />}
                 onClick={() => onOpenQuoteModal()}
-                className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-xl glow-yellow font-bold cursor-pointer"
               >
-                <span>{footer.preFooter.quoteButtonText}</span>
-                <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-              </button>
+                {footer.preFooter.quoteButtonText}
+              </Button>
 
-              <button
-                type="button"
+              <Button
+                variant="secondary"
+                size="lg"
+                leftIcon={<MessageCircle className="w-4 h-4 text-[#F2E40A]" />}
                 onClick={openWhatsApp}
-                className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-blue-900/60 hover:bg-blue-800 text-white border border-blue-400/30 font-bebas text-xl tracking-wider uppercase transition-all cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#F2E40A]" />
-                <span>{footer.preFooter.chatButtonText}</span>
-              </button>
+                {footer.preFooter.chatButtonText}
+              </Button>
             </div>
           </div>
         </div>
@@ -165,19 +220,20 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                   <FacebookIcon className="w-4 h-4" />
                 </a>
 
-                <button
-                  type="button"
-                  onClick={openWhatsApp}
-                  className="w-10 h-10 rounded-xl bg-[#F2E40A] text-[#002273] flex items-center justify-center transition shadow-md glow-yellow cursor-pointer"
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="w-10 h-10 p-0 shadow-md glow-yellow"
                   aria-label="WhatsApp"
+                  onClick={openWhatsApp}
                 >
                   <MessageCircle className="w-4 h-4 fill-[#002273]" />
-                </button>
+                </Button>
 
-                <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-blue-900/40 border border-blue-400/30 text-blue-100 font-bebas text-xs tracking-wider">
+                <Badge variant="blue-dark" className="px-3 py-2 rounded-xl text-xs">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#F2E40A]" />
-                  <span>{footer.verifiedBadgeText}</span>
-                </div>
+                  {footer.verifiedBadgeText}
+                </Badge>
               </div>
             </div>
           </div>
@@ -189,22 +245,9 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
             </h4>
 
             <ul className="space-y-4">
-              {footer.servicesLinks.map((item, idx) => {
-                const IconComponent =
-                  SERVICE_ICON_MAP[item.action as keyof typeof SERVICE_ICON_MAP] || Zap;
-                return (
-                  <li key={idx}>
-                    <button
-                      type="button"
-                      onClick={() => onOpenQuoteModal(item.action)}
-                      className="flex items-center gap-2.5 text-blue-100 hover:text-[#F2E40A] font-outfit text-sm transition group cursor-pointer"
-                    >
-                      <IconComponent className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />
-                      <span>{item.label}</span>
-                    </button>
-                  </li>
-                );
-              })}
+              {footer.servicesLinks.map((item, idx) => (
+                <ServiceLink key={idx} item={item} onOpenQuoteModal={onOpenQuoteModal} />
+              ))}
             </ul>
           </div>
 
@@ -215,66 +258,49 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
             </h4>
 
             <div className="space-y-3.5 text-sm">
-              {/* Centro de Distribución */}
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-blue-900/40 border border-blue-400/20">
-                <MapPin className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
-                    {footer.locationLabel}
-                  </p>
-                  <p className="font-outfit text-white font-medium">
-                    {address}
-                  </p>
-                </div>
-              </div>
+              <InfoCard
+                icon={<MapPin />}
+                label={footer.locationLabel}
+                value={<p className="font-outfit text-white font-medium">{address}</p>}
+              />
 
-              {/* Línea directa */}
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-blue-900/40 border border-blue-400/20">
-                <Phone className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
-                    {footer.directLineLabel}
-                  </p>
+              <InfoCard
+                icon={<Phone />}
+                label={footer.directLineLabel}
+                value={
                   <a
                     href={`tel:${phoneNumber.replace(/\s+/g, '')}`}
                     className="font-anton text-base text-white hover:text-[#F2E40A] transition"
                   >
                     +54 {phoneNumber}
                   </a>
-                </div>
-              </div>
+                }
+              />
 
-              {/* Atención comercial */}
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-blue-900/40 border border-blue-400/20">
-                <Mail className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
-                <div className="overflow-hidden">
-                  <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
-                    {footer.commercialEmailLabel}
-                  </p>
+              <InfoCard
+                icon={<Mail />}
+                label={footer.commercialEmailLabel}
+                value={
                   <a
                     href={`mailto:${email}`}
                     className="font-outfit text-white hover:text-[#F2E40A] transition text-xs sm:text-sm truncate block"
                   >
                     {email}
                   </a>
-                </div>
-              </div>
+                }
+              />
 
-              {/* Horarios */}
-              <div className="flex items-start gap-3 p-3 rounded-2xl bg-blue-900/40 border border-blue-400/20">
-                <Clock className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
-                <div className="w-full">
-                  <p className="font-bebas text-xs tracking-wider uppercase text-blue-300 mb-1">
-                    {footer.scheduleLabel}
-                  </p>
-                  {footer.schedules.map((sch, sIdx) => (
-                    <div key={sIdx} className="flex justify-between text-xs text-blue-100 font-mono-data">
-                      <span>{sch.label}</span>
-                      <span className="font-bold text-[#F2E40A]">{sch.hours}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <InfoCard
+                icon={<Clock />}
+                label={footer.scheduleLabel}
+                value={<span />}
+                subItems={footer.schedules.map((sch, sIdx) => (
+                  <React.Fragment key={sIdx}>
+                    <span>{sch.label}</span>
+                    <span className="font-bold text-[#F2E40A]">{sch.hours}</span>
+                  </React.Fragment>
+                ))}
+              />
             </div>
           </div>
         </div>
@@ -295,17 +321,22 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
             ))}
 
             {/* Scroll to top yellow button */}
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-[#F2E40A] text-[#002273] flex items-center justify-center hover:bg-[#faee28] transition-all transform hover:scale-110 shadow-lg glow-yellow ml-2 cursor-pointer"
+            <Button
+              variant="primary"
+              size="sm"
+              className="w-10 h-10 p-0 shadow-lg glow-yellow ml-2"
               aria-label="Volver arriba"
+              onClick={scrollToTop}
             >
               <ArrowUp className="w-5 h-5 stroke-[2.5]" />
-            </button>
+            </Button>
           </div>
         </div>
       </div>
     </footer>
   );
+}
+
+interface PreFooterAndFooterProps {
+  onOpenQuoteModal: (serviceId?: string) => void;
 }

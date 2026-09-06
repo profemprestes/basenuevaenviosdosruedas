@@ -1,5 +1,5 @@
 import { QuoteCalculationInput } from '@/types/quote';
-import { MDQ_DELIVERY_ZONES } from '@/lib/constants/zones';
+import { MDQ_DELIVERY_ZONES } from '@/content/services';
 
 export function calculateDeliveryPrice(input: QuoteCalculationInput): number {
   const { originZoneName, destinationZoneName, service, weight, needsCashCollection } = input;

@@ -17,19 +17,30 @@ import {
   ArrowUp,
 } from 'lucide-react';
 import Logo from './Logo';
+import { SITE_CONFIG } from '@/content/site';
 
 interface PreFooterAndFooterProps {
-  onOpenQuoteModal: () => void;
+  onOpenQuoteModal: (serviceId?: string) => void;
 }
 
+const SERVICE_ICON_MAP = {
+  express: Zap,
+  lowcost: TrendingDown,
+  flex: Clock,
+  '3pl': Package,
+};
+
 export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFooterProps) {
+  const { footer, name, tagline, phoneNumber, email, address, whatsappNumber, defaultWhatsAppMessage } =
+    SITE_CONFIG;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openWhatsApp = () => {
     window.open(
-      'https://wa.me/5492236602699?text=Hola%20Envíos%20DosRuedas!%20Quiero%20coordinar%20un%20envío%20en%20Mar%20del%20Plata.',
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultWhatsAppMessage)}`,
       '_blank',
       'noopener,noreferrer'
     );
@@ -38,65 +49,66 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
   return (
     <footer className="w-full bg-[#002273] text-white relative pt-12 pb-8 bg-tech-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Pre-Footer Banner Card (Image 6) */}
+        {/* Pre-Footer Banner Card */}
         <div className="w-full bg-[#00174e]/95 border border-blue-400/30 rounded-[32px] p-8 sm:p-10 mb-16 shadow-2xl relative overflow-hidden backdrop-blur-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-2xl">
               {/* Badge */}
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-900/80 border border-blue-400/30 text-[#F2E40A] font-bebas text-xs tracking-wider uppercase mb-4">
-                OPERACIONES ACTIVAS MAR DEL PLATA 2026
+                {footer.preFooter.badge}
               </div>
 
               {/* Title */}
               <h3 className="font-anton uppercase text-3xl sm:text-4xl lg:text-[44px] leading-tight tracking-tight text-white mb-2">
-                ¿TENÉS ENVÍOS PARA HOY? <span className="text-[#F2E40A]">LOS ENTREGAMOS A TIEMPO.</span>
+                {footer.preFooter.titleLine1}{' '}
+                <span className="text-[#F2E40A]">{footer.preFooter.titleHighlight}</span>
               </h3>
 
               <p className="font-outfit text-blue-200 text-sm sm:text-base leading-relaxed">
-                Cotizá online en segundos o coordiná directo con nuestro equipo logístico por WhatsApp.
+                {footer.preFooter.subtitle}
               </p>
             </div>
 
             {/* Buttons on right */}
             <div className="flex flex-wrap items-center gap-4 flex-shrink-0">
               <button
-                onClick={onOpenQuoteModal}
+                type="button"
+                onClick={() => onOpenQuoteModal()}
                 className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-xl glow-yellow font-bold cursor-pointer"
               >
-                <span>COTIZÁ TU ENVÍO</span>
+                <span>{footer.preFooter.quoteButtonText}</span>
                 <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
               </button>
 
               <button
+                type="button"
                 onClick={openWhatsApp}
                 className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-blue-900/60 hover:bg-blue-800 text-white border border-blue-400/30 font-bebas text-xl tracking-wider uppercase transition-all cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#F2E40A]" />
-                <span>CHATEÁ CON NOSOTROS</span>
+                <span>{footer.preFooter.chatButtonText}</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Master Footer Content Grid (Image 6) */}
+        {/* Master Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-blue-400/20">
-          
-          {/* Column 1: Brand info (lg:col-span-5) */}
+          {/* Column 1: Brand info */}
           <div className="lg:col-span-5 flex flex-col items-start">
             <Logo size="lg" className="mb-2" />
             <span className="font-bebas text-xs tracking-widest text-[#F2E40A] uppercase mb-5">
-              TU SOLUCIÓN CONFIABLE · MAR DEL PLATA
+              {tagline}
             </span>
 
             <p className="font-outfit text-blue-100/80 text-sm sm:text-base leading-relaxed mb-6 max-w-md">
-              Con más de 7 años de trayectoria en Mar del Plata, transformamos el despacho de tus productos en un motor de crecimiento para emprendedores, PyMEs y comercios locales con flota propia y compromiso humano.
+              {footer.brandDescription}
             </p>
 
             {/* Canales Oficiales */}
             <div>
               <p className="font-bebas text-xs tracking-widest text-blue-300 uppercase mb-3">
-                CANALES OFICIALES
+                {footer.officialChannelsLabel}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
@@ -120,8 +132,9 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                 </a>
 
                 <button
+                  type="button"
                   onClick={openWhatsApp}
-                  className="w-10 h-10 rounded-xl bg-[#F2E40A] text-[#002273] flex items-center justify-center transition shadow-md glow-yellow"
+                  className="w-10 h-10 rounded-xl bg-[#F2E40A] text-[#002273] flex items-center justify-center transition shadow-md glow-yellow cursor-pointer"
                   aria-label="WhatsApp"
                 >
                   <MessageCircle className="w-4 h-4 fill-[#002273]" />
@@ -129,65 +142,42 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
 
                 <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-blue-900/40 border border-blue-400/30 text-blue-100 font-bebas text-xs tracking-wider">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#F2E40A]" />
-                  <span>Partner 3PL Verificado</span>
+                  <span>{footer.verifiedBadgeText}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Column 2: Servicios y Cotizadores (lg:col-span-3) */}
+          {/* Column 2: Servicios y Cotizadores */}
           <div className="lg:col-span-3 flex flex-col">
             <h4 className="font-anton uppercase text-[#F2E40A] text-xl tracking-wide mb-6">
-              SERVICIOS Y COTIZADORES
+              {footer.servicesColumnTitle}
             </h4>
 
             <ul className="space-y-4">
-              <li>
-                <button
-                  onClick={onOpenQuoteModal}
-                  className="flex items-center gap-2.5 text-blue-100 hover:text-[#F2E40A] font-outfit text-sm transition group"
-                >
-                  <Zap className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />
-                  <span>Cotizador Express &lt; 2H</span>
-                </button>
-              </li>
-
-              <li>
-                <button
-                  onClick={onOpenQuoteModal}
-                  className="flex items-center gap-2.5 text-blue-100 hover:text-[#F2E40A] font-outfit text-sm transition group"
-                >
-                  <TrendingDown className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />
-                  <span>Cotizador LowCost Batch</span>
-                </button>
-              </li>
-
-              <li>
-                <button
-                  onClick={onOpenQuoteModal}
-                  className="flex items-center gap-2.5 text-blue-100 hover:text-[#F2E40A] font-outfit text-sm transition group"
-                >
-                  <Clock className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />
-                  <span>Mercado Envíos Flex</span>
-                </button>
-              </li>
-
-              <li>
-                <button
-                  onClick={onOpenQuoteModal}
-                  className="flex items-center gap-2.5 text-blue-100 hover:text-[#F2E40A] font-outfit text-sm transition group"
-                >
-                  <Package className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />
-                  <span>E-Commerce &amp; 3PL</span>
-                </button>
-              </li>
+              {footer.servicesLinks.map((item, idx) => {
+                const IconComponent =
+                  SERVICE_ICON_MAP[item.action as keyof typeof SERVICE_ICON_MAP] || Zap;
+                return (
+                  <li key={idx}>
+                    <button
+                      type="button"
+                      onClick={() => onOpenQuoteModal(item.action)}
+                      className="flex items-center gap-2.5 text-blue-100 hover:text-[#F2E40A] font-outfit text-sm transition group cursor-pointer"
+                    >
+                      <IconComponent className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" />
+                      <span>{item.label}</span>
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
-          {/* Column 3: Base de Operaciones MDQ (lg:col-span-4) */}
+          {/* Column 3: Base de Operaciones MDQ */}
           <div className="lg:col-span-4 flex flex-col">
             <h4 className="font-anton uppercase text-[#F2E40A] text-xl tracking-wide mb-6">
-              BASE DE OPERACIONES MDQ
+              {footer.operationsColumnTitle}
             </h4>
 
             <div className="space-y-3.5 text-sm">
@@ -196,10 +186,10 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                 <MapPin className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
-                    CENTRO DE DISTRIBUCIÓN
+                    {footer.locationLabel}
                   </p>
                   <p className="font-outfit text-white font-medium">
-                    Friuli 1972, Mar del Plata
+                    {address}
                   </p>
                 </div>
               </div>
@@ -209,13 +199,13 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                 <Phone className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
-                    LÍNEA DIRECTA Y WHATSAPP
+                    {footer.directLineLabel}
                   </p>
                   <a
-                    href="tel:2236602699"
+                    href={`tel:${phoneNumber.replace(/\s+/g, '')}`}
                     className="font-anton text-base text-white hover:text-[#F2E40A] transition"
                   >
-                    +54 223 660-2699
+                    +54 {phoneNumber}
                   </a>
                 </div>
               </div>
@@ -225,13 +215,13 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                 <Mail className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
                 <div className="overflow-hidden">
                   <p className="font-bebas text-xs tracking-wider uppercase text-blue-300">
-                    ATENCIÓN COMERCIAL
+                    {footer.commercialEmailLabel}
                   </p>
                   <a
-                    href="mailto:matiascejas@enviosdosruedas.com"
+                    href={`mailto:${email}`}
                     className="font-outfit text-white hover:text-[#F2E40A] transition text-xs sm:text-sm truncate block"
                   >
-                    matiascejas@enviosdosruedas.com
+                    {email}
                   </a>
                 </div>
               </div>
@@ -241,47 +231,46 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                 <Clock className="w-4 h-4 text-[#F2E40A] flex-shrink-0 mt-0.5" />
                 <div className="w-full">
                   <p className="font-bebas text-xs tracking-wider uppercase text-blue-300 mb-1">
-                    HORARIOS DE DESPACHO (BASE CENTRAL)
+                    {footer.scheduleLabel}
                   </p>
-                  <div className="flex justify-between text-xs text-blue-100 font-mono-data">
-                    <span>Lunes a Viernes:</span>
-                    <span className="font-bold text-[#F2E40A]">09:00 - 18:00 hs</span>
-                  </div>
-                  <div className="flex justify-between text-xs text-blue-100 font-mono-data">
-                    <span>Sábados:</span>
-                    <span className="font-bold text-[#F2E40A]">10:00 - 15:00 hs</span>
-                  </div>
+                  {footer.schedules.map((sch, sIdx) => (
+                    <div key={sIdx} className="flex justify-between text-xs text-blue-100 font-mono-data">
+                      <span>{sch.label}</span>
+                      <span className="font-bold text-[#F2E40A]">{sch.hours}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-outfit text-blue-200">
           <div>
-            <span className="font-semibold text-white">© 2026 Envíos DosRuedas</span> · Mar del Plata, Argentina.
+            <span className="font-semibold text-white">{footer.copyright}</span>
             <span className="hidden sm:inline"> Sobre Nosotros · Preguntas Frecuentes · Nuestras Redes</span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="hover:text-white cursor-pointer">Términos y Condiciones</span>
-            <span>·</span>
-            <span className="hover:text-white cursor-pointer">Política de Privacidad</span>
+            {footer.legalLinks.map((item, idx) => (
+              <React.Fragment key={idx}>
+                {idx > 0 && <span>·</span>}
+                <span className="hover:text-white cursor-pointer">{item.label}</span>
+              </React.Fragment>
+            ))}
 
-            {/* Scroll to top yellow button (Image 6) */}
+            {/* Scroll to top yellow button */}
             <button
+              type="button"
               onClick={scrollToTop}
-              className="w-10 h-10 rounded-full bg-[#F2E40A] text-[#002273] flex items-center justify-center hover:bg-[#faee28] transition-all transform hover:scale-110 shadow-lg glow-yellow ml-2"
+              className="w-10 h-10 rounded-full bg-[#F2E40A] text-[#002273] flex items-center justify-center hover:bg-[#faee28] transition-all transform hover:scale-110 shadow-lg glow-yellow ml-2 cursor-pointer"
               aria-label="Volver arriba"
             >
               <ArrowUp className="w-5 h-5 stroke-[2.5]" />
             </button>
           </div>
         </div>
-
       </div>
     </footer>
   );

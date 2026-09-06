@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Home, Bike, Info, Mail, Phone, ArrowRight, Menu, X, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
+import { SITE_CONFIG } from '@/content/site';
 
 interface NavbarProps {
   onOpenQuoteModal: () => void;
@@ -11,6 +12,8 @@ interface NavbarProps {
 export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
+
+  const { navigation } = SITE_CONFIG;
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -32,7 +35,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             scrollToSection('inicio');
           }}
           className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A] rounded-xl"
-          aria-label="Envíos DosRuedas - Ir a inicio"
+          aria-label={`${SITE_CONFIG.name} - Ir a inicio`}
         >
           <Logo size="md" />
         </a>
@@ -50,7 +53,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             id="nav-inicio"
           >
             <Home className="w-4 h-4 text-[#F2E40A]" aria-hidden="true" />
-            <span>INICIO</span>
+            <span>{navigation.homeLabel}</span>
           </button>
 
           {/* Servicios Dropdown */}
@@ -66,7 +69,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
               id="nav-servicios"
             >
               <Bike className="w-4 h-4 text-white" aria-hidden="true" />
-              <span>SERVICIOS</span>
+              <span>{navigation.servicesLabel}</span>
               <ChevronDown
                 className={`w-3.5 h-3.5 transition-transform ${
                   servicesDropdown ? 'rotate-180' : ''
@@ -84,58 +87,22 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                 aria-orientation="vertical"
                 aria-labelledby="nav-servicios"
               >
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={() => scrollToSection('servicios-carousel')}
-                  className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-blue-600/50 flex flex-col transition focus:outline-none focus:ring-2 focus:ring-[#F2E40A] cursor-pointer"
-                >
-                  <span className="font-bebas text-base text-[#F2E40A] tracking-wide">
-                    Envíos Flex MercadoLibre
-                  </span>
-                  <span className="text-xs text-blue-200">
-                    Entregas en el día homologadas en MDQ
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={() => scrollToSection('servicios-carousel')}
-                  className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-blue-600/50 flex flex-col transition focus:outline-none focus:ring-2 focus:ring-[#F2E40A] cursor-pointer"
-                >
-                  <span className="font-bebas text-base text-white tracking-wide">
-                    Envíos Express (&lt; 2h)
-                  </span>
-                  <span className="text-xs text-blue-200">
-                    Mensajería prioritaria punto a punto
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={() => scrollToSection('industrias')}
-                  className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-blue-600/50 flex flex-col transition focus:outline-none focus:ring-2 focus:ring-[#F2E40A] cursor-pointer"
-                >
-                  <span className="font-bebas text-base text-white tracking-wide">
-                    Logística para Industrias
-                  </span>
-                  <span className="text-xs text-blue-200">
-                    Insumos médicos, repuestos, moda y más
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  role="menuitem"
-                  onClick={() => scrollToSection('ecommerce')}
-                  className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-blue-600/50 flex flex-col transition focus:outline-none focus:ring-2 focus:ring-[#F2E40A] cursor-pointer"
-                >
-                  <span className="font-bebas text-base text-white tracking-wide">
-                    E-commerce &amp; Corporativo
-                  </span>
-                  <span className="text-xs text-blue-200">
-                    Cuentas corrientes y logística 3PL
-                  </span>
-                </button>
+                {navigation.servicesDropdown.map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    role="menuitem"
+                    onClick={() => scrollToSection(item.targetId)}
+                    className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-blue-600/50 flex flex-col transition focus:outline-none focus:ring-2 focus:ring-[#F2E40A] cursor-pointer"
+                  >
+                    <span className="font-bebas text-base text-[#F2E40A] tracking-wide">
+                      {item.title}
+                    </span>
+                    <span className="text-xs text-blue-200">
+                      {item.description}
+                    </span>
+                  </button>
+                ))}
               </div>
             )}
           </div>
@@ -148,7 +115,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             id="nav-nosotros"
           >
             <Info className="w-4 h-4 text-white" aria-hidden="true" />
-            <span>NOSOTROS</span>
+            <span>{navigation.aboutLabel}</span>
           </button>
 
           {/* Contacto */}
@@ -159,7 +126,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             id="nav-contacto"
           >
             <Mail className="w-4 h-4 text-white" aria-hidden="true" />
-            <span>CONTACTO</span>
+            <span>{navigation.contactLabel}</span>
           </button>
         </nav>
 
@@ -167,12 +134,12 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
         <div className="hidden md:flex items-center gap-5">
           {/* Phone Link */}
           <a
-            href="tel:2236602699"
+            href={navigation.phoneTel}
             className="flex items-center gap-2 text-white hover:text-[#F2E40A] font-anton text-lg tracking-wide transition group focus:outline-none focus:ring-2 focus:ring-[#F2E40A] rounded-lg p-1"
-            title="Llamar a Envíos DosRuedas"
+            title={`Llamar a ${SITE_CONFIG.name}`}
           >
             <Phone className="w-4 h-4 text-[#F2E40A] group-hover:scale-110 transition-transform" aria-hidden="true" />
-            <span>223 660-2699</span>
+            <span>{navigation.phoneDisplay}</span>
           </a>
 
           {/* Cotizá tu Envío CTA Button */}
@@ -182,7 +149,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] glow-yellow font-normal focus:outline-none focus:ring-2 focus:ring-[#002273] cursor-pointer"
             id="btn-nav-cotiza"
           >
-            <span>COTIZÁ TU ENVÍO</span>
+            <span>{navigation.ctaButtonText}</span>
             <ArrowRight className="w-4 h-4 stroke-[2.5]" aria-hidden="true" />
           </button>
         </div>
@@ -194,7 +161,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             onClick={onOpenQuoteModal}
             className="px-3.5 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] font-bebas text-sm tracking-wider cursor-pointer font-bold"
           >
-            COTIZAR
+            {navigation.ctaMobileText}
           </button>
           <button
             type="button"
@@ -226,7 +193,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             className="flex items-center gap-3 w-full py-2.5 text-left text-[#F2E40A] font-bebas text-xl border-b border-blue-800 cursor-pointer"
           >
             <Home className="w-5 h-5 text-[#F2E40A]" aria-hidden="true" />
-            <span>INICIO</span>
+            <span>{navigation.homeLabel}</span>
           </button>
           <button
             type="button"
@@ -234,7 +201,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             className="flex items-center gap-3 w-full py-2.5 text-left text-white font-bebas text-xl border-b border-blue-800 cursor-pointer"
           >
             <Bike className="w-5 h-5 text-[#F2E40A]" aria-hidden="true" />
-            <span>SERVICIOS Y TARIFAS</span>
+            <span>{navigation.servicesLabel}</span>
           </button>
           <button
             type="button"
@@ -250,7 +217,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             className="flex items-center gap-3 w-full py-2.5 text-left text-white font-bebas text-xl border-b border-blue-800 cursor-pointer"
           >
             <Info className="w-5 h-5 text-[#F2E40A]" aria-hidden="true" />
-            <span>NOSOTROS Y MÉTRICAS</span>
+            <span>{navigation.aboutLabel}</span>
           </button>
           <button
             type="button"
@@ -258,16 +225,16 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             className="flex items-center gap-3 w-full py-2.5 text-left text-white font-bebas text-xl border-b border-blue-800 cursor-pointer"
           >
             <Mail className="w-5 h-5 text-[#F2E40A]" aria-hidden="true" />
-            <span>CONTACTO Y WHATSAPP</span>
+            <span>{navigation.contactLabel}</span>
           </button>
 
           <div className="pt-2 flex flex-col gap-3">
             <a
-              href="tel:2236602699"
+              href={navigation.phoneTel}
               className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-900/60 text-white font-anton text-lg tracking-wide"
             >
               <Phone className="w-4 h-4 text-[#F2E40A]" aria-hidden="true" />
-              <span>223 660-2699</span>
+              <span>{navigation.phoneDisplay}</span>
             </a>
             <button
               type="button"
@@ -277,7 +244,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
               }}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#F2E40A] text-[#002273] font-bebas text-xl tracking-wider uppercase font-bold glow-yellow cursor-pointer hover:bg-[#faee28]"
             >
-              <span>COTIZÁ TU ENVÍO AHORA</span>
+              <span>{navigation.ctaButtonText}</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>

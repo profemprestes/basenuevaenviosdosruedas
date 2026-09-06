@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
 import { ServiceType, PackageWeight } from '@/types/quote';
-import { MDQ_DELIVERY_ZONES } from '@/lib/constants/zones';
+import { MDQ_DELIVERY_ZONES } from '@/content/services';
 import { calculateDeliveryPrice } from '@/lib/domain/pricing';
 import { buildQuoteWhatsAppUrl } from '@/lib/domain/whatsapp';
 
 export function useQuoteCalculator(initialService?: string) {
   const [origin, setOrigin] = useState('Centro / Macrocentro');
-  const [destination, setDestination] = useState('Güemes / Playa Grande');
+  const [destination, setDestination] = useState('Güemes / Playa Grande / Varese');
   const [service, setService] = useState<ServiceType>(
     (initialService as ServiceType) || 'express'
   );

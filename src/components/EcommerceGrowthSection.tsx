@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Store, ShoppingBag, Building2, Check, ArrowRight } from 'lucide-react';
-import { LOCAL_PARTNER_BRANDS } from '@/lib/constants/services';
+import { ECOMMERCE_GROWTH_CONTENT } from '@/content/home';
+import { LOCAL_PARTNER_BRANDS } from '@/content/services';
 
 interface EcommerceGrowthSectionProps {
   onOpenQuoteModal: () => void;
@@ -13,6 +14,8 @@ export default function EcommerceGrowthSection({
   onOpenQuoteModal,
   onOpenFichaTecnica,
 }: EcommerceGrowthSectionProps) {
+  const ec = ECOMMERCE_GROWTH_CONTENT;
+
   return (
     <section
       id="ecommerce"
@@ -24,23 +27,22 @@ export default function EcommerceGrowthSection({
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F2E40A]/20 border border-[#F2E40A] text-[#F2E40A] mb-4">
             <span className="font-bebas text-sm tracking-wider uppercase font-bold">
-              SOCIO ESTRATÉGICO LOCAL
+              {ec.badge}
             </span>
           </div>
 
           <h2 className="font-anton uppercase text-white text-4xl sm:text-5xl lg:text-[60px] leading-[1.0] tracking-tight mb-4 flex flex-wrap items-center gap-x-3">
-            <span>POTENCIAMOS TU</span>
+            <span>{ec.titlePrefix}</span>
             <span className="inline-flex items-center justify-center px-4 py-1 rounded-full bg-[#F2E40A] text-[#002273] text-3xl sm:text-4xl lg:text-[46px] font-anton leading-none my-1">
-              MDQ
+              {ec.titlePill}
             </span>
-            <span>MARCA EN MAR DEL PLATA</span>
+            <span>{ec.titleSuffix}</span>
           </h2>
 
           <div className="w-20 h-1.5 bg-[#F2E40A] rounded-full mb-6" aria-hidden="true" />
 
           <p className="font-outfit text-base sm:text-lg text-blue-100/90 leading-relaxed">
-            Si vendés online, necesitás un socio logístico que responda al toque. Creamos planes a tu medida
-            con tarifas dinámicas transparentes y recolección programada a domicilio en Mar del Plata.
+            {ec.description}
           </p>
         </div>
 
@@ -61,46 +63,29 @@ export default function EcommerceGrowthSection({
                   <Store className="w-6 h-6 text-[#002273]" aria-hidden="true" />
                 </div>
                 <div className="px-3 py-1 rounded-full bg-blue-950 border border-blue-400/30 text-[#F2E40A] font-bebas text-xs tracking-wider uppercase">
-                  EMPRENDEDORES
+                  {ec.mainCard.badge}
                 </div>
               </div>
 
               <h3 className="font-anton uppercase text-white text-3xl sm:text-4xl tracking-tight mb-4">
-                LOGÍSTICA E-COMMERCE
+                {ec.mainCard.title}
               </h3>
 
               <p className="font-outfit text-blue-100/90 text-base leading-relaxed mb-8">
-                Gestión de última milla pensada para PyMEs y marcas locales. Optimizamos tus costos de envío
-                con retiros programados a domicilio y soporte post-venta.
+                {ec.mainCard.description}
               </p>
 
               <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-lg bg-blue-600/50 border border-blue-400/40 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-[#F2E40A] stroke-[3]" aria-hidden="true" />
-                  </div>
-                  <span className="font-outfit text-sm sm:text-base text-blue-50 font-medium">
-                    Soporte comercial dedicado vía WhatsApp
-                  </span>
-                </li>
-
-                <li className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-lg bg-blue-600/50 border border-blue-400/40 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-[#F2E40A] stroke-[3]" aria-hidden="true" />
-                  </div>
-                  <span className="font-outfit text-sm sm:text-base text-blue-50 font-medium">
-                    Entregas contrareembolso integradas sin cargo extra
-                  </span>
-                </li>
-
-                <li className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-lg bg-blue-600/50 border border-blue-400/40 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-[#F2E40A] stroke-[3]" aria-hidden="true" />
-                  </div>
-                  <span className="font-outfit text-sm sm:text-base text-blue-50 font-medium">
-                    Rastreo digital transparente para tus clientes
-                  </span>
-                </li>
+                {ec.mainCard.benefits.map((b, bIdx) => (
+                  <li key={bIdx} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-lg bg-blue-600/50 border border-blue-400/40 flex items-center justify-center flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#F2E40A] stroke-[3]" aria-hidden="true" />
+                    </div>
+                    <span className="font-outfit text-sm sm:text-base text-blue-50 font-medium">
+                      {b.text}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -110,7 +95,7 @@ export default function EcommerceGrowthSection({
                 onClick={onOpenQuoteModal}
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] shadow-lg glow-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
               >
-                <span>CONOCER MÁS</span>
+                <span>{ec.mainCard.ctaText}</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" aria-hidden="true" />
               </button>
             </div>
@@ -125,17 +110,16 @@ export default function EcommerceGrowthSection({
                     <ShoppingBag className="w-6 h-6 text-[#F2E40A]" aria-hidden="true" />
                   </div>
                   <div className="px-3.5 py-1 rounded-full bg-[#002273] text-white font-bebas text-xs tracking-wider uppercase">
-                    MERCADOLIBRE
+                    {ec.flexCard.badge}
                   </div>
                 </div>
 
                 <h3 className="font-anton uppercase text-[#002273] text-3xl sm:text-4xl tracking-tight mb-3">
-                  ENVÍOS FLEX MELI
+                  {ec.flexCard.title}
                 </h3>
 
                 <p className="font-outfit text-[#002273]/85 text-base leading-relaxed mb-6">
-                  Socio logístico homologado para tus envíos rápidos en el día. Recolección gratis en tu local
-                  y entrega garantizada dentro del SLA establecido.
+                  {ec.flexCard.description}
                 </p>
               </div>
 
@@ -145,7 +129,7 @@ export default function EcommerceGrowthSection({
                   onClick={onOpenFichaTecnica}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#002273] hover:bg-[#00174e] text-white font-bebas text-lg tracking-wider uppercase transition-all shadow-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
                 >
-                  <span>CONFIGURAR FLEX</span>
+                  <span>{ec.flexCard.ctaText}</span>
                   <ArrowRight className="w-4 h-4 stroke-[2]" aria-hidden="true" />
                 </button>
               </div>
@@ -158,17 +142,16 @@ export default function EcommerceGrowthSection({
                     <Building2 className="w-6 h-6 text-[#002273]" aria-hidden="true" />
                   </div>
                   <div className="px-3.5 py-1 rounded-full bg-blue-50 text-[#0C59F2] font-bebas text-xs tracking-wider uppercase border border-blue-200">
-                    CORPORATIVO
+                    {ec.corporateCard.badge}
                   </div>
                 </div>
 
                 <h3 className="font-anton uppercase text-[#0C59F2] text-3xl sm:text-4xl tracking-tight mb-3">
-                  SOLUCIONES CORPORATIVAS
+                  {ec.corporateCard.title}
                 </h3>
 
                 <p className="font-outfit text-slate-600 text-base leading-relaxed mb-6">
-                  Soporte a gran escala con facturación mensual, ruteos especiales para grandes volúmenes
-                  y entregas express coordinadas en Mar del Plata.
+                  {ec.corporateCard.description}
                 </p>
               </div>
 
@@ -178,7 +161,7 @@ export default function EcommerceGrowthSection({
                   onClick={onOpenQuoteModal}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-lg tracking-wider uppercase transition-all shadow-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
                 >
-                  <span>ABRIR CUENTA CORRIENTE</span>
+                  <span>{ec.corporateCard.ctaText}</span>
                   <ArrowRight className="w-4 h-4 text-[#002273] stroke-[2]" aria-hidden="true" />
                 </button>
               </div>
@@ -189,7 +172,7 @@ export default function EcommerceGrowthSection({
         {/* Marquee Ticker: Marcas Locales */}
         <div className="pt-10 border-t border-blue-400/20 text-center">
           <p className="font-bebas text-blue-200 text-sm tracking-widest uppercase mb-6">
-            MARCAS LOCALES QUE CONFÍAN EN NOSOTROS
+            {ec.brandsTickerTitle}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-70">

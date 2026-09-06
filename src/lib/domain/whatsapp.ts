@@ -1,5 +1,5 @@
 import { ContactFormInput, QuoteCalculationInput } from '@/types/quote';
-import { WHATSAPP_PHONE_NUMBER } from '@/lib/constants/services';
+import { SITE_CONFIG } from '@/content/site';
 
 export function buildQuoteWhatsAppUrl(
   input: QuoteCalculationInput,
@@ -21,7 +21,7 @@ export function buildQuoteWhatsAppUrl(
 • Tarifa estimada: $${totalPrice.toLocaleString('es-AR')}
 ¿Tienen disponibilidad para coordinar retiro?`;
 
-  return `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+  return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
 }
 
 export function buildContactWhatsAppUrl(input: ContactFormInput): string {
@@ -32,5 +32,5 @@ export function buildContactWhatsAppUrl(input: ContactFormInput): string {
     volume || 'A consultar'
   }. ¿Podemos coordinar?`;
 
-  return `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }

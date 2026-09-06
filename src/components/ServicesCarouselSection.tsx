@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Zap, ChevronLeft, ChevronRight, Truck, Info, Clock, DollarSign, ArrowRight } from 'lucide-react';
-import { LOGISTICS_SERVICES } from '@/lib/constants/services';
+import { LOGISTICS_SERVICES, SERVICES_SECTION_CONTENT } from '@/content/services';
 
 interface ServicesCarouselSectionProps {
   onOpenQuoteModal: (preselectedService?: string) => void;
@@ -22,6 +22,8 @@ export default function ServicesCarouselSection({
 }: ServicesCarouselSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(2); // Start at Envíos Flex (index 2)
   const [autoRotate, setAutoRotate] = useState(true);
+
+  const content = SERVICES_SECTION_CONTENT;
 
   useEffect(() => {
     if (!autoRotate) return;
@@ -51,12 +53,12 @@ export default function ServicesCarouselSection({
           <div>
             <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-900/60 border border-blue-400/40 text-blue-200 mb-4">
               <span className="font-bebas text-sm tracking-wider uppercase font-bold text-white">
-                NUESTROS SERVICIOS
+                {content.badge}
               </span>
             </div>
 
             <h2 className="font-anton uppercase text-white text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight">
-              SOLUCIONES LOGÍSTICAS <span className="text-[#F2E40A] block sm:inline">A TU MEDIDA</span>
+              {content.title} <span className="text-[#F2E40A] block sm:inline">{content.titleHighlight}</span>
             </h2>
           </div>
 
@@ -74,7 +76,7 @@ export default function ServicesCarouselSection({
               title="Alternar rotación automática del carrusel"
             >
               <Zap className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
-              <span>ROTACIÓN AUTOMÁTICA</span>
+              <span>{content.autoRotateButtonLabel}</span>
             </button>
 
             <button

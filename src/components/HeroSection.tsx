@@ -2,13 +2,18 @@
 
 import React from 'react';
 import { ArrowRight, Package, MapPin, FastForward, Zap, ShieldCheck, Sparkles } from 'lucide-react';
+import { HERO_CONTENT } from '@/content/home';
 
 interface HeroSectionProps {
   onOpenQuoteModal: () => void;
   onScrollToServices: () => void;
 }
 
+const HIGHLIGHT_ICONS = [Package, MapPin, FastForward];
+
 export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: HeroSectionProps) {
+  const hero = HERO_CONTENT;
+
   return (
     <section
       id="inicio"
@@ -39,23 +44,22 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-md mb-6 animate-pulse">
               <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" aria-hidden="true" />
               <span className="font-bebas text-sm sm:text-base tracking-wider uppercase font-bold">
-                TU SOLUCIÓN CONFIABLE EN MAR DEL PLATA
+                {hero.topBadge}
               </span>
             </div>
 
             {/* Main Headline */}
             <h1 className="font-anton uppercase text-white text-5xl sm:text-6xl md:text-7xl lg:text-[76px] leading-[0.95] tracking-tight mb-5">
-              MENSAJERÍA Y LOGÍSTICA
+              {hero.headlinePart1}
               <div className="mt-2 inline-block px-4 py-1.5 rounded-2xl border-[3px] border-[#F2E40A] bg-[#0736ad]/80 text-[#F2E40A] tracking-normal">
-                E-COMMERCE
+                {hero.headlineHighlight}
               </div>
-              <span className="block mt-2">EN MAR DEL PLATA</span>
+              <span className="block mt-2">{hero.headlinePart2}</span>
             </h1>
 
             {/* Subtitle */}
             <p className="font-outfit text-base sm:text-lg text-blue-100/90 max-w-2xl leading-relaxed mb-8">
-              Somos tu partner estratégico en mensajería urbana, envíos en el día y delivery de última milla.
-              Flota propia de motos, cero tercerización y respuesta inmediata.
+              {hero.subtitle}
             </p>
 
             {/* CTAs */}
@@ -66,7 +70,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                 className="flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] glow-yellow shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
                 id="hero-btn-cotiza-express"
               >
-                <span>COTIZÁ EXPRESS</span>
+                <span>{hero.ctaExpressText}</span>
                 <span className="w-7 h-7 rounded-full bg-[#002273]/15 flex items-center justify-center">
                   <ArrowRight className="w-4 h-4 text-[#002273] stroke-[2.5]" aria-hidden="true" />
                 </span>
@@ -78,33 +82,27 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                 className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#032a87]/60 hover:bg-[#032a87] text-white border border-blue-300/30 font-bebas text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.02] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
                 id="hero-btn-servicios"
               >
-                <span>MIRÁ LOS SERVICIOS</span>
+                <span>{hero.ctaServicesText}</span>
                 <ArrowRight className="w-4 h-4 text-blue-200 stroke-[2]" aria-hidden="true" />
               </button>
             </div>
 
             {/* Bottom 3 Highlights */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2 border-t border-blue-400/20 text-xs sm:text-sm">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide">
-                <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
-                  <Package className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
-                </div>
-                <span>+50K ENVÍOS</span>
-              </div>
-
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide">
-                <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
-                  <MapPin className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
-                </div>
-                <span>COBERTURA TOTAL MDQ</span>
-              </div>
-
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide">
-                <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
-                  <FastForward className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
-                </div>
-                <span>ENTREGAS EN EL DÍA</span>
-              </div>
+              {hero.highlights.map((item, index) => {
+                const IconComponent = HIGHLIGHT_ICONS[index] || Package;
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide"
+                  >
+                    <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
+                      <IconComponent className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
+                    </div>
+                    <span>{item.label}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -119,12 +117,12 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-[#F2E40A]"></span>
                   </span>
                   <span className="font-bebas text-[#F2E40A] text-sm tracking-wider uppercase">
-                    RUTEO ACTIVO · MDQ
+                    {hero.activeRoutingBadge}
                   </span>
                 </div>
 
                 <div className="px-3 py-1 rounded-full bg-blue-950/70 border border-blue-400/30 text-blue-200 font-mono-data text-xs tracking-wide">
-                  Friuli 1972
+                  {hero.hubLocation}
                 </div>
               </div>
 
@@ -195,7 +193,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
 
                 <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-[#001742]/90 border border-[#F2E40A]/40 text-[#F2E40A] font-mono-data text-[11px] flex items-center gap-1.5 shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span>Cadete #09 · Güemes → Batán</span>
+                  <span>{hero.cadeteStatus}</span>
                 </div>
               </div>
 
@@ -206,8 +204,8 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                     <Zap className="w-4 h-4 text-[#002273] fill-[#002273]" aria-hidden="true" />
                   </div>
                   <div className="overflow-hidden">
-                    <p className="font-bebas text-white text-sm tracking-wide leading-tight">ENVÍOS SAME-DAY</p>
-                    <p className="font-outfit text-xs text-blue-200 truncate">Entrega en el Día</p>
+                    <p className="font-bebas text-white text-sm tracking-wide leading-tight">{hero.cardPill1Title}</p>
+                    <p className="font-outfit text-xs text-blue-200 truncate">{hero.cardPill1Subtitle}</p>
                   </div>
                 </div>
 
@@ -216,8 +214,8 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                     <ShieldCheck className="w-4 h-4 text-white" aria-hidden="true" />
                   </div>
                   <div className="overflow-hidden">
-                    <p className="font-bebas text-white text-sm tracking-wide leading-tight">FLOTA PROPIA</p>
-                    <p className="font-outfit text-xs text-blue-200 truncate">Cero Tercerización</p>
+                    <p className="font-bebas text-white text-sm tracking-wide leading-tight">{hero.cardPill2Title}</p>
+                    <p className="font-outfit text-xs text-blue-200 truncate">{hero.cardPill2Subtitle}</p>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,42 @@
 {
   "version": 1,
   "skills": {
+    "agent-md-refactor": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/agent-md-refactor/SKILL.md",
+      "computedHash": "11d1ffbb2d9f180d63dabfb0b6c63a4632b4c0e2e6be1660c7651cef0f3f1c07"
+    },
+    "backend-to-frontend-handoff-docs": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/backend-to-frontend-handoff-docs/SKILL.md",
+      "computedHash": "7c43829a6f1731fca5bd4f4341254016fff31b4130c3208b2e9f0dce2660283d"
+    },
+    "c4-architecture": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/c4-architecture/SKILL.md",
+      "computedHash": "9192b5d6be529478a70d1a73f3d4ce83db12c2052c4e6df4accd445f21e906d4"
+    },
+    "command-creator": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/command-creator/SKILL.md",
+      "computedHash": "0808dd1c7ddc68f07c072e090d1864decda125ce6dbdfc5122e6477eb1428fb8"
+    },
+    "crafting-effective-readmes": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/crafting-effective-readmes/SKILL.md",
+      "computedHash": "cb11facecbb4a15f7ca6cfac2e740ac66798676c246c057879a71babb27c9a4f"
+    },
+    "dependency-updater": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/dependency-updater/SKILL.md",
+      "computedHash": "3fc648ed28dfce104c7749318489af2c388de99dde2d85c145a4e028d994db41"
+    },
     "deploy-to-vercel": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
@@ -13,11 +49,47 @@
       "skillPath": "plugins/stitch-utilities/skills/design-md/SKILL.md",
       "computedHash": "44af3e6e89a42a765d9cebf943f1e2ff3cdf43d1958341eb43fb7b74116f6691"
     },
+    "design-system-starter": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/design-system-starter/SKILL.md",
+      "computedHash": "e6df3b8d53a8333f44db1da91a10570488e46c3aea899476875aad894858a3b0"
+    },
     "enhance-prompt": {
       "source": "google-labs-code/stitch-skills",
       "sourceType": "github",
       "skillPath": "plugins/stitch-utilities/skills/enhance-prompt/SKILL.md",
       "computedHash": "28c47bcbc0e8d81f48fbbbe41d227efe4018a32c5d4674b0d052a70d215072d3"
+    },
+    "gemini": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/gemini/SKILL.md",
+      "computedHash": "feed23504518537af26b18b25ea80ea1ceb6d06084b1deeb3784d63ed151e6b4"
+    },
+    "mui": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/mui/SKILL.md",
+      "computedHash": "363bda5252637c682d30907de02efe538abc42843d1d20624d1e5e35823e996c"
+    },
+    "professional-communication": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/professional-communication/SKILL.md",
+      "computedHash": "80bc71b76f37e46ae5628205c004a02c696d808ea63539ef7260c92222e1de98"
+    },
+    "react-dev": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/react-dev/SKILL.md",
+      "computedHash": "da3caa5f2bfd7274fad3f08524ff3ad4f427978773c3e77e7b14e44aaac31d78"
+    },
+    "react-useeffect": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/react-useeffect/SKILL.md",
+      "computedHash": "1fdf524f8335afac6f44d3460d6d20e71db9c1d14643e4a31ea17d6463504447"
     },
     "react-vite-dashboard": {
       "source": "google-labs-code/stitch-skills",
@@ -25,17 +97,35 @@
       "skillPath": "plugins/stitch-build/skills/react-vite-dashboard/SKILL.md",
       "computedHash": "b6f866588eb36baf119a57c529bff89bdce9d1b8d3b608f0e4f8c39e09af5195"
     },
+    "reducing-entropy": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/reducing-entropy/SKILL.md",
+      "computedHash": "9e43d852830ac1fac136bb6a961dc843be4b3c977157b44432eb599337270ac3"
+    },
     "remotion": {
       "source": "google-labs-code/stitch-skills",
       "sourceType": "github",
       "skillPath": "plugins/stitch-build/skills/remotion/SKILL.md",
       "computedHash": "86c72dff442c4f725107924f48298391e33eaf9788f0faefe360f3061b25fcec"
     },
+    "requirements-clarity": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/requirements-clarity/SKILL.md",
+      "computedHash": "a23371d1cd5d8cfdd62af76ce0cd462095d35dfd612587ed30528b4a54105771"
+    },
     "shadcn-ui": {
       "source": "google-labs-code/stitch-skills",
       "sourceType": "github",
       "skillPath": "plugins/stitch-build/skills/shadcn-ui/SKILL.md",
       "computedHash": "57e2cc881eb395418d28f1529e2d453b85f1d77a8de000c8af59512fab7b318d"
+    },
+    "ship-learn-next": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/ship-learn-next/SKILL.md",
+      "computedHash": "4df93407ee5223f5905178f134839dd0e100a5ddaba88c0e6a408dacb468d942"
     },
     "site-md": {
       "source": "google-labs-code/stitch-skills",
@@ -144,6 +234,18 @@
       "sourceType": "github",
       "skillPath": "skills/web-design-guidelines/SKILL.md",
       "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    },
+    "web-to-markdown": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/web-to-markdown/SKILL.md",
+      "computedHash": "673a5f2d7a2917b0cb4c9f54e8b130f56de336c1562349310555ca2b0f1e7d42"
+    },
+    "writing-clearly-and-concisely": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "skillPath": "skills/writing-clearly-and-concisely/SKILL.md",
+      "computedHash": "8941c21d5127d6f7d87cefd9b5175b96c9e0dec0c20c663d68b9cb4331847d0a"
     },
     "writing-guidelines": {
       "source": "vercel-labs/agent-skills",

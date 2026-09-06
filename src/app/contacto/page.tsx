@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import ContactHeroSection from '@/components/ContactHeroSection';
 import ContactB2BSection from '@/components/ContactB2BSection';
 import SocialChannelsSection from '@/components/SocialChannelsSection';
+import CarruselRedes from '@/components/CarruselRedes';
 import OfficeInfoSection from '@/components/OfficeInfoSection';
 import ContactPageCTA from '@/components/ContactPageCTA';
 import PreFooterAndFooter from '@/components/PreFooterAndFooter';
@@ -29,8 +30,9 @@ export default function ContactPage() {
       {/* 3. B2B Commercial Plan Form */}
       <ContactB2BSection />
 
-      {/* 4. Social Channels */}
+      {/* 4. Social Channels & Real Feed */}
       <SocialChannelsSection />
+      <CarruselRedes />
 
       {/* 5. Office Info & Operations */}
       <OfficeInfoSection />

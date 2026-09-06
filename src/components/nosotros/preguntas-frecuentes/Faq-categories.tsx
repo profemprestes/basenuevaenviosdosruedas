@@ -11,7 +11,7 @@ import {
   HelpCircle,
   Sparkles,
 } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { FAQ_DATA, type FaqCategoryGroup, type FaqQuestion } from './faqData';
 
 export { FAQ_DATA };

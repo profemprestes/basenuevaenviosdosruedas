@@ -3,11 +3,10 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import { Check, ArrowRight, Calculator } from 'lucide-react';
-import { Card, CardContent, CardHeader } from '@/src/components/ui/card';
-import { Sparkles } from '@/src/components/ui/sparkles';
-import { TimelineContent } from '@/src/components/ui/timeline-animation';
-import { VerticalCutReveal } from '@/src/components/ui/vertical-cut-reveal';
-import NumberFlow from '@number-flow/react';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Sparkles } from '@/components/ui/sparkles';
+import { TimelineContent } from '@/components/ui/timeline-animation';
+import { VerticalCutReveal } from '@/components/ui/vertical-cut-reveal';
 
 export default function ExpressPricing() {
   const pricingRef = useRef<HTMLDivElement>(null);
@@ -158,22 +157,9 @@ export default function ExpressPricing() {
                     </div>
 
                     <div className="py-3">
-                      {isNumericPrice && numericValue ? (
-                        <div className="flex items-baseline">
-                          <span className="text-4xl sm:text-5xl font-mono tabular-nums font-bold tracking-tight text-[#052C87]">
-                            $
-                            <NumberFlow
-                              value={numericValue}
-                              format={{ minimumFractionDigits: 0 }}
-                              className="inline-block font-mono tabular-nums"
-                            />
-                          </span>
-                        </div>
-                      ) : (
-                        <span className="text-4xl sm:text-5xl font-mono tabular-nums font-bold tracking-tight text-[#052C87]">
-                          {zone.price}
-                        </span>
-                      )}
+                      <span className="text-4xl sm:text-5xl font-mono tabular-nums font-bold tracking-tight text-[#052C87]">
+                        {zone.price}
+                      </span>
                       <span className="text-xs font-subheading tracking-wider uppercase block mt-1 text-[#3570F8]">/ despacho final</span>
                     </div>
 

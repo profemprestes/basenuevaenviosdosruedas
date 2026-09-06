@@ -5,13 +5,29 @@
   --font-bebas: var(--font-bebas), 'Bebas Neue', sans-serif;
   --font-outfit: var(--font-outfit), 'Outfit', sans-serif;
 
+  /* Brand Primary & Secondary */
   --color-brand-blue: #0C59F2;
   --color-electric-blue: #0C59F2;
   --color-brand-yellow: #F2E40A;
   --color-signal-yellow: #F2E40A;
   --color-brand-white: #FFFFFF;
   --color-dark-blue: #002273;
+  --color-midnight-abyss: #09132E;
   --color-brand-bg: #FFFFFF;
+
+  /* Operational Semantic States */
+  --color-dispatch-green: #25D366;
+  --color-dispatch-emerald: #10B981;
+  --color-priority-amber: #F59E0B;
+  --color-priority-dark: #D97706;
+  --color-sky-frost: #EBF2FE;
+  --color-route-cyan: #00C4DF;
+
+  /* Elevation Shadows */
+  --shadow-glow-yellow: 0 0 24px -2px rgba(242, 228, 10, 0.65);
+  --shadow-glow-yellow-hover: 0 0 32px 2px rgba(242, 228, 10, 0.85);
+  --shadow-glow-blue: 0 16px 36px -8px rgba(12, 89, 242, 0.35);
+  --shadow-glow-green: 0 0 20px -2px rgba(37, 211, 102, 0.45);
 }
 
 @layer base {
@@ -20,6 +36,12 @@
     font-family: var(--font-outfit), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: #FFFFFF;
     color: #191b24;
+  }
+
+  /* Default focus-visible styles for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #F2E40A;
+    outline-offset: 2px;
   }
 }
 
@@ -68,6 +90,10 @@
 
 .glow-blue {
   box-shadow: 0 16px 36px -8px rgba(12, 89, 242, 0.35);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px -2px rgba(37, 211, 102, 0.45);
 }
 
 /* Custom scrollbar */

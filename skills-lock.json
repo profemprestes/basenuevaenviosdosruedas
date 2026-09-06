@@ -67,6 +67,12 @@
       "skillPath": "skills/gemini/SKILL.md",
       "computedHash": "feed23504518537af26b18b25ea80ea1ceb6d06084b1deeb3784d63ed151e6b4"
     },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "8ed9e9b752b74eccfaa704ab9a64672cafede9716b878e7cfaa11eb0c674c03e"
+    },
     "mui": {
       "source": "softaworks/agent-toolkit",
       "sourceType": "github",

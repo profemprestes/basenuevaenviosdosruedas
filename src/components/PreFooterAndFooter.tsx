@@ -4,8 +4,6 @@ import React from 'react';
 import {
   ArrowUpRight,
   MessageCircle,
-  Instagram,
-  Facebook,
   ShieldCheck,
   Zap,
   TrendingDown,
@@ -30,8 +28,44 @@ const SERVICE_ICON_MAP = {
   '3pl': Package,
 };
 
+function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className = 'w-4 h-4' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
 export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFooterProps) {
-  const { footer, name, tagline, phoneNumber, email, address, whatsappNumber, defaultWhatsAppMessage } =
+  const { footer, tagline, phoneNumber, email, address, whatsappNumber, defaultWhatsAppMessage } =
     SITE_CONFIG;
 
   const scrollToTop = () => {
@@ -118,7 +152,7 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                   className="w-10 h-10 rounded-xl bg-blue-900/60 border border-blue-400/30 hover:bg-[#F2E40A] hover:text-[#002273] text-white flex items-center justify-center transition"
                   aria-label="Instagram"
                 >
-                  <Instagram className="w-4 h-4" />
+                  <InstagramIcon className="w-4 h-4" />
                 </a>
 
                 <a
@@ -128,7 +162,7 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                   className="w-10 h-10 rounded-xl bg-blue-900/60 border border-blue-400/30 hover:bg-[#F2E40A] hover:text-[#002273] text-white flex items-center justify-center transition"
                   aria-label="Facebook"
                 >
-                  <Facebook className="w-4 h-4" />
+                  <FacebookIcon className="w-4 h-4" />
                 </a>
 
                 <button

@@ -24,6 +24,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_CONFIG.metadata.url),
   title: SITE_CONFIG.metadata.title,
   description: SITE_CONFIG.metadata.description,
   icons: {

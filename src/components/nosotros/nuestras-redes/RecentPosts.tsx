@@ -63,7 +63,7 @@ export default function RecentPosts() {
     },
     {
       platform: 'Instagram',
-      platformIcon: Instagram,
+      platformIcon: InstagramIcon,
       date: '21 Jun',
       avatar: 'https://picsum.photos/seed/avatar2/100/100',
       image: '/redes/ig1.webp',
@@ -75,7 +75,7 @@ export default function RecentPosts() {
     },
     {
       platform: 'Instagram',
-      platformIcon: Instagram,
+      platformIcon: InstagramIcon,
       date: '21 Jun',
       avatar: 'https://picsum.photos/seed/avatar2/100/100',
       image: '/redes/ig3.webp',

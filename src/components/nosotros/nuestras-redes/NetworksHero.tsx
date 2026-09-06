@@ -3,7 +3,25 @@
 import React, { useState, useEffect } from 'react';
 import HeroProceduralBackground from '@/components/ui/HeroProceduralBackground';
 import { motion } from 'motion/react';
-import { Share2, Users, ArrowRight, Sparkles, MessageCircle, Instagram, Facebook, ExternalLink } from 'lucide-react';
+import { Share2, Users, ArrowRight, Sparkles, MessageCircle, ExternalLink } from 'lucide-react';
+
+function FacebookIcon({ className = 'w-4 h-4' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = 'w-4 h-4' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 const SOCIAL_CHANNELS = [
   {
@@ -11,7 +29,7 @@ const SOCIAL_CHANNELS = [
     name: 'Instagram Oficial',
     handle: '@enviosdosruedas',
     desc: 'Rutas en vivo, fotos de la flota en MDQ y novedades de horarios.',
-    icon: Instagram,
+    icon: InstagramIcon,
     badge: 'Último post: hace 18 min',
     link: 'https://instagram.com/enviosdosruedas',
     ctaText: 'Ver historias',
@@ -21,7 +39,7 @@ const SOCIAL_CHANNELS = [
     name: 'Facebook Comunidad',
     handle: '@enviosdosruedas',
     desc: 'El día a día de nuestros cadetes recorriendo calles y barrios de Mar del Plata.',
-    icon: Facebook,
+    icon: FacebookIcon,
     badge: 'Video nuevo hoy',
     link: 'https://facebook.com/enviosdosruedas',
     ctaText: 'Mirar videos',

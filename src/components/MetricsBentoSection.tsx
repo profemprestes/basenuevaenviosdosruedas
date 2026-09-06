@@ -5,7 +5,7 @@ import { Clock, Shield, Truck, Users, CheckCircle2 } from 'lucide-react';
 
 export default function MetricsBentoSection() {
   return (
-    <section id="nosotros" className="w-full py-20 lg:py-28 bg-[#fbf8ff] relative">
+    <section id="nosotros" className="w-full py-20 lg:py-28 bg-[#FFFFFF] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
@@ -13,14 +13,14 @@ export default function MetricsBentoSection() {
           {/* Left Column: Narrative & Values */}
           <div className="lg:col-span-6 flex flex-col items-start">
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#ffcc00]/25 border border-[#ffcc00] text-[#002273] mb-5">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F2E40A]/25 border border-[#F2E40A] text-[#002273] mb-5">
               <span className="font-bebas text-sm tracking-wider uppercase font-bold">
                 PARTNER LOGÍSTICO ESPECIALIZADO
               </span>
             </div>
 
             {/* Headline */}
-            <h2 className="font-anton uppercase text-[#0950F6] text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight mb-6">
+            <h2 className="font-anton uppercase text-[#0C59F2] text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight mb-6">
               CONECTAMOS MAR DEL PLATA DE PUNTA A PUNTA
             </h2>
 
@@ -34,7 +34,7 @@ export default function MetricsBentoSection() {
             <div className="space-y-6 w-full max-w-xl">
               {/* Feature 1 */}
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-2xl bg-[#ffcc00] flex items-center justify-center flex-shrink-0 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#F2E40A] flex items-center justify-center flex-shrink-0 shadow-sm">
                   <Clock className="w-6 h-6 text-[#002273]" />
                 </div>
                 <div>
@@ -49,7 +49,7 @@ export default function MetricsBentoSection() {
 
               {/* Feature 2 */}
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-2xl bg-[#ffcc00] flex items-center justify-center flex-shrink-0 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#F2E40A] flex items-center justify-center flex-shrink-0 shadow-sm">
                   <Shield className="w-6 h-6 text-[#002273]" />
                 </div>
                 <div>
@@ -67,12 +67,12 @@ export default function MetricsBentoSection() {
           {/* Right Column: Bento Metrics Grid (Image 3) */}
           <div className="lg:col-span-6 flex flex-col gap-5">
             {/* Top Large Electric Blue Card */}
-            <div className="w-full bg-[#0950F6] rounded-[32px] p-7 sm:p-9 text-white shadow-xl glow-blue relative overflow-hidden group hover:scale-[1.01] transition-transform">
+            <div className="w-full bg-[#0C59F2] rounded-[32px] p-7 sm:p-9 text-white shadow-xl glow-blue relative overflow-hidden group hover:scale-[1.01] transition-transform">
               {/* Subtle background circles */}
               <div className="absolute top-0 right-0 -mr-10 -mt-10 w-60 h-60 bg-blue-400/20 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex items-center justify-between mb-8">
-                <div className="w-14 h-14 rounded-2xl bg-[#ffcc00] flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 rounded-2xl bg-[#F2E40A] flex items-center justify-center shadow-lg">
                   <Truck className="w-7 h-7 text-[#002273]" />
                 </div>
                 <div className="px-3.5 py-1.5 rounded-full bg-blue-950/70 border border-blue-300/30 text-blue-100 font-bebas text-sm tracking-wider">
@@ -97,9 +97,9 @@ export default function MetricsBentoSection() {
               {/* Card 1: 0 Paquetes Extraviados */}
               <div className="bg-white rounded-[28px] p-6 sm:p-7 border border-slate-200/90 shadow-lg hover:shadow-xl transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-6 h-6 text-[#0950F6]" />
+                  <CheckCircle2 className="w-6 h-6 text-[#0C59F2]" />
                 </div>
-                <div className="font-anton text-6xl text-[#0950F6] leading-none mb-2">
+                <div className="font-anton text-6xl text-[#0C59F2] leading-none mb-2">
                   0
                 </div>
                 <p className="font-bebas text-slate-500 text-base tracking-wider uppercase">
@@ -110,9 +110,9 @@ export default function MetricsBentoSection() {
               {/* Card 2: +50 Emprendedores Confían */}
               <div className="bg-white rounded-[28px] p-6 sm:p-7 border border-slate-200/90 shadow-lg hover:shadow-xl transition-all">
                 <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-6">
-                  <Users className="w-6 h-6 text-[#0950F6]" />
+                  <Users className="w-6 h-6 text-[#0C59F2]" />
                 </div>
-                <div className="font-anton text-6xl text-[#0950F6] leading-none mb-2">
+                <div className="font-anton text-6xl text-[#0C59F2] leading-none mb-2">
                   +50
                 </div>
                 <p className="font-bebas text-slate-500 text-base tracking-wider uppercase">

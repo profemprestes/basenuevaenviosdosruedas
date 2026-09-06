@@ -46,7 +46,7 @@ ai-studio-applet/
 │   └── types/              # TypeScript definitions and interfaces
 ├── metadata.json           # Applet capabilities and metadata configuration
 ├── next.config.ts          # Next.js configuration
-├── package.json            # NPM dependencies and script definitions
+├── package.json            # Package dependencies and script definitions
 ├── postcss.config.mjs      # PostCSS configuration for Tailwind v4
 └── tsconfig.json           # TypeScript configuration with `@/*` path alias
 ```
@@ -65,7 +65,7 @@ ai-studio-applet/
 - Use Tailwind CSS v4 utility classes.
 - Use the `cn(...)` utility helper (`clsx` + `tailwind-merge`) for conditional or dynamic class merging.
 - Ensure full responsiveness (`sm:`, `md:`, `lg:`, `xl:`) across mobile, tablet, and desktop viewports.
-- Maintain brand color consistency: Primary Accent `#7C3AED` / Purple palette, neutral grays, dark backgrounds.
+- Maintain brand color consistency: Brand Blue (`#0C59F2`), Brand Yellow (`#F2E40A`), Dark Blue (`#002273`), and pure white backgrounds (`#FFFFFF`).
 
 ### 3. State Management & Side Effects
 - Keep local state close to the components that require it.
@@ -79,15 +79,19 @@ ai-studio-applet/
 
 ## 🧪 Verification & QA Workflow
 
-Before committing or submitting any change, run the following verification pipeline in bash:
+Before committing or submitting any change, run the following verification pipeline with **pnpm**:
 
-1. **Lint Check:**
+1. **Install Dependencies:**
    ```bash
-   npm run lint
+   pnpm install
    ```
-2. **Type Check & Production Build:**
+2. **Lint Check:**
    ```bash
-   npm run build
+   pnpm lint
+   ```
+3. **Type Check & Production Build:**
+   ```bash
+   pnpm build
    ```
 
 All builds and lint checks must complete with zero errors.

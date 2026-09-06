@@ -1,23 +1,29 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-anton: 'Anton', sans-serif;
-    --font-bebas: 'Bebas Neue', sans-serif;
-    --font-outfit: 'Outfit', sans-serif;
-    --font-mono: 'Geist Mono', monospace, ui-monospace;
-    --electric-blue: #0950f6;
-    --signal-yellow: #ffcc00;
-  }
+@theme {
+  --font-anton: var(--font-anton), 'Anton', Impact, sans-serif;
+  --font-bebas: var(--font-bebas), 'Bebas Neue', sans-serif;
+  --font-outfit: var(--font-outfit), 'Outfit', sans-serif;
 
+  --color-brand-blue: #0C59F2;
+  --color-electric-blue: #0C59F2;
+  --color-brand-yellow: #F2E40A;
+  --color-signal-yellow: #F2E40A;
+  --color-brand-white: #FFFFFF;
+  --color-dark-blue: #002273;
+  --color-brand-bg: #FFFFFF;
+}
+
+@layer base {
   html {
     scroll-behavior: smooth;
     font-family: var(--font-outfit), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #fbf8ff;
+    background-color: #FFFFFF;
     color: #191b24;
   }
 }
 
+/* Typography Utility Helpers */
 .font-anton {
   font-family: var(--font-anton), 'Anton', Impact, sans-serif;
   letter-spacing: -0.02em;
@@ -33,35 +39,35 @@
 }
 
 .font-mono-data {
-  font-family: var(--font-mono), monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* Technical Blue Grid Background */
 .bg-tech-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
 }
 
 .bg-light-grid {
   background-size: 28px 28px;
   background-image: 
-    linear-gradient(to right, rgba(9, 80, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(9, 80, 246, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(12, 89, 242, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 89, 242, 0.05) 1px, transparent 1px);
 }
 
 /* High Voltage Glows */
 .glow-yellow {
-  box-shadow: 0 0 24px -2px rgba(255, 204, 0, 0.6);
+  box-shadow: 0 0 24px -2px rgba(242, 228, 10, 0.65);
 }
 
 .glow-yellow-hover:hover {
-  box-shadow: 0 0 32px 2px rgba(255, 204, 0, 0.85);
+  box-shadow: 0 0 32px 2px rgba(242, 228, 10, 0.85);
 }
 
 .glow-blue {
-  box-shadow: 0 16px 36px -8px rgba(9, 80, 246, 0.35);
+  box-shadow: 0 16px 36px -8px rgba(12, 89, 242, 0.35);
 }
 
 /* Custom scrollbar */
@@ -72,9 +78,9 @@
   background: #002273;
 }
 ::-webkit-scrollbar-thumb {
-  background: #ffcc00;
+  background: #F2E40A;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e6b800;
+  background: #d8cb05;
 }

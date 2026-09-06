@@ -12,21 +12,21 @@ export default function ContactQuoteSection() {
     <section
       id="contacto"
       aria-label="Contacto y cotización inmediata"
-      className="w-full py-20 lg:py-28 bg-[#0950F6] bg-tech-grid relative overflow-hidden"
+      className="w-full py-20 lg:py-28 bg-[#0C59F2] bg-tech-grid relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full bg-white rounded-[36px] p-8 sm:p-12 lg:p-16 shadow-2xl border-4 border-blue-400/20 bg-light-grid relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Column: Heading & Information */}
             <div className="lg:col-span-6 flex flex-col items-start">
-              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#ffcc00] text-[#002273] shadow-sm mb-6">
+              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-sm mb-6">
                 <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" aria-hidden="true" />
                 <span className="font-bebas text-sm tracking-wider uppercase font-bold">
                   COTIZACIÓN INMEDIATA
                 </span>
               </div>
 
-              <h2 className="font-anton uppercase text-[#0950F6] text-4xl sm:text-5xl lg:text-[58px] leading-[0.98] tracking-tight mb-6">
+              <h2 className="font-anton uppercase text-[#0C59F2] text-4xl sm:text-5xl lg:text-[58px] leading-[0.98] tracking-tight mb-6">
                 ¿LISTO PARA ESCALAR LA LOGÍSTICA DE TU E-COMMERCE?
               </h2>
 
@@ -34,8 +34,8 @@ export default function ContactQuoteSection() {
                 Olvidate de la gestión de paquetes en Mar del Plata. Completá tus datos y te respondemos por WhatsApp al instante.
               </p>
 
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-[#0950F6]">
-                <Clock className="w-4 h-4 text-[#0950F6]" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-50 border border-blue-200 text-[#0C59F2]">
+                <Clock className="w-4 h-4 text-[#0C59F2]" aria-hidden="true" />
                 <span className="font-bebas text-sm sm:text-base tracking-wider uppercase">
                   ATENCIÓN COMERCIAL &lt; 2 MIN
                 </span>
@@ -50,13 +50,13 @@ export default function ContactQuoteSection() {
                   <div>
                     <label
                       htmlFor="contact-name-input"
-                      className="block font-bebas text-[#0950F6] text-sm tracking-wider uppercase mb-2"
+                      className="block font-bebas text-[#0C59F2] text-sm tracking-wider uppercase mb-2"
                     >
                       TU NOMBRE
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <User className="w-5 h-5 text-[#0950F6]" aria-hidden="true" />
+                        <User className="w-5 h-5 text-[#0C59F2]" aria-hidden="true" />
                       </div>
                       <input
                         id="contact-name-input"
@@ -66,7 +66,7 @@ export default function ContactQuoteSection() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Ingresá tu nombre"
-                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0950F6] focus:border-transparent transition-all"
+                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0C59F2] focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -75,13 +75,13 @@ export default function ContactQuoteSection() {
                   <div>
                     <label
                       htmlFor="contact-business-input"
-                      className="block font-bebas text-[#0950F6] text-sm tracking-wider uppercase mb-2"
+                      className="block font-bebas text-[#0C59F2] text-sm tracking-wider uppercase mb-2"
                     >
                       EMPRESA / NEGOCIO
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Store className="w-5 h-5 text-[#0950F6]" aria-hidden="true" />
+                        <Store className="w-5 h-5 text-[#0C59F2]" aria-hidden="true" />
                       </div>
                       <input
                         id="contact-business-input"
@@ -91,7 +91,7 @@ export default function ContactQuoteSection() {
                         value={business}
                         onChange={(e) => setBusiness(e.target.value)}
                         placeholder="Nombre de tu emprendimiento"
-                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0950F6] focus:border-transparent transition-all"
+                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0C59F2] focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -100,13 +100,13 @@ export default function ContactQuoteSection() {
                   <div>
                     <label
                       htmlFor="contact-volume-select"
-                      className="block font-bebas text-[#0950F6] text-sm tracking-wider uppercase mb-2"
+                      className="block font-bebas text-[#0C59F2] text-sm tracking-wider uppercase mb-2"
                     >
                       VOLUMEN ESTIMADO MENSUAL
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Package className="w-5 h-5 text-[#0950F6]" aria-hidden="true" />
+                        <Package className="w-5 h-5 text-[#0C59F2]" aria-hidden="true" />
                       </div>
                       <select
                         id="contact-volume-select"
@@ -114,7 +114,7 @@ export default function ContactQuoteSection() {
                         aria-required="true"
                         value={volume}
                         onChange={(e) => setVolume(e.target.value)}
-                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base focus:outline-none focus:ring-2 focus:ring-[#0950F6] focus:border-transparent transition-all appearance-none cursor-pointer"
+                        className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-slate-50/70 border border-slate-200 text-slate-900 font-outfit text-base focus:outline-none focus:ring-2 focus:ring-[#0C59F2] focus:border-transparent transition-all appearance-none cursor-pointer"
                       >
                         <option value="" disabled>
                           Seleccioná una opción
@@ -139,7 +139,7 @@ export default function ContactQuoteSection() {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-full bg-[#ffcc00] hover:bg-[#ffd633] text-[#002273] font-bebas text-xl sm:text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-xl glow-yellow font-bold flex items-center justify-center gap-3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
+                      className="w-full py-4 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl sm:text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-xl glow-yellow font-bold flex items-center justify-center gap-3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
                     >
                       <span>HABLAR POR WHATSAPP</span>
                       <MessageCircle className="w-5 h-5 stroke-[2.5]" aria-hidden="true" />

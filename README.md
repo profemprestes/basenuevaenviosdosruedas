@@ -67,7 +67,7 @@ Plataforma web oficial y portal interactivo de **Envíos DosRuedas**, la empresa
 ### Requisitos Previos
 
 - **Node.js:** `>= 20.0.0`
-- **Gestor de paquetes:** `npm` (incluido con Node) o `pnpm` / `yarn` / `bun`.
+- **Gestor de paquetes:** `pnpm` (`npm install -g pnpm` o vía `corepack enable`).
 
 ### 1. Clonar el Repositorio
 
@@ -79,7 +79,7 @@ cd envios-dosruedas
 ### 2. Instalar Dependencias
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 3. Configurar Variables de Entorno
@@ -100,7 +100,7 @@ APP_URL="http://localhost:3000"
 ### 4. Ejecutar en Entorno de Desarrollo
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Navega a [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación en ejecución.
@@ -114,13 +114,13 @@ Navega a [http://localhost:3000](http://localhost:3000) en tu navegador para ver
 Para compilar y validar la aplicación lista para producción:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 ### Probar Servidor de Producción Localmente
 
 ```bash
-npm run start
+pnpm start
 ```
 
 ### Despliegue (Deployment)
@@ -129,17 +129,17 @@ La plataforma está optimizada para desplegarse sin contratiempos en plataformas
 
 1. Vincula el repositorio a tu proveedor de hosting.
 2. Agrega las variables de entorno (`GEMINI_API_KEY`, `APP_URL`, etc.) en el panel de administración de tu plataforma de hosting.
-3. El comando de build estándar es `npm run build` y el directorio de salida por defecto es `.next`.
+3. El comando de build estándar es `pnpm build` y el directorio de salida por defecto es `.next`.
 
 ---
 
-## 📜 Scripts NPM Disponibles
+## 📜 Scripts PNPM Disponibles
 
-- `npm run dev`: Inicia el servidor de desarrollo en modo Hot-Reloading.
-- `npm run build`: Ejecuta la verificación de tipos y compila la app para producción.
-- `npm run start`: Inicia la aplicación previamente compilada.
-- `npm run lint`: Analiza el código buscando posibles errores con ESLint.
-- `npm run clean`: Limpia los artefactos generados en la carpeta `.next`.
+- `pnpm dev`: Inicia el servidor de desarrollo en modo Hot-Reloading.
+- `pnpm build`: Ejecuta la verificación de tipos y compila la app para producción.
+- `pnpm start`: Inicia la aplicación previamente compilada.
+- `pnpm lint`: Analiza el código buscando posibles errores con ESLint.
+- `pnpm clean`: Limpia los artefactos generados en la carpeta `.next`.
 
 ---
 

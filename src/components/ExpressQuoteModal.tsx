@@ -65,13 +65,13 @@ export default function ExpressQuoteModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <header className="bg-[#0950F6] p-6 text-white flex items-center justify-between relative bg-tech-grid">
+        <header className="bg-[#0C59F2] p-6 text-white flex items-center justify-between relative bg-tech-grid">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#ffcc00] flex items-center justify-center text-[#002273] shadow">
+            <div className="w-10 h-10 rounded-2xl bg-[#F2E40A] flex items-center justify-center text-[#002273] shadow">
               <Calculator className="w-5 h-5" aria-hidden="true" />
             </div>
             <div>
-              <span className="font-bebas text-xs tracking-widest uppercase text-[#ffcc00] block">
+              <span className="font-bebas text-xs tracking-widest uppercase text-[#F2E40A] block">
                 COTIZADOR ONLINE EN TIEMPO REAL
               </span>
               <h2
@@ -86,7 +86,7 @@ export default function ExpressQuoteModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-blue-900/60 hover:bg-blue-800 text-white flex items-center justify-center transition focus:outline-none focus:ring-2 focus:ring-[#ffcc00] cursor-pointer"
+            className="w-9 h-9 rounded-full bg-blue-900/60 hover:bg-blue-800 text-white flex items-center justify-center transition focus:outline-none focus:ring-2 focus:ring-[#F2E40A] cursor-pointer"
             aria-label="Cerrar modal de cotización"
           >
             <X className="w-5 h-5" aria-hidden="true" />
@@ -105,9 +105,9 @@ export default function ExpressQuoteModal({
                 type="button"
                 onClick={() => setService('express')}
                 aria-pressed={service === 'express'}
-                className={`p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0950F6] cursor-pointer ${
+                className={`p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer ${
                   service === 'express'
-                    ? 'bg-[#00277e] text-[#ffcc00] border-[#00277e] shadow'
+                    ? 'bg-[#00277e] text-[#F2E40A] border-[#00277e] shadow'
                     : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -118,9 +118,9 @@ export default function ExpressQuoteModal({
                 type="button"
                 onClick={() => setService('flex')}
                 aria-pressed={service === 'flex'}
-                className={`p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0950F6] cursor-pointer ${
+                className={`p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer ${
                   service === 'flex'
-                    ? 'bg-[#ffcc00] text-[#002273] border-[#ffcc00] shadow font-bold'
+                    ? 'bg-[#F2E40A] text-[#002273] border-[#F2E40A] shadow font-bold'
                     : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -131,9 +131,9 @@ export default function ExpressQuoteModal({
                 type="button"
                 onClick={() => setService('lowcost')}
                 aria-pressed={service === 'lowcost'}
-                className={`p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0950F6] cursor-pointer ${
+                className={`p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer ${
                   service === 'lowcost'
-                    ? 'bg-[#00277e] text-[#ffcc00] border-[#00277e] shadow'
+                    ? 'bg-[#00277e] text-[#F2E40A] border-[#00277e] shadow'
                     : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -149,14 +149,14 @@ export default function ExpressQuoteModal({
                 htmlFor="origin-zone-select"
                 className="block font-bebas text-[#002273] text-sm tracking-wider uppercase mb-1.5 flex items-center gap-1"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#0950F6]" aria-hidden="true" />
+                <MapPin className="w-3.5 h-3.5 text-[#0C59F2]" aria-hidden="true" />
                 <span>ZONA DE RETIRO (ORIGEN)</span>
               </label>
               <select
                 id="origin-zone-select"
                 value={origin}
                 onChange={(e) => setOrigin(e.target.value)}
-                className="w-full p-3 rounded-2xl bg-slate-50 border border-slate-200 font-outfit text-sm text-slate-800 focus:ring-2 focus:ring-[#0950F6] focus:outline-none cursor-pointer"
+                className="w-full p-3 rounded-2xl bg-slate-50 border border-slate-200 font-outfit text-sm text-slate-800 focus:ring-2 focus:ring-[#0C59F2] focus:outline-none cursor-pointer"
               >
                 {zones.map((z) => (
                   <option key={z.id} value={z.name}>
@@ -171,14 +171,14 @@ export default function ExpressQuoteModal({
                 htmlFor="destination-zone-select"
                 className="block font-bebas text-[#002273] text-sm tracking-wider uppercase mb-1.5 flex items-center gap-1"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#ffcc00]" aria-hidden="true" />
+                <MapPin className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
                 <span>ZONA DE ENTREGA (DESTINO)</span>
               </label>
               <select
                 id="destination-zone-select"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                className="w-full p-3 rounded-2xl bg-slate-50 border border-slate-200 font-outfit text-sm text-slate-800 focus:ring-2 focus:ring-[#0950F6] focus:outline-none cursor-pointer"
+                className="w-full p-3 rounded-2xl bg-slate-50 border border-slate-200 font-outfit text-sm text-slate-800 focus:ring-2 focus:ring-[#0C59F2] focus:outline-none cursor-pointer"
               >
                 {zones.map((z) => (
                   <option key={z.id} value={z.name}>
@@ -192,7 +192,7 @@ export default function ExpressQuoteModal({
           {/* Weight Selection */}
           <fieldset>
             <legend className="block font-bebas text-[#002273] text-sm tracking-wider uppercase mb-1.5 flex items-center gap-1">
-              <Package className="w-3.5 h-3.5 text-[#0950F6]" aria-hidden="true" />
+              <Package className="w-3.5 h-3.5 text-[#0C59F2]" aria-hidden="true" />
               <span>TAMAÑO / PESO APROXIMADO</span>
             </legend>
             <div className="grid grid-cols-3 gap-2">
@@ -200,9 +200,9 @@ export default function ExpressQuoteModal({
                 type="button"
                 onClick={() => setWeight('light')}
                 aria-pressed={weight === 'light'}
-                className={`p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0950F6] cursor-pointer ${
+                className={`p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer ${
                   weight === 'light'
-                    ? 'bg-blue-50 border-[#0950F6] text-[#0950F6]'
+                    ? 'bg-blue-50 border-[#0C59F2] text-[#0C59F2]'
                     : 'bg-white border-slate-200 text-slate-600'
                 }`}
               >
@@ -212,9 +212,9 @@ export default function ExpressQuoteModal({
                 type="button"
                 onClick={() => setWeight('medium')}
                 aria-pressed={weight === 'medium'}
-                className={`p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0950F6] cursor-pointer ${
+                className={`p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer ${
                   weight === 'medium'
-                    ? 'bg-blue-50 border-[#0950F6] text-[#0950F6]'
+                    ? 'bg-blue-50 border-[#0C59F2] text-[#0C59F2]'
                     : 'bg-white border-slate-200 text-slate-600'
                 }`}
               >
@@ -224,9 +224,9 @@ export default function ExpressQuoteModal({
                 type="button"
                 onClick={() => setWeight('heavy')}
                 aria-pressed={weight === 'heavy'}
-                className={`p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0950F6] cursor-pointer ${
+                className={`p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer ${
                   weight === 'heavy'
-                    ? 'bg-blue-50 border-[#0950F6] text-[#0950F6]'
+                    ? 'bg-blue-50 border-[#0C59F2] text-[#0C59F2]'
                     : 'bg-white border-slate-200 text-slate-600'
                 }`}
               >
@@ -242,7 +242,7 @@ export default function ExpressQuoteModal({
               id="cash"
               checked={needsCashCollection}
               onChange={(e) => setNeedsCashCollection(e.target.checked)}
-              className="w-4 h-4 text-[#0950F6] rounded focus:ring-[#0950F6] cursor-pointer"
+              className="w-4 h-4 text-[#0C59F2] rounded focus:ring-[#0C59F2] cursor-pointer"
             />
             <label
               htmlFor="cash"
@@ -261,7 +261,7 @@ export default function ExpressQuoteModal({
               <span className="font-bebas text-xs tracking-wider uppercase text-blue-200">
                 TARIFA ESTIMADA TRANSPARENTE
               </span>
-              <div className="font-anton text-3xl sm:text-4xl text-[#ffcc00] leading-none mt-0.5">
+              <div className="font-anton text-3xl sm:text-4xl text-[#F2E40A] leading-none mt-0.5">
                 ${totalPrice.toLocaleString('es-AR')}
                 <span className="text-xs text-blue-200 font-outfit font-normal ml-1.5">
                   ARS
@@ -289,7 +289,7 @@ export default function ExpressQuoteModal({
           <button
             type="button"
             onClick={sendWhatsApp}
-            className="w-full sm:flex-1 py-3.5 rounded-full bg-[#ffcc00] hover:bg-[#ffd633] text-[#002273] font-bebas text-xl tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg glow-yellow font-bold cursor-pointer transition-all focus:outline-none focus:ring-2 focus:ring-[#002273]"
+            className="w-full sm:flex-1 py-3.5 rounded-full bg-[#F2E40A] hover:bg-[#ffe833] text-[#002273] font-bebas text-xl tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg glow-yellow font-bold cursor-pointer transition-all focus:outline-none focus:ring-2 focus:ring-[#002273]"
           >
             <span>PEDIR MOTO POR WHATSAPP</span>
             <MessageCircle className="w-5 h-5 fill-[#002273]" aria-hidden="true" />

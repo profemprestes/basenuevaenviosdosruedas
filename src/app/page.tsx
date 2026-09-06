@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col bg-[#fbf8ff]">
+    <main className="min-h-screen flex flex-col bg-[#FFFFFF]">
       {/* 1. Navbar Header (Image 2) */}
       <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
 

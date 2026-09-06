@@ -13,7 +13,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
     <section
       id="inicio"
       aria-label="Presentación principal"
-      className="relative w-full bg-[#0950F6] overflow-hidden pt-8 pb-16 lg:py-20 bg-tech-grid"
+      className="relative w-full bg-[#0C59F2] overflow-hidden pt-8 pb-16 lg:py-20 bg-tech-grid"
     >
       {/* Background radial gradient spotlight */}
       <div
@@ -36,7 +36,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffcc00] text-[#002273] shadow-md mb-6 animate-pulse">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-md mb-6 animate-pulse">
               <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" aria-hidden="true" />
               <span className="font-bebas text-sm sm:text-base tracking-wider uppercase font-bold">
                 TU SOLUCIÓN CONFIABLE EN MAR DEL PLATA
@@ -46,7 +46,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
             {/* Main Headline */}
             <h1 className="font-anton uppercase text-white text-5xl sm:text-6xl md:text-7xl lg:text-[76px] leading-[0.95] tracking-tight mb-5">
               MENSAJERÍA Y LOGÍSTICA
-              <div className="mt-2 inline-block px-4 py-1.5 rounded-2xl border-[3px] border-[#ffcc00] bg-[#0736ad]/80 text-[#ffcc00] tracking-normal">
+              <div className="mt-2 inline-block px-4 py-1.5 rounded-2xl border-[3px] border-[#F2E40A] bg-[#0736ad]/80 text-[#F2E40A] tracking-normal">
                 E-COMMERCE
               </div>
               <span className="block mt-2">EN MAR DEL PLATA</span>
@@ -63,7 +63,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
               <button
                 type="button"
                 onClick={onOpenQuoteModal}
-                className="flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#ffcc00] hover:bg-[#ffd633] text-[#002273] font-bebas text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] glow-yellow shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
+                className="flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] glow-yellow shadow-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
                 id="hero-btn-cotiza-express"
               >
                 <span>COTIZÁ EXPRESS</span>
@@ -75,7 +75,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
               <button
                 type="button"
                 onClick={onScrollToServices}
-                className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#032a87]/60 hover:bg-[#032a87] text-white border border-blue-300/30 font-bebas text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.02] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
+                className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#032a87]/60 hover:bg-[#032a87] text-white border border-blue-300/30 font-bebas text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.02] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
                 id="hero-btn-servicios"
               >
                 <span>MIRÁ LOS SERVICIOS</span>
@@ -86,22 +86,22 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
             {/* Bottom 3 Highlights */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2 border-t border-blue-400/20 text-xs sm:text-sm">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide">
-                <div className="w-6 h-6 rounded-lg bg-[#ffcc00]/20 flex items-center justify-center">
-                  <Package className="w-3.5 h-3.5 text-[#ffcc00]" aria-hidden="true" />
+                <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
+                  <Package className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
                 </div>
                 <span>+50K ENVÍOS</span>
               </div>
 
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide">
-                <div className="w-6 h-6 rounded-lg bg-[#ffcc00]/20 flex items-center justify-center">
-                  <MapPin className="w-3.5 h-3.5 text-[#ffcc00]" aria-hidden="true" />
+                <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
+                  <MapPin className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
                 </div>
                 <span>COBERTURA TOTAL MDQ</span>
               </div>
 
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-blue-900/40 border border-blue-400/20 text-white font-bebas tracking-wide">
-                <div className="w-6 h-6 rounded-lg bg-[#ffcc00]/20 flex items-center justify-center">
-                  <FastForward className="w-3.5 h-3.5 text-[#ffcc00]" aria-hidden="true" />
+                <div className="w-6 h-6 rounded-lg bg-[#F2E40A]/20 flex items-center justify-center">
+                  <FastForward className="w-3.5 h-3.5 text-[#F2E40A]" aria-hidden="true" />
                 </div>
                 <span>ENTREGAS EN EL DÍA</span>
               </div>
@@ -115,10 +115,10 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
               <div className="flex items-center justify-between pb-3.5 border-b border-blue-400/20">
                 <div className="flex items-center gap-2">
                   <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ffcc00] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#ffcc00]"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F2E40A] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#F2E40A]"></span>
                   </span>
-                  <span className="font-bebas text-[#ffcc00] text-sm tracking-wider uppercase">
+                  <span className="font-bebas text-[#F2E40A] text-sm tracking-wider uppercase">
                     RUTEO ACTIVO · MDQ
                   </span>
                 </div>
@@ -130,7 +130,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
 
               {/* 3D Isometric Route & Map Graphic */}
               <div className="relative my-4 rounded-2xl bg-[#02184a] border border-blue-500/20 p-4 h-64 sm:h-72 flex flex-col items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#0950f6_1px,transparent_1px),linear-gradient(to_bottom,#0950f6_1px,transparent_1px)] bg-[size:24px_24px]" />
+                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#0C59F2_1px,transparent_1px),linear-gradient(to_bottom,#0C59F2_1px,transparent_1px)] bg-[size:24px_24px]" />
 
                 <svg
                   className="w-full h-full max-w-[280px] drop-shadow-2xl"
@@ -158,33 +158,33 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                   <path
                     d="M 60 110 Q 110 135 150 120 T 230 115"
                     fill="none"
-                    stroke="#ffcc00"
+                    stroke="#F2E40A"
                     strokeWidth="4"
                     strokeLinecap="round"
                     className="animate-pulse"
-                    filter="drop-shadow(0 0 8px #ffcc00)"
+                    filter="drop-shadow(0 0 8px #F2E40A)"
                   />
                   <path
                     d="M 150 120 L 150 160"
                     fill="none"
-                    stroke="#ffcc00"
+                    stroke="#F2E40A"
                     strokeWidth="3"
                     strokeDasharray="4 4"
                   />
 
-                  <circle cx="110" cy="125" r="5" fill="#ffffff" stroke="#ffcc00" strokeWidth="2" />
+                  <circle cx="110" cy="125" r="5" fill="#FFFFFF" stroke="#F2E40A" strokeWidth="2" />
                 </svg>
 
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
                   <div className="w-24 h-28 bg-[#0a3594] border-4 border-[#3b82f6] rounded-[24px] shadow-2xl flex flex-col items-center justify-center p-2 relative">
                     <span className="text-[9px] font-extrabold text-blue-200 tracking-wider">ENVÍOS</span>
-                    <span className="font-anton text-sm text-[#ffcc00] tracking-tight">DosRuedas</span>
+                    <span className="font-anton text-sm text-[#F2E40A] tracking-tight">DosRuedas</span>
                     <div className="flex gap-1 my-1">
-                      <div className="w-4 h-4 rounded-full border border-[#ffcc00] flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#ffcc00]" />
+                      <div className="w-4 h-4 rounded-full border border-[#F2E40A] flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#F2E40A]" />
                       </div>
-                      <div className="w-4 h-4 rounded-full border border-[#ffcc00] flex items-center justify-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#ffcc00]" />
+                      <div className="w-4 h-4 rounded-full border border-[#F2E40A] flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#F2E40A]" />
                       </div>
                     </div>
                     <span className="text-[8px] font-mono-data text-blue-300 font-bold">MDQ</span>
@@ -193,7 +193,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                   </div>
                 </div>
 
-                <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-[#001742]/90 border border-[#ffcc00]/40 text-[#ffcc00] font-mono-data text-[11px] flex items-center gap-1.5 shadow-lg">
+                <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-[#001742]/90 border border-[#F2E40A]/40 text-[#F2E40A] font-mono-data text-[11px] flex items-center gap-1.5 shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                   <span>Cadete #09 · Güemes → Batán</span>
                 </div>
@@ -202,7 +202,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
               {/* Bottom Mini Status Cards */}
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <div className="flex items-center gap-2.5 p-3 rounded-2xl bg-[#031d5b] border border-blue-400/20">
-                  <div className="w-8 h-8 rounded-xl bg-[#ffcc00] flex items-center justify-center flex-shrink-0 shadow">
+                  <div className="w-8 h-8 rounded-xl bg-[#F2E40A] flex items-center justify-center flex-shrink-0 shadow">
                     <Zap className="w-4 h-4 text-[#002273] fill-[#002273]" aria-hidden="true" />
                   </div>
                   <div className="overflow-hidden">

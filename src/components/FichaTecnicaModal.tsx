@@ -39,9 +39,9 @@ export default function FichaTecnicaModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <header className="bg-[#ffcc00] p-6 text-[#002273] flex items-center justify-between relative">
+        <header className="bg-[#F2E40A] p-6 text-[#002273] flex items-center justify-between relative">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#002273] text-[#ffcc00] flex items-center justify-center shadow">
+            <div className="w-10 h-10 rounded-2xl bg-[#002273] text-[#F2E40A] flex items-center justify-center shadow">
               <FileText className="w-5 h-5" aria-hidden="true" />
             </div>
             <div>
@@ -71,9 +71,9 @@ export default function FichaTecnicaModal({
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
           {/* Overview Banner */}
           <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200 flex items-start gap-3.5">
-            <ShieldCheck className="w-6 h-6 text-[#0950F6] flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <ShieldCheck className="w-6 h-6 text-[#0C59F2] flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <h3 className="font-anton uppercase text-[#0950F6] text-lg tracking-normal">
+              <h3 className="font-anton uppercase text-[#0C59F2] text-lg tracking-normal">
                 SOCIO LOGÍSTICO HOMOLOGADO EN MAR DEL PLATA
               </h3>
               <p className="font-outfit text-slate-600 text-sm leading-relaxed mt-1">
@@ -85,8 +85,8 @@ export default function FichaTecnicaModal({
           {/* Key Specs Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-2 text-[#0950F6] mb-1">
-                <Clock className="w-4 h-4 text-[#ffcc00]" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-[#0C59F2] mb-1">
+                <Clock className="w-4 h-4 text-[#F2E40A]" aria-hidden="true" />
                 <span className="font-bebas text-sm uppercase tracking-wide">HORARIO DE CORTE (CUT-OFF)</span>
               </div>
               <p className="font-anton text-2xl text-slate-800">14:00 HS</p>
@@ -96,8 +96,8 @@ export default function FichaTecnicaModal({
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-2 text-[#0950F6] mb-1">
-                <Truck className="w-4 h-4 text-[#ffcc00]" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-[#0C59F2] mb-1">
+                <Truck className="w-4 h-4 text-[#F2E40A]" aria-hidden="true" />
                 <span className="font-bebas text-sm uppercase tracking-wide">RECOLECCIÓN EN LOCAL</span>
               </div>
               <p className="font-anton text-2xl text-slate-800">GRATIS</p>
@@ -107,8 +107,8 @@ export default function FichaTecnicaModal({
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-2 text-[#0950F6] mb-1">
-                <MapPin className="w-4 h-4 text-[#ffcc00]" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-[#0C59F2] mb-1">
+                <MapPin className="w-4 h-4 text-[#F2E40A]" aria-hidden="true" />
                 <span className="font-bebas text-sm uppercase tracking-wide">COBERTURA GEOGRÁFICA</span>
               </div>
               <p className="font-anton text-2xl text-slate-800">ZONA 1 Y 2</p>
@@ -118,8 +118,8 @@ export default function FichaTecnicaModal({
             </div>
 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-              <div className="flex items-center gap-2 text-[#0950F6] mb-1">
-                <Package className="w-4 h-4 text-[#ffcc00]" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-[#0C59F2] mb-1">
+                <Package className="w-4 h-4 text-[#F2E40A]" aria-hidden="true" />
                 <span className="font-bebas text-sm uppercase tracking-wide">LÍMITES DE PAQUETE</span>
               </div>
               <p className="font-anton text-2xl text-slate-800">HASTA 10 KG</p>
@@ -167,7 +167,7 @@ export default function FichaTecnicaModal({
               onClose();
               onOpenQuoteModal();
             }}
-            className="w-full sm:flex-1 py-3.5 rounded-full bg-[#ffcc00] hover:bg-[#ffd633] text-[#002273] font-bebas text-xl tracking-wider uppercase font-bold flex items-center justify-center gap-2 shadow-lg glow-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
+            className="w-full sm:flex-1 py-3.5 rounded-full bg-[#F2E40A] hover:bg-[#ffe833] text-[#002273] font-bebas text-xl tracking-wider uppercase font-bold flex items-center justify-center gap-2 shadow-lg glow-yellow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#002273]"
           >
             <span>CONFIGURAR MI CUENTA FLEX</span>
           </button>

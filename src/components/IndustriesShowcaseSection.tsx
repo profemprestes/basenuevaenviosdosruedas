@@ -133,20 +133,20 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
   };
 
   return (
-    <section id="industrias" className="w-full py-20 lg:py-28 bg-[#fbf8ff] relative">
+    <section id="industrias" className="w-full py-20 lg:py-28 bg-[#FFFFFF] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header and Counter Navigation */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffcc00] text-[#002273] shadow-sm mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-sm mb-4">
               <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" />
               <span className="font-bebas text-sm sm:text-base tracking-wider uppercase font-bold">
                 LOGÍSTICA A MEDIDA DE TU RUBRO · MDQ 2026
               </span>
             </div>
 
-            <h2 className="font-anton uppercase text-[#002273] text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight mb-3">
+            <h2 className="font-anton uppercase text-[#0C59F2] text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight mb-3">
               SOLUCIONES ESPECIALES PARA INDUSTRIAS
             </h2>
 
@@ -171,7 +171,7 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
 
             <button
               onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-[#ffcc00] border border-[#ffcc00] text-[#002273] hover:bg-[#ffd633] flex items-center justify-center transition cursor-pointer shadow-md glow-yellow"
+              className="w-10 h-10 rounded-full bg-[#F2E40A] border border-[#F2E40A] text-[#002273] hover:bg-[#faee28] flex items-center justify-center transition cursor-pointer shadow-md glow-yellow"
               aria-label="Siguiente rubro"
             >
               <ChevronRight className="w-5 h-5 stroke-[2.5]" />
@@ -191,11 +191,11 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
                 onClick={() => setSelectedTab(idx)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-bebas text-sm sm:text-base tracking-wider uppercase transition-all shadow-sm cursor-pointer ${
                   isActive
-                    ? 'bg-[#00277e] text-white ring-2 ring-[#ffcc00] shadow-md'
+                    ? 'bg-[#00277e] text-white ring-2 ring-[#F2E40A] shadow-md'
                     : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
-                <IconComp className={`w-4 h-4 ${isActive ? 'text-[#ffcc00]' : 'text-slate-500'}`} />
+                <IconComp className={`w-4 h-4 ${isActive ? 'text-[#F2E40A]' : 'text-slate-500'}`} />
                 <span>{ind.name}</span>
               </button>
             );
@@ -212,12 +212,12 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
             
             {/* Left Box with Icon and SLA Pill */}
             <div className="lg:col-span-4 flex flex-col items-center justify-center text-center p-6 sm:p-8 rounded-3xl bg-[#001f66]/80 border border-blue-400/20 shadow-inner">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-[#ffcc00] bg-[#00174e] flex items-center justify-center mb-6 shadow-lg glow-yellow">
-                <current.icon className="w-12 h-12 text-[#ffcc00] stroke-[1.75]" />
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 border-[#F2E40A] bg-[#00174e] flex items-center justify-center mb-6 shadow-lg glow-yellow">
+                <current.icon className="w-12 h-12 text-[#F2E40A] stroke-[1.75]" />
               </div>
 
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/90 border border-blue-400/30 text-blue-200 font-bebas text-xs sm:text-sm tracking-wider uppercase">
-                <Clock className="w-3.5 h-3.5 text-[#ffcc00]" />
+                <Clock className="w-3.5 h-3.5 text-[#F2E40A]" />
                 <span>{current.sla}</span>
               </div>
             </div>
@@ -227,7 +227,7 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
               
               {/* Badges */}
               <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                <span className="px-3.5 py-1 rounded-full bg-[#ffcc00] text-[#002273] font-bebas text-xs tracking-wider uppercase font-bold">
+                <span className="px-3.5 py-1 rounded-full bg-[#F2E40A] text-[#002273] font-bebas text-xs tracking-wider uppercase font-bold">
                   {current.badge1}
                 </span>
                 <span className="px-3.5 py-1 rounded-full bg-blue-900/80 border border-blue-400/30 text-blue-200 font-bebas text-xs tracking-wider uppercase">
@@ -252,7 +252,7 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
                     key={fIdx}
                     className="flex items-center gap-2.5 p-3 rounded-2xl bg-blue-900/40 border border-blue-400/20"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-[#ffcc00] flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#F2E40A] flex-shrink-0" />
                     <span className="font-outfit text-xs sm:text-sm text-blue-100 leading-tight">
                       {feat}
                     </span>
@@ -264,7 +264,7 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
               <div className="flex flex-wrap items-center gap-5 pt-2">
                 <button
                   onClick={() => onOpenQuoteModal(current.name)}
-                  className="flex items-center gap-2 px-7 py-3 rounded-full bg-[#ffcc00] hover:bg-[#ffd633] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-lg glow-yellow cursor-pointer"
+                  className="flex items-center gap-2 px-7 py-3 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-lg glow-yellow cursor-pointer"
                 >
                   <span>CONOCER PLAN COMERCIOS</span>
                   <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -291,7 +291,7 @@ export default function IndustriesShowcaseSection({ onOpenQuoteModal }: Industri
                 onClick={() => setSelectedTab(dotIdx)}
                 className={`transition-all ${
                   dotIdx === selectedTab
-                    ? 'w-8 h-2.5 rounded-full bg-[#ffcc00]'
+                    ? 'w-8 h-2.5 rounded-full bg-[#F2E40A]'
                     : 'w-2.5 h-2.5 rounded-full bg-blue-300/40 hover:bg-blue-200'
                 }`}
                 aria-label={`Ir a pestaña ${dotIdx + 1}`}

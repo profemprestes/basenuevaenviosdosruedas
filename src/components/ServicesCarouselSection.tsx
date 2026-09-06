@@ -43,7 +43,7 @@ export default function ServicesCarouselSection({
     <section
       id="servicios-carousel"
       aria-label="Catálogo de servicios de mensajería"
-      className="w-full py-20 lg:py-28 bg-[#0950F6] bg-tech-grid relative overflow-hidden"
+      className="w-full py-20 lg:py-28 bg-[#0C59F2] bg-tech-grid relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header and Controls */}
@@ -56,7 +56,7 @@ export default function ServicesCarouselSection({
             </div>
 
             <h2 className="font-anton uppercase text-white text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight">
-              SOLUCIONES LOGÍSTICAS <span className="text-[#ffcc00] block sm:inline">A TU MEDIDA</span>
+              SOLUCIONES LOGÍSTICAS <span className="text-[#F2E40A] block sm:inline">A TU MEDIDA</span>
             </h2>
           </div>
 
@@ -66,9 +66,9 @@ export default function ServicesCarouselSection({
               type="button"
               onClick={() => setAutoRotate(!autoRotate)}
               aria-pressed={autoRotate}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full font-bebas text-sm tracking-wider uppercase transition-all shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00] ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-bebas text-sm tracking-wider uppercase transition-all shadow cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A] ${
                 autoRotate
-                  ? 'bg-[#ffcc00] text-[#002273] font-bold glow-yellow'
+                  ? 'bg-[#F2E40A] text-[#002273] font-bold glow-yellow'
                   : 'bg-[#002273] text-blue-200 border border-blue-400/30'
               }`}
               title="Alternar rotación automática del carrusel"
@@ -80,7 +80,7 @@ export default function ServicesCarouselSection({
             <button
               type="button"
               onClick={handlePrev}
-              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
+              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
               aria-label="Servicio anterior"
             >
               <ChevronLeft className="w-5 h-5" aria-hidden="true" />
@@ -89,7 +89,7 @@ export default function ServicesCarouselSection({
             <button
               type="button"
               onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
+              className="w-10 h-10 rounded-full bg-[#002273] border border-blue-400/40 text-white hover:bg-blue-800 flex items-center justify-center transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
               aria-label="Siguiente servicio"
             >
               <ChevronRight className="w-5 h-5" aria-hidden="true" />
@@ -115,13 +115,13 @@ export default function ServicesCarouselSection({
                     onClick={() => setCurrentIndex(idx)}
                     className={`rounded-[32px] p-6 sm:p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 relative ${
                       isSelected
-                        ? 'bg-[#ffcc00] text-[#002273] scale-105 shadow-2xl z-20 glow-yellow ring-4 ring-white/50'
-                        : 'bg-[#ffd633]/90 text-[#002273] opacity-90 hover:opacity-100'
+                        ? 'bg-[#F2E40A] text-[#002273] scale-105 shadow-2xl z-20 glow-yellow ring-4 ring-white/50'
+                        : 'bg-[#F2E40A]/90 text-[#002273] opacity-90 hover:opacity-100'
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-11 h-11 rounded-2xl bg-[#002273] text-[#ffcc00] flex items-center justify-center shadow">
+                        <div className="w-11 h-11 rounded-2xl bg-[#002273] text-[#F2E40A] flex items-center justify-center shadow">
                           <IconComp className="w-6 h-6" aria-hidden="true" />
                         </div>
                         <div className="px-3 py-1 rounded-full bg-[#002273] text-white font-bebas text-xs tracking-wider uppercase">
@@ -194,13 +194,13 @@ export default function ServicesCarouselSection({
                   onClick={() => setCurrentIndex(idx)}
                   className={`rounded-[32px] p-6 sm:p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 relative border ${
                     isSelected
-                      ? 'bg-[#002f9c] border-[#ffcc00] scale-102 shadow-2xl z-10 text-white'
+                      ? 'bg-[#002f9c] border-[#F2E40A] scale-102 shadow-2xl z-10 text-white'
                       : 'bg-[#002273]/80 border-blue-400/20 text-white hover:border-blue-400/40 hover:bg-[#002785]'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-11 h-11 rounded-2xl bg-blue-600/50 border border-blue-400/30 flex items-center justify-center text-[#ffcc00]">
+                      <div className="w-11 h-11 rounded-2xl bg-blue-600/50 border border-blue-400/30 flex items-center justify-center text-[#F2E40A]">
                         <IconComp className="w-5 h-5" aria-hidden="true" />
                       </div>
                       <div className="px-3 py-1 rounded-full bg-blue-950 border border-blue-400/30 text-blue-200 font-bebas text-xs tracking-wider uppercase">
@@ -245,7 +245,7 @@ export default function ServicesCarouselSection({
                         e.stopPropagation();
                         onOpenQuoteModal(svc.id);
                       }}
-                      className="w-full py-2.5 rounded-full bg-blue-600/50 hover:bg-[#ffcc00] hover:text-[#002273] text-white border border-blue-400/30 font-bebas text-base tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#ffcc00]"
+                      className="w-full py-2.5 rounded-full bg-blue-600/50 hover:bg-[#F2E40A] hover:text-[#002273] text-white border border-blue-400/30 font-bebas text-base tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#F2E40A]"
                     >
                       <span>COTIZAR ESTE PLAN</span>
                       <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -265,7 +265,7 @@ export default function ServicesCarouselSection({
                 onClick={() => setCurrentIndex(dotIdx)}
                 className={`transition-all focus:outline-none cursor-pointer ${
                   dotIdx === currentIndex
-                    ? 'w-8 h-2.5 rounded-full bg-[#ffcc00]'
+                    ? 'w-8 h-2.5 rounded-full bg-[#F2E40A]'
                     : 'w-2.5 h-2.5 rounded-full bg-blue-300/40 hover:bg-blue-200'
                 }`}
                 aria-label={`Ir al servicio ${dotIdx + 1}`}

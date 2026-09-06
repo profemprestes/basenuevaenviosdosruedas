@@ -6,7 +6,7 @@ import { Star, ChevronLeft, ChevronRight, Heart, TrendingUp, MessageSquare, Exte
 const STATS = [
   {
     icon: Star,
-    iconBg: 'bg-[#ffcc00]',
+    iconBg: 'bg-[#F2E40A]',
     iconColor: 'text-[#002273]',
     value: '5.0',
     stars: 5,
@@ -14,7 +14,7 @@ const STATS = [
   },
   {
     icon: Heart,
-    iconBg: 'bg-[#0950F6]',
+    iconBg: 'bg-[#0C59F2]',
     iconColor: 'text-white',
     value: '100%',
     label: 'FLOTA PROPIA SIN TERCERIZAR',
@@ -22,7 +22,7 @@ const STATS = [
   {
     icon: TrendingUp,
     iconBg: 'bg-blue-50 border border-blue-200',
-    iconColor: 'text-[#0950F6]',
+    iconColor: 'text-[#0C59F2]',
     value: '+7',
     label: 'AÑOS DE TRAYECTORIA EN MDQ',
   },
@@ -62,7 +62,7 @@ const ALL_REVIEWS = [
     badgeUser: '',
     time: 'Hace 13 semanas',
     avatar: 'K',
-    avatarBg: 'bg-[#ffcc00] text-[#002273]',
+    avatarBg: 'bg-[#F2E40A] text-[#002273]',
     cardTheme: 'blue-dark',
   },
   {
@@ -76,7 +76,7 @@ const ALL_REVIEWS = [
     badgeUser: 'CLIENTE FRECUENTE',
     time: 'Hace 48 semanas',
     avatar: 'A',
-    avatarBg: 'bg-[#0950F6] text-white',
+    avatarBg: 'bg-[#0C59F2] text-white',
     cardTheme: 'white',
   },
   {
@@ -104,7 +104,7 @@ const ALL_REVIEWS = [
     badgeUser: 'TALLER MDQ',
     time: 'Hace 15 semanas',
     avatar: 'M',
-    avatarBg: 'bg-[#ffcc00] text-[#002273]',
+    avatarBg: 'bg-[#F2E40A] text-[#002273]',
     cardTheme: 'blue-dark',
   },
   {
@@ -146,20 +146,20 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section id="opiniones" className="w-full py-20 lg:py-28 bg-[#fbf8ff] relative">
+    <section id="opiniones" className="w-full py-20 lg:py-28 bg-[#FFFFFF] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header & Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ffcc00] text-[#002273] shadow-sm mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-sm mb-4">
               <Star className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" />
               <span className="font-bebas text-sm sm:text-base tracking-wider uppercase font-bold">
                 5.0 / 5.0 EN GOOGLE MAPS · CALIFICACIÓN PERFECTA
               </span>
             </div>
 
-            <h2 className="font-anton uppercase text-[#002273] text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight mb-3">
+            <h2 className="font-anton uppercase text-[#0C59F2] text-4xl sm:text-5xl lg:text-[56px] leading-[1.0] tracking-tight mb-3">
               RESEÑAS REALES DE MAR DEL PLATA
             </h2>
 
@@ -184,7 +184,7 @@ export default function TestimonialsSection() {
 
             <button
               onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-[#ffcc00] border border-[#ffcc00] text-[#002273] hover:bg-[#ffd633] flex items-center justify-center transition cursor-pointer shadow-md glow-yellow"
+              className="w-10 h-10 rounded-full bg-[#F2E40A] border border-[#F2E40A] text-[#002273] hover:bg-[#faee28] flex items-center justify-center transition cursor-pointer shadow-md glow-yellow"
               aria-label="Siguiente página"
             >
               <ChevronRight className="w-5 h-5 stroke-[2.5]" />
@@ -210,9 +210,9 @@ export default function TestimonialsSection() {
                       {stat.value}
                     </span>
                     {stat.stars && (
-                      <div className="flex text-[#ffcc00]">
+                      <div className="flex text-[#F2E40A]">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-[#ffcc00]" />
+                          <Star key={i} className="w-3.5 h-3.5 fill-[#F2E40A]" />
                         ))}
                       </div>
                     )}
@@ -239,12 +239,12 @@ export default function TestimonialsSection() {
                 }}
                 className={`px-4 py-2 rounded-full font-bebas text-sm sm:text-base tracking-wider uppercase transition-all shadow-sm cursor-pointer ${
                   isActive
-                    ? 'bg-[#00277e] text-white ring-2 ring-[#ffcc00] shadow-md'
+                    ? 'bg-[#00277e] text-white ring-2 ring-[#F2E40A] shadow-md'
                     : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 <span>{cat.label}</span>
-                {cat.count && <span className="ml-1.5 text-xs text-[#ffcc00]">({cat.count})</span>}
+                {cat.count && <span className="ml-1.5 text-xs text-[#F2E40A]">({cat.count})</span>}
               </button>
             );
           })}
@@ -263,23 +263,23 @@ export default function TestimonialsSection() {
                   isDark
                     ? 'bg-[#00277e] text-white border border-blue-400/30'
                     : isBorder
-                    ? 'bg-white text-slate-800 border-2 border-[#ffcc00]/70'
+                    ? 'bg-white text-slate-800 border-2 border-[#F2E40A]/70'
                     : 'bg-white text-slate-800 border border-slate-200/90'
                 }`}
               >
                 {/* Large Background Quote Watermark */}
                 <Quote
                   className={`absolute top-6 right-6 w-14 h-14 opacity-10 pointer-events-none ${
-                    isDark ? 'text-white' : 'text-[#0950F6]'
+                    isDark ? 'text-white' : 'text-[#0C59F2]'
                   }`}
                 />
 
                 <div>
                   {/* Top Bar: Stars + Badge */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex text-[#ffcc00] gap-0.5">
+                    <div className="flex text-[#F2E40A] gap-0.5">
                       {[...Array(rev.stars)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#ffcc00]" />
+                        <Star key={i} className="w-4 h-4 fill-[#F2E40A]" />
                       ))}
                     </div>
 
@@ -287,7 +287,7 @@ export default function TestimonialsSection() {
                       className={`px-3 py-1 rounded-full font-bebas text-xs tracking-wider uppercase ${
                         isDark
                           ? 'bg-blue-950 text-blue-200 border border-blue-400/30'
-                          : 'bg-blue-50 text-[#0950F6] border border-blue-200'
+                          : 'bg-blue-50 text-[#0C59F2] border border-blue-200'
                       }`}
                     >
                       {rev.badge}
@@ -297,7 +297,7 @@ export default function TestimonialsSection() {
                   {/* Review Title */}
                   <h3
                     className={`font-anton uppercase text-xl sm:text-2xl tracking-tight leading-snug mb-4 ${
-                      isDark ? 'text-[#ffcc00]' : 'text-[#002273]'
+                      isDark ? 'text-[#F2E40A]' : 'text-[#002273]'
                     }`}
                   >
                     {rev.title}
@@ -331,7 +331,7 @@ export default function TestimonialsSection() {
                           {rev.author}
                         </span>
                         {rev.badgeUser && (
-                          <span className="px-1.5 py-0.5 rounded text-[10px] font-mono-data font-bold bg-[#ffcc00] text-[#002273]">
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-mono-data font-bold bg-[#F2E40A] text-[#002273]">
                             {rev.badgeUser}
                           </span>
                         )}
@@ -360,7 +360,7 @@ export default function TestimonialsSection() {
               onClick={() => setCurrentPage(dotIdx)}
               className={`transition-all ${
                 dotIdx === currentPage
-                  ? 'w-8 h-2.5 rounded-full bg-[#ffcc00]'
+                  ? 'w-8 h-2.5 rounded-full bg-[#F2E40A]'
                   : 'w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400'
               }`}
               aria-label={`Página ${dotIdx + 1}`}
@@ -374,7 +374,7 @@ export default function TestimonialsSection() {
             href="https://maps.google.com/?q=Friuli+1972+Mar+del+Plata"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#ffcc00] hover:bg-[#ffd633] text-[#002273] font-bebas text-xl sm:text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-xl glow-yellow font-bold"
+            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#F2E40A] hover:bg-[#faee28] text-[#002273] font-bebas text-xl sm:text-2xl tracking-wider uppercase transition-all transform hover:scale-[1.03] active:scale-[0.98] shadow-xl glow-yellow font-bold"
           >
             <span>VER FICHA Y OPINIONES EN GOOGLE MAPS</span>
             <ExternalLink className="w-5 h-5 stroke-[2.5]" />

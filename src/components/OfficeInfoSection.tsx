@@ -15,7 +15,7 @@ function ScheduleItem({ schedule }: ScheduleItemProps) {
     <div className="flex items-center justify-between text-sm text-blue-100 font-mono-data">
       <span className="font-bebas text-xs tracking-wider uppercase text-blue-300">{schedule.label}</span>
       <div className="flex items-center gap-3">
-        <span className="font-bold text-[#F2E40A]">{schedule.hours}</span>
+        <span className="font-bold text-signal-yellow">{schedule.hours}</span>
         <Badge variant="green" className="text-[10px] px-1.5 py-0.5">{schedule.status}</Badge>
       </div>
     </div>
@@ -31,12 +31,12 @@ interface InfoRowProps {
 function InfoRow({ icon, label, value }: InfoRowProps) {
   return (
     <div className="flex items-start gap-4 p-4 rounded-2xl bg-blue-900/40 border border-blue-400/20">
-      <div className="w-5 h-5 text-[#F2E40A] flex-shrink-0 mt-0.5" aria-hidden="true">
+      <div className="w-5 h-5 text-signal-yellow flex-shrink-0 mt-0.5" aria-hidden="true">
         {icon}
       </div>
       <div>
         <p className="font-bebas text-xs tracking-wider uppercase text-blue-300 mb-1">{label}</p>
-        <div className="font-outfit text-white hover:text-[#F2E40A] transition">{value}</div>
+        <div className="font-outfit text-white hover:text-signal-yellow transition">{value}</div>
       </div>
     </div>
   );
@@ -46,7 +46,7 @@ export default function OfficeInfoSection() {
   const content = OFFICE_INFO_CONTENT;
 
   return (
-    <section id="office-info" aria-label="Base de operaciones MDQ" className="w-full py-20 lg:py-28 bg-[#0C59F2] bg-tech-grid relative overflow-hidden">
+    <section id="office-info" aria-label="Base de operaciones MDQ" className="w-full py-20 lg:py-28 bg-electric-blue bg-tech-grid relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Column: Info Card */}
@@ -56,7 +56,7 @@ export default function OfficeInfoSection() {
 
               <div className="relative z-10">
                 <Badge variant="blue-dark" className="mb-4 inline-flex">
-                  <Sparkles className="w-3.5 h-3.5 fill-[#F2E40A] text-[#F2E40A]" aria-hidden="true" />
+                  <Sparkles className="w-3.5 h-3.5 fill-signal-yellow text-signal-yellow" aria-hidden="true" />
                   {content.badge}
                 </Badge>
 

@@ -19,7 +19,7 @@ export default function LowcostPage() {
   };
 
   return (
-    <main id="main-content" tabIndex={-1} className="min-h-screen flex flex-col bg-[#FFFFFF] outline-none">
+    <main id="main-content" tabIndex={-1} className="min-h-screen flex flex-col bg-brand-white outline-none">
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
       <LowCostHero />
       <LowCostFeatures />

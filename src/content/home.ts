@@ -355,15 +355,15 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
   stats: [
     {
       iconType: 'star',
-      iconBg: 'bg-[#F2E40A]',
-      iconColor: 'text-[#002273]',
+      iconBg: 'bg-signal-yellow',
+      iconColor: 'text-dark-blue',
       value: '5.0',
       stars: 5,
       label: '15 OPINIONES EN GOOGLE MAPS',
     },
     {
       iconType: 'heart',
-      iconBg: 'bg-[#0C59F2]',
+      iconBg: 'bg-electric-blue',
       iconColor: 'text-white',
       value: '100%',
       label: 'FLOTA PROPIA SIN TERCERIZAR',
@@ -371,7 +371,7 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
     {
       iconType: 'trending',
       iconBg: 'bg-blue-50 border border-blue-200',
-      iconColor: 'text-[#0C59F2]',
+      iconColor: 'text-electric-blue',
       value: '+7',
       label: 'AÑOS DE TRAYECTORIA EN MDQ',
     },
@@ -395,7 +395,7 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
       badgeUser: 'LOCAL GUIDE',
       time: 'Hace 26 semanas',
       avatar: 'S',
-      avatarBg: 'bg-[#002273] text-white',
+      avatarBg: 'bg-dark-blue text-white',
       cardTheme: 'white-border',
     },
     {
@@ -409,7 +409,7 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
       badgeUser: '',
       time: 'Hace 13 semanas',
       avatar: 'K',
-      avatarBg: 'bg-[#F2E40A] text-[#002273]',
+      avatarBg: 'bg-signal-yellow text-dark-blue',
       cardTheme: 'blue-dark',
     },
     {
@@ -423,7 +423,7 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
       badgeUser: 'CLIENTE FRECUENTE',
       time: 'Hace 48 semanas',
       avatar: 'A',
-      avatarBg: 'bg-[#0C59F2] text-white',
+      avatarBg: 'bg-electric-blue text-white',
       cardTheme: 'white',
     },
     {
@@ -451,7 +451,7 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
       badgeUser: 'TALLER MDQ',
       time: 'Hace 15 semanas',
       avatar: 'M',
-      avatarBg: 'bg-[#F2E40A] text-[#002273]',
+      avatarBg: 'bg-signal-yellow text-dark-blue',
       cardTheme: 'blue-dark',
     },
     {
@@ -465,7 +465,7 @@ export const TESTIMONIALS_CONTENT: TestimonialsSectionContent = {
       badgeUser: 'ESTUDIO JURÍDICO',
       time: 'Hace 20 semanas',
       avatar: 'F',
-      avatarBg: 'bg-[#002273] text-white',
+      avatarBg: 'bg-dark-blue text-white',
       cardTheme: 'white-border',
     },
   ],

@@ -22,7 +22,7 @@ export default function LowCostHero() {
   return (
     <section
       id="lowcost-hero"
-      className="relative w-full overflow-hidden bg-[#0950F6] text-white min-h-[85vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 border-b border-white/10"
+      className="relative w-full overflow-hidden bg-electric-blue text-white min-h-[85vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 border-b border-white/10"
     >
       {/* Pure Vector & Dynamic Procedural Background */}
       <HeroProceduralBackground variant="lowcost" />
@@ -43,16 +43,16 @@ export default function LowCostHero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="rotate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-subheading font-bold uppercase tracking-widest bg-[#052C87] border border-[#FFF12E]/30 text-[#FFF12E] shadow-glow-yellow"
+              className="rotate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-subheading font-bold uppercase tracking-widest bg-dark-blue border border-signal-yellow/30 text-signal-yellow shadow-glow-yellow"
             >
-              <TrendingDown className="h-4 w-4 text-[#FFF12E] shrink-0" />
+              <TrendingDown className="h-4 w-4 text-signal-yellow shrink-0" />
               <span>PAQUETERÍA E-COMMERCE Y CADETERÍA ECONÓMICA · MDQ 2026</span>
             </motion.div>
 
             {/* Monumental Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-[5rem] xl:text-[5.5rem] font-display uppercase tracking-tight leading-[0.98] text-white">
               <span className="block">PAQUETERÍA E-COMMERCE Y</span>
-              <span className="block text-[#FFF12E] drop-shadow-[0_2px_16px_rgba(255,241,46,0.35)]">
+              <span className="block text-signal-yellow drop-shadow-[0_2px_16px_rgba(242,228,10,0.35)]">
                 ENCOMIENDAS LOWCOST
               </span>
               <span className="block text-2xl sm:text-4xl lg:text-5xl text-blue-100 mt-1">

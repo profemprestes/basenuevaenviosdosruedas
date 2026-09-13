@@ -15,7 +15,7 @@ export default function ExpressHero() {
   return (
     <section
       id="express-hero"
-      className="relative w-full overflow-hidden bg-[#0950F6] text-white min-h-[85vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 border-b border-white/10"
+      className="relative w-full overflow-hidden bg-electric-blue text-white min-h-[85vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 border-b border-white/10"
     >
       {/* Pure Vector & Dynamic Procedural Background */}
       <HeroProceduralBackground variant="express" />
@@ -36,16 +36,16 @@ export default function ExpressHero() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="-rotate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-subheading font-bold uppercase tracking-widest bg-[#052C87] border border-[#FFF12E]/30 text-[#FFF12E] shadow-glow-yellow"
+              className="-rotate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-subheading font-bold uppercase tracking-widest bg-dark-blue border border-signal-yellow/30 text-signal-yellow shadow-glow-yellow"
             >
-              <Zap className="h-4 w-4 text-[#FFF12E] shrink-0" />
+              <Zap className="h-4 w-4 text-signal-yellow shrink-0" />
               <span>MENSAJERÍA EN MOTO Y ENTREGAS INMEDIATAS · MDQ 2026</span>
             </motion.div>
 
             {/* Monumental Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-[5rem] xl:text-[5.5rem] font-display uppercase tracking-tight leading-[0.98] text-white">
               <span className="block">MENSAJERÍA EN MOTO Y</span>
-              <span className="block text-[#FFF12E] drop-shadow-[0_2px_16px_rgba(255,241,46,0.35)]">
+              <span className="block text-signal-yellow drop-shadow-[0_2px_16px_rgba(242,228,10,0.35)]">
                 ENVÍOS EXPRESS
               </span>
               <span className="block text-2xl sm:text-4xl lg:text-5xl text-blue-100 mt-1">
@@ -54,7 +54,7 @@ export default function ExpressHero() {
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg lg:text-xl font-sans text-white/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed pl-4 border-l-2 border-[#FFF12E] font-light">
+            <p className="text-base sm:text-lg lg:text-xl font-sans text-white/90 max-w-2xl mx-auto lg:mx-0 leading-relaxed pl-4 border-l-2 border-signal-yellow font-light">
               Especialistas en mensajería en moto y envíos express prioritarios. Asignación de rango horario de entrega de 3 horas (solicitud con 2 hs de anticipación antes de las 15:00 hs). Todo lo que entre en moto (hasta 5 kg y 40x30 cm).
             </p>
 

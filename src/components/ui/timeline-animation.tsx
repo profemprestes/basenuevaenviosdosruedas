@@ -60,9 +60,17 @@ export const timelineVariants = {
 
 export type TimelineVariantName = keyof typeof timelineVariants;
 
-interface RenderMotionElementProps extends HTMLMotionProps<'div'> {
+interface RenderMotionElementProps {
   as?: React.ElementType | string;
-  custom?: unknown;
+  children?: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  variants?: Variants;
+  initial?: any;
+  whileInView?: any;
+  viewport?: any;
+  custom?: any;
+  [key: string]: any;
 }
 
 // Component to dynamically switch motion tags statically (React Compiler requirement)

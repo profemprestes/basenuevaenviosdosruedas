@@ -70,7 +70,7 @@ export default function ExpressPricing() {
   return (
     <section
       id="express-pricing"
-      className="py-24 bg-[#0950F6] relative overflow-hidden text-white border-t border-b border-white/10"
+      className="py-24 bg-electric-blue relative overflow-hidden text-white border-t border-b border-white/10"
       ref={pricingRef}
     >
       {/* Background Sparkles overlay */}
@@ -93,7 +93,7 @@ export default function ExpressPricing() {
             timelineRef={pricingRef}
             customVariants={revealVariants}
             as="span"
-            className="-rotate-1 px-4 py-1.5 bg-[#FFF12E] text-[#052C87] rounded-full text-xs font-subheading font-bold uppercase tracking-widest inline-block shadow-glow-yellow"
+            className="-rotate-1 px-4 py-1.5 bg-signal-yellow text-dark-blue rounded-full text-xs font-subheading font-bold uppercase tracking-widest inline-block shadow-glow-yellow"
           >
             TARIFARIO VIGENTE 2026
           </TimelineContent>
@@ -136,8 +136,8 @@ export default function ExpressPricing() {
                 className="bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-[28px] shadow-float hover:shadow-antigravity-deep transition-all duration-300 flex flex-col"
               >
                 <Card
-                  className={`border-0 bg-white text-[#052C87] rounded-[20px] p-6 flex flex-col justify-between h-full group text-left shadow-sm relative overflow-hidden ${
-                    zone.highlight ? 'ring-2 ring-[#FFF12E]' : ''
+                  className={`border-0 bg-white text-dark-blue rounded-[20px] p-6 flex flex-col justify-between h-full group text-left shadow-sm relative overflow-hidden ${
+                    zone.highlight ? 'ring-2 ring-signal-yellow' : ''
                   }`}
                 >
                   <CardHeader className="p-0 pb-4 text-left relative z-10">

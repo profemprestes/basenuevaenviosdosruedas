@@ -50,13 +50,13 @@ export default function ContactB2BSection() {
   const modalityOptions: ModalityOption[] = content.form.modalityOptions;
 
   return (
-    <section id="contacto-b2b" aria-label="Plan comercial B2B" className="w-full py-20 lg:py-28 bg-[#0C59F2] bg-tech-grid relative overflow-hidden">
+    <section id="contacto-b2b" aria-label="Plan comercial B2B" className="w-full py-20 lg:py-28 bg-electric-blue bg-tech-grid relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Column: Info & Features */}
           <div className="lg:col-span-6 flex flex-col items-start">
             <Badge variant="signal" className="mb-6">
-              <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" aria-hidden="true" />
+              <Sparkles className="w-3.5 h-3.5 fill-dark-blue text-dark-blue" aria-hidden="true" />
               {content.badge}
             </Badge>
 

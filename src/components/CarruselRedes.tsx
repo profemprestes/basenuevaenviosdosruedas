@@ -84,8 +84,8 @@ const NETWORKS = [
     iconBoxBg: 'bg-[#25D366] text-white shadow-lg shadow-[#25D366]/40',
     handleColor: 'text-[#25D366]',
     watermarkColor: 'text-[#25D366]/10 group-hover:text-[#25D366]/20',
-    btnBg: 'bg-[#25D366] hover:bg-[#20bd5a] text-[#002273] font-bold shadow-md shadow-[#25D366]/30',
-    btnIconBg: 'bg-[#002273]/15 text-[#002273]',
+    btnBg: 'bg-dispatch-green hover:bg-[#20bd5a] text-dark-blue font-bold shadow-md shadow-[#25D366]/30',
+    btnIconBg: 'bg-dark-blue/15 text-dark-blue',
     glow: 'from-[#25D366]/20 to-transparent',
   },
 ];
@@ -95,7 +95,7 @@ export default function CarruselRedes() {
     <section
       id="carrusel-redes"
       aria-label="Nuestra comunidad digital en redes sociales"
-      className="py-20 md:py-28 bg-[#002273] text-white border-y border-blue-400/20 relative overflow-hidden bg-tech-grid"
+      className="py-20 md:py-28 bg-dark-blue text-white border-y border-blue-400/20 relative overflow-hidden bg-tech-grid"
     >
       {/* Background Decorative Mesh & Depth Highlights */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(242,228,10,0.08),transparent_50%)] pointer-events-none" />
@@ -104,18 +104,18 @@ export default function CarruselRedes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Segment */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="px-4 py-1.5 bg-[#F2E40A] text-[#002273] rounded-full text-xs font-anton tracking-wider inline-block uppercase shadow-sm">
+          <span className="px-4 py-1.5 bg-signal-yellow text-dark-blue rounded-full text-xs font-anton tracking-wider inline-block uppercase shadow-sm">
             Nuestra Comunidad Digital
           </span>
 
           <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-anton uppercase tracking-tight leading-[0.95] text-center">
-            SEGUÍ NUESTRO <span className="text-[#F2E40A]">MOVIMIENTO</span>
+            SEGUÍ NUESTRO <span className="text-signal-yellow">MOVIMIENTO</span>
           </h2>
 
           <p className="text-blue-100 text-sm sm:text-base leading-relaxed font-outfit max-w-2xl mx-auto opacity-90">
             Sumate a nuestros canales digitales y enterate al toque de todas las novedades operativas en Mar del Plata.
           </p>
-          <div className="h-1 w-20 bg-[#F2E40A] mx-auto rounded-full mt-4" />
+          <div className="h-1 w-20 bg-signal-yellow mx-auto rounded-full mt-4" />
         </div>
 
         {/* Networks Grid: 3 Unique Branded Cards with Motion entry */}
@@ -130,7 +130,7 @@ export default function CarruselRedes() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: index * 0.15, ease: [0.215, 0.61, 0.355, 1] }}
-                className={`social-block group relative rounded-3xl p-2 transition-all duration-300 border ${net.cardBorder} bg-[#00174e]/85 backdrop-blur-md hover:-translate-y-1.5 shadow-2xl`}
+                className={`social-block group relative rounded-3xl p-2 transition-all duration-300 border ${net.cardBorder} bg-midnight-abyss/85 backdrop-blur-md hover:-translate-y-1.5 shadow-2xl`}
               >
                 {/* Internal Glow on Hover */}
                 <div className={`absolute inset-0 rounded-3xl bg-gradient-to-b ${net.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />

@@ -22,15 +22,15 @@ function ChannelCard({ channel }: ChannelCardProps) {
   const IconComp = ICON_MAP[channel.icon as keyof typeof ICON_MAP] || MessageCircle;
 
   const variantStyles = {
-    whatsapp: 'bg-[#25D366]/10 border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/20 hover:border-[#25D366]/60',
-    phone: 'bg-[#0C59F2]/10 border-[#0C59F2]/30 text-[#0C59F2] hover:bg-[#0C59F2]/20 hover:border-[#0C59F2]/60',
-    email: 'bg-[#F59E0B]/10 border-[#F59E0B]/30 text-[#F59E0B] hover:bg-[#F59E0B]/20 hover:border-[#F59E0B]/60',
+    whatsapp: 'bg-dispatch-green/10 border-dispatch-green/30 text-dispatch-green hover:bg-dispatch-green/20 hover:border-dispatch-green/60',
+    phone: 'bg-electric-blue/10 border-electric-blue/30 text-electric-blue hover:bg-electric-blue/20 hover:border-electric-blue/60',
+    email: 'bg-priority-amber/10 border-priority-amber/30 text-priority-amber hover:bg-priority-amber/20 hover:border-priority-amber/60',
   };
 
   const iconBgStyles = {
-    whatsapp: 'bg-[#25D366] text-white shadow-emerald-500/30',
-    phone: 'bg-[#0C59F2] text-white shadow-blue-500/30',
-    email: 'bg-[#F59E0B] text-white shadow-amber-500/30',
+    whatsapp: 'bg-dispatch-green text-white shadow-emerald-500/30',
+    phone: 'bg-electric-blue text-white shadow-blue-500/30',
+    email: 'bg-priority-amber text-white shadow-amber-500/30',
   };
 
   return (
@@ -54,7 +54,7 @@ function ChannelCard({ channel }: ChannelCardProps) {
           </Badge>
         </div>
 
-        <h3 className="font-anton uppercase text-[#002273] text-2xl tracking-tight mb-2 group-hover:text-[#0C59F2] transition-colors">
+        <h3 className="font-anton uppercase text-dark-blue text-2xl tracking-tight mb-2 group-hover:text-electric-blue transition-colors">
           {channel.title}
         </h3>
 

@@ -10,7 +10,7 @@ export default function ContactPageCTA() {
   const content = CONTACT_PAGE_CTA_CONTENT;
 
   return (
-    <section id="contacto-cta" aria-label="Llamada a la acción final" className="w-full py-16 lg:py-20 bg-[#002273] bg-tech-grid relative overflow-hidden">
+    <section id="contacto-cta" aria-label="Llamada a la acción final" className="w-full py-16 lg:py-20 bg-dark-blue bg-tech-grid relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card variant="bento-dark" padding="xl" className="rounded-[36px] border border-blue-400/30 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
@@ -18,7 +18,7 @@ export default function ContactPageCTA() {
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-2xl text-center lg:text-left">
               <Badge variant="blue-dark" className="mb-4 inline-flex">
-                <Sparkles className="w-3.5 h-3.5 fill-[#F2E40A] text-[#F2E40A]" aria-hidden="true" />
+                <Sparkles className="w-3.5 h-3.5 fill-signal-yellow text-signal-yellow" aria-hidden="true" />
                 {content.badge}
               </Badge>
 
@@ -44,7 +44,7 @@ export default function ContactPageCTA() {
               <Button
                 variant="secondary"
                 size="lg"
-                leftIcon={<MessageCircle className="w-4 h-4 text-[#F2E40A]" />}
+                leftIcon={<MessageCircle className="w-4 h-4 text-signal-yellow" />}
                 onClick={() => window.open(content.secondaryCTA.href, '_blank', 'noopener,noreferrer')}
               >
                 {content.secondaryCTA.text}

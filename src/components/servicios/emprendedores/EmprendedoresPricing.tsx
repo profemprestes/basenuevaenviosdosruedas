@@ -75,7 +75,7 @@ export default function EmprendedoresPricing() {
   return (
     <section
       id="emprendedores-pricing"
-      className="py-24 bg-[#0950F6] relative overflow-hidden text-white border-t border-b border-white/10"
+      className="py-24 bg-electric-blue relative overflow-hidden text-white border-t border-b border-white/10"
       ref={pricingRef}
     >
       {/* Background Sparkles overlay */}
@@ -98,7 +98,7 @@ export default function EmprendedoresPricing() {
             timelineRef={pricingRef}
             customVariants={revealVariants}
             as="span"
-            className="-rotate-1 px-4 py-1.5 bg-[#FFF12E] text-[#052C87] rounded-full text-xs font-subheading uppercase tracking-widest inline-block font-bold shadow-glow-yellow"
+            className="-rotate-1 px-4 py-1.5 bg-signal-yellow text-dark-blue rounded-full text-xs font-subheading uppercase tracking-widest inline-block font-bold shadow-glow-yellow"
           >
             MODALIDADES E-COMMERCE Y 3PL 2026
           </TimelineContent>
@@ -123,7 +123,7 @@ export default function EmprendedoresPricing() {
           >
             Elegí la modalidad e-commerce que mejor impulse tu marca. Desde almacenamiento con picking QR en Friuli 1972 hasta opción DropOFF con 20% OFF.
           </TimelineContent>
-          <div className="h-1.5 w-16 bg-[#FFF12E] mx-auto rounded-full" />
+          <div className="h-1.5 w-16 bg-signal-yellow mx-auto rounded-full" />
         </div>
 
         {/* Pricing Cards Grid Bento layout with Double Bezel */}
@@ -144,19 +144,19 @@ export default function EmprendedoresPricing() {
                 className={`${spanClass} bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-[28px] shadow-float hover:shadow-antigravity-deep transition-all duration-300 flex flex-col`}
               >
                 <Card
-                  className={`border-0 bg-white text-[#052C87] rounded-[20px] flex flex-col justify-between h-full transition-all duration-300 group text-left shadow-none relative overflow-hidden ${
-                    plan.highlight ? 'ring-2 ring-[#FFF12E]' : ''
+                  className={`border-0 bg-white text-dark-blue rounded-[20px] flex flex-col justify-between h-full transition-all duration-300 group text-left shadow-none relative overflow-hidden ${
+                    plan.highlight ? 'ring-2 ring-signal-yellow' : ''
                   }`}
                 >
                   <CardHeader className="p-8 pb-2 text-left relative z-10">
                     {plan.highlight && (
-                      <span className="-rotate-1 absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FFF12E] text-[#052C87] font-bold font-subheading text-xs tracking-wider px-4 py-1 rounded-full shadow-glow-yellow">
+                      <span className="-rotate-1 absolute -top-3.5 left-1/2 -translate-x-1/2 bg-signal-yellow text-dark-blue font-bold font-subheading text-xs tracking-wider px-4 py-1 rounded-full shadow-glow-yellow">
                         {plan.badge}
                       </span>
                     )}
 
                     <div>
-                      <span className="text-xs font-subheading tracking-wider uppercase text-[#0950F6] font-bold">
+                      <span className="text-xs font-subheading tracking-wider uppercase text-electric-blue font-bold">
                         {plan.badge}
                       </span>
                       <h3 className="text-2xl font-display uppercase tracking-wider mt-1 min-h-[56px] leading-tight text-[#052C87] font-bold">

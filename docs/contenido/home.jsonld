@@ -1,0 +1,249 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:page:home",
+      "@type": "WebPage",
+      "name": "Envíos DosRuedas — Mensajería Urbana y Logística MDQ",
+      "url": "/",
+      "filePath": "src/app/page.tsx",
+      "description": "Página principal de Envíos DosRuedas con resumen de servicios, métricas locales, soluciones e-commerce y cotizador en tiempo real",
+      "hasComponent": [
+        "urn:enviosdosruedas:component:navbar",
+        "urn:enviosdosruedas:component:hero",
+        "urn:enviosdosruedas:component:metrics-bento",
+        "urn:enviosdosruedas:component:ecommerce-growth",
+        "urn:enviosdosruedas:component:services-carousel",
+        "urn:enviosdosruedas:component:industries-showcase",
+        "urn:enviosdosruedas:component:testimonials",
+        "urn:enviosdosruedas:component:carrusel-redes",
+        "urn:enviosdosruedas:component:contact-quote",
+        "urn:enviosdosruedas:component:prefooter-and-footer",
+        "urn:enviosdosruedas:component:modal:express-quote",
+        "urn:enviosdosruedas:component:modal:ficha-tecnica"
+      ],
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal",
+        "urn:enviosdosruedas:handler:home:scroll-to-services"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:home:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Abre el modal de cotización Express fijando opcionalmente el servicio preseleccionado",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:home:scroll-to-services",
+      "@type": "EventHandler",
+      "name": "handleScrollToServices",
+      "description": "Realiza scroll suave hacia la sección #servicios-carousel"
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:moto-envios-3d",
+      "@type": "ImageObject",
+      "name": "Moto Envíos 3D Asset",
+      "contentUrl": "/webp/moto_envios_3d_2.webp",
+      "visualSpecification": {
+        "composition": "Render 3D isométrico de cadete de mensajería en motocicleta con caja corporativa",
+        "typography": "Anton / Outfit",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "inicio"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:hero-mockup",
+      "@type": "ImageObject",
+      "name": "Hero Isometric Tracking Card",
+      "contentUrl": "/images/hero-mockup.webp",
+      "visualSpecification": {
+        "composition": "Tarjeta azul con gráfica de rutas urbanas en directo y estados pulsantes de despacho",
+        "typography": "Bebas Neue / Outfit",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "inicio"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:local-partner-brands",
+      "@type": "ImageObject",
+      "name": "Logos Marcas Locales MDQ",
+      "contentUrl": "/webp/logo_5.webp",
+      "visualSpecification": {
+        "composition": "Ticker horizontal infinito de logotipos de comercios y marcas aliadas locales",
+        "typography": "N/A",
+        "colorPalette": {
+          "slate": "#64748b",
+          "white": "#FFFFFF"
+        },
+        "sectionId": "ecommerce"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:hero",
+      "@type": "WebUIElement",
+      "name": "HeroSection",
+      "filePath": "src/components/HeroSection.tsx",
+      "description": "Sección héroe de 12 columnas con titular de alto impacto, pills de ventajas y mapa 3D interactivo",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal",
+        "urn:enviosdosruedas:handler:home:scroll-to-services"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:moto-envios-3d",
+        "urn:enviosdosruedas:asset:hero-mockup"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:metrics-bento",
+      "@type": "WebUIElement",
+      "name": "MetricsBentoSection",
+      "filePath": "src/components/MetricsBentoSection.tsx",
+      "description": "Grilla Bento de 12 columnas con cifras destacadas (+50K envíos, 0 extraviados) y pilares operativos",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge",
+        "urn:enviosdosruedas:component:atom:icon-badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:ecommerce-growth",
+      "@type": "WebUIElement",
+      "name": "EcommerceGrowthSection",
+      "filePath": "src/components/EcommerceGrowthSection.tsx",
+      "description": "Sección Bento focalizada en Mercado Envíos Flex y cuentas corporativas con ticker de marcas aliadas",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:local-partner-brands"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:services-carousel",
+      "@type": "WebUIElement",
+      "name": "ServicesCarouselSection",
+      "filePath": "src/components/ServicesCarouselSection.tsx",
+      "description": "Carrusel interactivo de 4 servicios logísticos (Express, LowCost, Flex, 3PL) con rotación automática",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:industries-showcase",
+      "@type": "WebUIElement",
+      "name": "IndustriesShowcaseSection",
+      "filePath": "src/components/IndustriesShowcaseSection.tsx",
+      "description": "Showcase de 6 sectores industriales con tabs interactivas, compromisos SLA y modalidades de cuenta corriente",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:testimonials",
+      "@type": "WebUIElement",
+      "name": "TestimonialsSection",
+      "filePath": "src/components/TestimonialsSection.tsx",
+      "description": "Módulo de reseñas verificadas de Google Maps con desgloses de 5 estrellas y testimonios de comercios MDQ",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:contact-quote",
+      "@type": "WebUIElement",
+      "name": "ContactQuoteSection",
+      "filePath": "src/components/ContactQuoteSection.tsx",
+      "description": "Formulario de cotización directa con cálculo en tiempo real y despacho por WhatsApp",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:input-field",
+        "urn:enviosdosruedas:component:atom:select-field"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:modal:express-quote",
+      "@type": "WebUIElement",
+      "name": "ExpressQuoteModal",
+      "filePath": "src/components/ExpressQuoteModal.tsx",
+      "description": "Modal interactivo multi-servicio para cotización instantánea por zona y peso",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:input-field",
+        "urn:enviosdosruedas:component:atom:select-field"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:modal:ficha-tecnica",
+      "@type": "WebUIElement",
+      "name": "FichaTecnicaModal",
+      "filePath": "src/components/FichaTecnicaModal.tsx",
+      "description": "Modal técnico con especificaciones operativas del servicio Mercado Envíos Flex (horarios de corte, colectoras y SLA)",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:home:open-quote-modal"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    }
+  ]
+}

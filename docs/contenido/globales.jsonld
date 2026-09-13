@@ -1,0 +1,211 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:handler:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Handler global para abrir modal de cotización Express o realizar scroll suave a la sección de cotización/formulario",
+      "parameters": [
+        {
+          "name": "serviceId",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:logo-master",
+      "@type": "ImageObject",
+      "name": "Logo Master Envíos DosRuedas",
+      "contentUrl": "/logo-master.svg",
+      "visualSpecification": {
+        "composition": "Isologotipo vectorial con iso de velocidad en movimiento y tipografía institucional",
+        "typography": "Anton / Bebas Neue",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "global-header-and-footer"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:icon-whatsapp",
+      "@type": "ImageObject",
+      "name": "Ícono WhatsApp",
+      "contentUrl": "/iconos/whatapps.svg",
+      "visualSpecification": {
+        "composition": "Vector de ícono de mensajería directa en contenedor circular",
+        "typography": "Sans-serif",
+        "colorPalette": {
+          "dispatchGreen": "#25D366",
+          "white": "#FFFFFF"
+        },
+        "sectionId": "global-contact-triggers"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:icon-instagram",
+      "@type": "ImageObject",
+      "name": "Ícono Instagram",
+      "contentUrl": "/iconos/instagram.svg",
+      "visualSpecification": {
+        "composition": "Vector de cámara de red social para canales digitales",
+        "typography": "Sans-serif",
+        "colorPalette": {
+          "darkAnchor": "#002273",
+          "white": "#FFFFFF"
+        },
+        "sectionId": "global-social-links"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:icon-facebook",
+      "@type": "ImageObject",
+      "name": "Ícono Facebook",
+      "contentUrl": "/iconos/facebook.svg",
+      "visualSpecification": {
+        "composition": "Vector institucional de red social",
+        "typography": "Sans-serif",
+        "colorPalette": {
+          "darkAnchor": "#002273",
+          "white": "#FFFFFF"
+        },
+        "sectionId": "global-social-links"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:tech-grid-pattern",
+      "@type": "ImageObject",
+      "name": "Patrón de Cuadrícula Tecnológica",
+      "contentUrl": "bg-tech-grid",
+      "visualSpecification": {
+        "composition": "Fondo procedural sutil de grilla técnica logística",
+        "typography": "N/A",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "global-background-pattern"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:atom:badge",
+      "@type": "WebUIElement",
+      "name": "Badge / Pill Atom",
+      "filePath": "src/components/atoms/Badge.tsx",
+      "description": "Componente atómico para etiquetas de estado, categorías y sellos de señal",
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:tech-grid-pattern"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:atom:button",
+      "@type": "WebUIElement",
+      "name": "Button Atom",
+      "filePath": "src/components/atoms/Button.tsx",
+      "description": "Botón de acción con variantes de marca (primary, whatsapp, secondary, dark, ghost)",
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:icon-whatsapp"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:atom:card",
+      "@type": "WebUIElement",
+      "name": "Card Atom",
+      "filePath": "src/components/atoms/Card.tsx",
+      "description": "Contenedor bento y superficie de contenido con elevación y sombras"
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:atom:icon-badge",
+      "@type": "WebUIElement",
+      "name": "IconBadge Atom",
+      "filePath": "src/components/atoms/IconBadge.tsx",
+      "description": "Contenedor cuadrado de íconos vectores con fondo de contraste corporativo"
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:atom:input-field",
+      "@type": "WebUIElement",
+      "name": "InputField Atom",
+      "filePath": "src/components/atoms/InputField.tsx",
+      "description": "Campo de entrada de texto estructurado con etiqueta e ícono contextual"
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:atom:select-field",
+      "@type": "WebUIElement",
+      "name": "SelectField Atom",
+      "filePath": "src/components/atoms/SelectField.tsx",
+      "description": "Campo de selección desplegable con opciones de volumen y modalidad"
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:navbar",
+      "@type": "WebUIElement",
+      "name": "Navbar Header",
+      "filePath": "src/components/Navbar.tsx",
+      "description": "Navegación principal sticky superior con menú de servicios, teléfono directo y CTA cotizar",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:logo-master"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:prefooter-and-footer",
+      "@type": "WebUIElement",
+      "name": "PreFooterAndFooter",
+      "filePath": "src/components/PreFooterAndFooter.tsx",
+      "description": "Banner pre-footer de cotización inmediata y pie de página maestro con enlaces, contacto y copyright",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:logo-master",
+        "urn:enviosdosruedas:asset:icon-whatsapp",
+        "urn:enviosdosruedas:asset:icon-instagram",
+        "urn:enviosdosruedas:asset:icon-facebook"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:carrusel-redes",
+      "@type": "WebUIElement",
+      "name": "CarruselRedes",
+      "filePath": "src/components/CarruselRedes.tsx",
+      "description": "Carrusel interactivo y grilla social con imágenes y posts recientes de operaciones",
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:icon-instagram"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card"
+      ]
+    }
+  ]
+}

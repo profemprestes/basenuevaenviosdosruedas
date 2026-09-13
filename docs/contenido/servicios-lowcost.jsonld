@@ -1,0 +1,128 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:page:servicios-lowcost",
+      "@type": "WebPage",
+      "name": "Servicio Low Cost Programado — Envíos DosRuedas",
+      "url": "/servicios/lowcost",
+      "filePath": "src/app/servicios/lowcost/page.tsx",
+      "description": "Logística económica con entregas programadas en 24hs para optimización de costos en envíos masivos",
+      "hasComponent": [
+        "urn:enviosdosruedas:component:navbar",
+        "urn:enviosdosruedas:component:lowcost-hero",
+        "urn:enviosdosruedas:component:lowcost-features",
+        "urn:enviosdosruedas:component:lowcost-benefits",
+        "urn:enviosdosruedas:component:lowcost-how-it-works",
+        "urn:enviosdosruedas:component:lowcost-pricing",
+        "urn:enviosdosruedas:component:carrusel-redes",
+        "urn:enviosdosruedas:component:prefooter-and-footer"
+      ],
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:lowcost:open-quote-modal"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:lowcost:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Realiza scroll suave hacia el módulo tarifario #lowcost-pricing"
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:lowcost-hero-card",
+      "@type": "ImageObject",
+      "name": "Banner Low Cost Asset",
+      "contentUrl": "/cards/fondo_lowcost.webp",
+      "visualSpecification": {
+        "composition": "Composición gráfica enfocado en ahorro logístico inteligente y consolidación de rutas",
+        "typography": "Anton / Bebas Neue",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "lowcost-hero"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:lowcost-hero",
+      "@type": "WebUIElement",
+      "name": "LowCostHero",
+      "filePath": "src/components/servicios/lowcost/LowCostHero.tsx",
+      "description": "Presentación del plan de costo reducido para despachos consolidados y envíos de menor urgencia",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:lowcost:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:lowcost-hero-card"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:lowcost-features",
+      "@type": "WebUIElement",
+      "name": "LowCostFeatures",
+      "filePath": "src/components/servicios/lowcost/LowCostFeatures.tsx",
+      "description": "Detalle de rutas optimizadas y ventanas horarias de entrega en 24 horas",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:icon-badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:lowcost-benefits",
+      "@type": "WebUIElement",
+      "name": "LowCostBenefits",
+      "filePath": "src/components/servicios/lowcost/LowCostBenefits.tsx",
+      "description": "Ahorro de hasta 40% en costos de mensajería para empresas y comercios con volumen constante",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:lowcost-how-it-works",
+      "@type": "WebUIElement",
+      "name": "LowCostHowItWorks",
+      "filePath": "src/components/servicios/lowcost/LowCostHowItWorks.tsx",
+      "description": "Paso a paso del proceso de recolección en lote y distribución en grilla programada",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:lowcost-pricing",
+      "@type": "WebUIElement",
+      "name": "LowCostPricing",
+      "filePath": "src/components/servicios/lowcost/LowCostPricing.tsx",
+      "description": "Planes y escalas de precios Low Cost en función de la cantidad de paquetes mensuales",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button"
+      ]
+    }
+  ]
+}

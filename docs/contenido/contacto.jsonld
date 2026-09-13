@@ -1,0 +1,157 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:page:contacto",
+      "@type": "WebPage",
+      "name": "Contacto y Atención Comercial B2B — Envíos DosRuedas",
+      "url": "/contacto",
+      "filePath": "src/app/contacto/page.tsx",
+      "description": "Canales de atención inmediata, formulario B2B para cuentas corporativas y ubicación de base operativa Mar del Plata",
+      "hasComponent": [
+        "urn:enviosdosruedas:component:navbar",
+        "urn:enviosdosruedas:component:contact-hero",
+        "urn:enviosdosruedas:component:contact-b2b",
+        "urn:enviosdosruedas:component:social-channels",
+        "urn:enviosdosruedas:component:carrusel-redes",
+        "urn:enviosdosruedas:component:office-info",
+        "urn:enviosdosruedas:component:contact-page-cta",
+        "urn:enviosdosruedas:component:prefooter-and-footer"
+      ],
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:contacto:open-quote-modal"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:contacto:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Realiza scroll suave directo a la sección #contacto-b2b"
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:contacto:b2b-submit",
+      "@type": "EventHandler",
+      "name": "handleSubmit",
+      "description": "Procesa el formulario B2B y redirige con los datos precargados a la API de WhatsApp"
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:caja-envios",
+      "@type": "ImageObject",
+      "name": "Caja Envíos 3D Asset",
+      "contentUrl": "/caja_envios.png",
+      "visualSpecification": {
+        "composition": "Render 3D de paquete listo para despacho con cintas de embalaje de seguridad",
+        "typography": "Anton / Bebas Neue",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "contacto-hero"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:card-mapa",
+      "@type": "ImageObject",
+      "name": "Mapa Base Operativa MDQ",
+      "contentUrl": "/card_mapa.webp",
+      "visualSpecification": {
+        "composition": "Captura estilizada de mapa con pin de localización en Friuli 1972, Mar del Plata",
+        "typography": "Outfit",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "contacto-oficina"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:contact-hero",
+      "@type": "WebUIElement",
+      "name": "ContactHeroSection",
+      "filePath": "src/components/ContactHeroSection.tsx",
+      "description": "Sección héroe de contacto con tarjetas de acceso rápido por WhatsApp, Teléfono y Email",
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:caja-envios"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:contact-b2b",
+      "@type": "WebUIElement",
+      "name": "ContactB2BSection",
+      "filePath": "src/components/ContactB2BSection.tsx",
+      "description": "Formulario B2B para apertura de cuenta comercial corporativa con volumen y modalidad personalizada",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:contacto:b2b-submit"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:input-field",
+        "urn:enviosdosruedas:component:atom:select-field"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:social-channels",
+      "@type": "WebUIElement",
+      "name": "SocialChannelsSection",
+      "filePath": "src/components/SocialChannelsSection.tsx",
+      "description": "Grilla de canales sociales oficiales para comunicación directa con clientes y marcas",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:office-info",
+      "@type": "WebUIElement",
+      "name": "OfficeInfoSection",
+      "filePath": "src/components/OfficeInfoSection.tsx",
+      "description": "Sección informativa de la base operativa en Friuli 1972 (MDQ), horarios de recepción y colectoras",
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:card-mapa"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:contact-page-cta",
+      "@type": "WebUIElement",
+      "name": "ContactPageCTA",
+      "filePath": "src/components/ContactPageCTA.tsx",
+      "description": "Llamado a la acción inferior para asesoramiento logístico inmediato",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:contacto:open-quote-modal"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button"
+      ]
+    }
+  ]
+}

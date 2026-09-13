@@ -1,0 +1,117 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:page:servicios-express",
+      "@type": "WebPage",
+      "name": "Servicio Express Inmediato — Envíos DosRuedas",
+      "url": "/servicios/express",
+      "filePath": "src/app/servicios/express/page.tsx",
+      "description": "Servicio de mensajería urbana ultra rápida con entrega puerta a puerta en menos de 2 horas en Mar del Plata",
+      "hasComponent": [
+        "urn:enviosdosruedas:component:navbar",
+        "urn:enviosdosruedas:component:express-hero",
+        "urn:enviosdosruedas:component:express-features",
+        "urn:enviosdosruedas:component:express-use-cases",
+        "urn:enviosdosruedas:component:express-pricing",
+        "urn:enviosdosruedas:component:carrusel-redes",
+        "urn:enviosdosruedas:component:prefooter-and-footer"
+      ],
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:express:open-quote-modal"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:express:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Realiza scroll suave hacia la tabla de tarifas #express-pricing"
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:express-hero-card",
+      "@type": "ImageObject",
+      "name": "Fondo Express Hero Asset",
+      "contentUrl": "/cards/fondo_express.webp",
+      "visualSpecification": {
+        "composition": "Gráfica dinámica de velocidad urbana con contrastes en amarillo y azul eléctrico",
+        "typography": "Anton / Bebas Neue",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "express-hero"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:express-hero",
+      "@type": "WebUIElement",
+      "name": "ExpressHero",
+      "filePath": "src/components/servicios/express/ExpressHero.tsx",
+      "description": "Encabezado principal del servicio Express destacando entregas prioritarias y seguimiento satelital",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:express:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:express-hero-card"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:express-features",
+      "@type": "WebUIElement",
+      "name": "ExpressFeatures",
+      "filePath": "src/components/servicios/express/ExpressFeatures.tsx",
+      "description": "Grilla de ventajas exclusivas del despacho express (cadete asignado, confirmación digital y prueba de entrega)",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:icon-badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:express-use-cases",
+      "@type": "WebUIElement",
+      "name": "ExpressUseCases",
+      "filePath": "src/components/servicios/express/ExpressUseCases.tsx",
+      "description": "Casos de uso sugeridos para comercios, trámites urgentes, repuestos y documentación crítica",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:express-pricing",
+      "@type": "WebUIElement",
+      "name": "ExpressPricing",
+      "filePath": "src/components/servicios/express/ExpressPricing.tsx",
+      "description": "Tabla de tarifas transparentes por radio kilométrico y adicionales nocturnos o por lluvia",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:page:servicios-emprendedores",
+      "@type": "WebPage",
+      "name": "Plan Aliados Emprendedores — Envíos DosRuedas",
+      "url": "/servicios/emprendedores",
+      "filePath": "src/app/servicios/emprendedores/page.tsx",
+      "description": "Solución integral de mensajería para tiendas online y pequeños comercios de Mar del Plata con tarifas escala y soporte dedicado",
+      "hasComponent": [
+        "urn:enviosdosruedas:component:navbar",
+        "urn:enviosdosruedas:component:emprendedores-hero",
+        "urn:enviosdosruedas:component:emprendedores-features",
+        "urn:enviosdosruedas:component:emprendedores-benefits",
+        "urn:enviosdosruedas:component:emprendedores-pricing",
+        "urn:enviosdosruedas:component:carrusel-redes",
+        "urn:enviosdosruedas:component:prefooter-and-footer"
+      ],
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:emprendedores:open-quote-modal"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:emprendedores:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Realiza scroll suave hacia la tabla de planes #emprendedores-pricing"
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:emprendedores-hero-card",
+      "@type": "ImageObject",
+      "name": "Banner Plan Emprendedores Asset",
+      "contentUrl": "/cards/fondo_emprendedores.webp",
+      "visualSpecification": {
+        "composition": "Gráfica corporativa enfocada en crecimiento de marcas locales y logística e-commerce",
+        "typography": "Anton / Bebas Neue",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "emprendedores-hero"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:emprendedores-hero",
+      "@type": "WebUIElement",
+      "name": "EmprendedoresHero",
+      "filePath": "src/components/servicios/emprendedores/EmprendedoresHero.tsx",
+      "description": "Héroe enfocado en emprendedores, tiendas Instagram y marcas en crecimiento",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:emprendedores:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:emprendedores-hero-card"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:emprendedores-features",
+      "@type": "WebUIElement",
+      "name": "EmprendedoresFeatures",
+      "filePath": "src/components/servicios/emprendedores/EmprendedoresFeatures.tsx",
+      "description": "Herramientas exclusivas para e-commerce (retiros sin mínimo, notificaciones al cliente final y liquidaciones semanales)",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:icon-badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:emprendedores-benefits",
+      "@type": "WebUIElement",
+      "name": "EmprendedoresBenefits",
+      "filePath": "src/components/servicios/emprendedores/EmprendedoresBenefits.tsx",
+      "description": "Ventajas competitivas del plan aliados (tarifas diferenciales, cuenta corriente y prioridad de despacho)",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:emprendedores-pricing",
+      "@type": "WebUIElement",
+      "name": "EmprendedoresPricing",
+      "filePath": "src/components/servicios/emprendedores/EmprendedoresPricing.tsx",
+      "description": "Tabla de tarifas bonificadas por tramos de volumen de envíos mensuales",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button"
+      ]
+    }
+  ]
+}

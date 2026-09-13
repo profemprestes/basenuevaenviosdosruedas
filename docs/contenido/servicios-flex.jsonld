@@ -1,0 +1,139 @@
+{
+  "@context": [
+    "https://schema.org",
+    {
+      "urn": "urn:enviosdosruedas:",
+      "hasComponent": {
+        "@type": "@id"
+      },
+      "requiresAsset": {
+        "@type": "@id"
+      },
+      "referencesComponent": {
+        "@type": "@id"
+      },
+      "hasHandler": {
+        "@type": "@id"
+      },
+      "visualSpecification": {
+        "@type": "@json"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "urn:enviosdosruedas:page:servicios-flex",
+      "@type": "WebPage",
+      "name": "Servicio Mercado Envíos Flex MDQ — Envíos DosRuedas",
+      "url": "/servicios/flex",
+      "filePath": "src/app/servicios/flex/page.tsx",
+      "description": "Logística integrada para vendedores de MercadoLibre con colectoras gratuitas y entregas en el día (Same-Day)",
+      "hasComponent": [
+        "urn:enviosdosruedas:component:navbar",
+        "urn:enviosdosruedas:component:flex-hero",
+        "urn:enviosdosruedas:component:flex-features",
+        "urn:enviosdosruedas:component:flex-benefits",
+        "urn:enviosdosruedas:component:flex-how-it-works",
+        "urn:enviosdosruedas:component:flex-requirements",
+        "urn:enviosdosruedas:component:flex-pricing",
+        "urn:enviosdosruedas:component:carrusel-redes",
+        "urn:enviosdosruedas:component:prefooter-and-footer"
+      ],
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:flex:open-quote-modal"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:handler:flex:open-quote-modal",
+      "@type": "EventHandler",
+      "name": "handleOpenQuoteModal",
+      "description": "Realiza scroll suave hacia la sección de planes Flex #flex-pricing"
+    },
+    {
+      "@id": "urn:enviosdosruedas:asset:flex-hero-card",
+      "@type": "ImageObject",
+      "name": "Banner Mercado Envíos Flex Asset",
+      "contentUrl": "/cards/fondo_flex.webp",
+      "visualSpecification": {
+        "composition": "Ilustración corporativa con colores oficiales de integración MercadoLibre y marca DosRuedas",
+        "typography": "Anton / Bebas Neue",
+        "colorPalette": {
+          "primary": "#0C59F2",
+          "secondary": "#F2E40A",
+          "darkAnchor": "#002273"
+        },
+        "sectionId": "flex-hero"
+      }
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:flex-hero",
+      "@type": "WebUIElement",
+      "name": "FlexHero",
+      "filePath": "src/components/servicios/flex/FlexHero.tsx",
+      "description": "Héroe del servicio Flex orientado a potenciar la reputación de vendedores con SLA 100% cumplido",
+      "hasHandler": [
+        "urn:enviosdosruedas:handler:flex:open-quote-modal"
+      ],
+      "requiresAsset": [
+        "urn:enviosdosruedas:asset:flex-hero-card"
+      ],
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:button",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:flex-features",
+      "@type": "WebUIElement",
+      "name": "FlexFeatures",
+      "filePath": "src/components/servicios/flex/FlexFeatures.tsx",
+      "description": "Características clave de la operación Flex (escanes de paquetes, retiro en domicilio y franja horaria amplia)",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:icon-badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:flex-benefits",
+      "@type": "WebUIElement",
+      "name": "FlexBenefits",
+      "filePath": "src/components/servicios/flex/FlexBenefits.tsx",
+      "description": "Beneficios de utilizar la red oficial de Envíos DosRuedas para mejorar posicionamiento en MercadoLibre",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:flex-how-it-works",
+      "@type": "WebUIElement",
+      "name": "FlexHowItWorks",
+      "filePath": "src/components/servicios/flex/FlexHowItWorks.tsx",
+      "description": "Flujo paso a paso desde la colecta diaria hasta la entrega al comprador final",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:badge"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:flex-requirements",
+      "@type": "WebUIElement",
+      "name": "FlexRequirements",
+      "filePath": "src/components/servicios/flex/FlexRequirements.tsx",
+      "description": "Requisitos de embalaje, etiquetas QR y límites de peso/volumen aceptados",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card"
+      ]
+    },
+    {
+      "@id": "urn:enviosdosruedas:component:flex-pricing",
+      "@type": "WebUIElement",
+      "name": "FlexPricing",
+      "filePath": "src/components/servicios/flex/FlexPricing.tsx",
+      "description": "Estructura de precios según zonas tarifarias Flex aprobadas por MercadoLibre",
+      "referencesComponent": [
+        "urn:enviosdosruedas:component:atom:card",
+        "urn:enviosdosruedas:component:atom:button"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { X, CheckCircle2, Clock, ShieldCheck, Truck, MapPin, Package, FileText } from 'lucide-react';
 import { FICHA_TECNICA_CONTENT } from '@/content/quote';
 import { useModal } from '@/hooks/useModal';
@@ -59,14 +60,21 @@ export default function FichaTecnicaModal({
 
   const content = FICHA_TECNICA_CONTENT;
 
-  if (!isOpen) return null;
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in"
+    <AnimatePresence>
+    {isOpen && (
+    <motion.div
+      key="ficha-tecnica-backdrop"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.22 } }}
+      exit={{ opacity: 0, transition: { duration: 0.18, delay: 0.04 } }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
       onClick={handleBackdropClick}
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 28, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
+        exit={{ opacity: 0, y: 12, scale: 0.98, transition: { duration: 0.16, ease: [0.4, 0, 1, 1] } }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="ficha-modal-title"
@@ -156,8 +164,10 @@ export default function FichaTecnicaModal({
             {content.ctaButtonText}
           </Button>
         </footer>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+    )}
+    </AnimatePresence>
   );
 }
 

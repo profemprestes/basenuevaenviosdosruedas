@@ -1,3 +1,15 @@
 {
-  "buildPath": "code"
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "animate-bounce",
+        "createdAt": "2026-09-15T03:03:06.324Z",
+        "reason": "Claude triage: globals.css only lists .animate-bounce inside the prefers-reduced-motion rule that disables it (animation:none); no bounce easing is applied"
+      }
+    ]
+  }
 }

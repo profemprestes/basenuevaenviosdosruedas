@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Anton, Bebas_Neue, Outfit } from 'next/font/google';
 import './globals.css';
 import { SITE_CONFIG } from '@/content/site';
+import MotionProvider from '@/components/MotionProvider';
 
 const anton = Anton({
   weight: '400',
@@ -73,7 +74,7 @@ export default function RootLayout({
         >
           Saltar al contenido principal
         </a>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

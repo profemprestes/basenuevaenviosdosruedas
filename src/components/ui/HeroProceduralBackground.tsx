@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
 
 interface HeroProceduralBackgroundProps {
   variant?: 'express' | 'lowcost' | 'flex' | '3pl' | 'community' | 'contact' | 'default';
@@ -93,7 +92,6 @@ export default function HeroProceduralBackground({
             stroke="#FFEC01"
             strokeWidth="2.5"
             strokeDasharray="12 16"
-            className="animate-pulse"
           />
           <path
             d="M -100 300 Q 500 480 1000 250 T 1600 350"

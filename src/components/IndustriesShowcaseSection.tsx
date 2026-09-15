@@ -218,7 +218,9 @@ export default function IndustriesShowcaseSection({
         </div>
 
         {/* Main Showcase Card */}
-        <IndustryCard industry={currentItem} onOpenQuoteModal={onOpenQuoteModal} />
+        <div key={currentIndex} className="animate-in fade-in duration-300 ease-out-expo">
+          <IndustryCard industry={currentItem} onOpenQuoteModal={onOpenQuoteModal} />
+        </div>
 
         {/* Dots below card */}
         <div className="flex items-center justify-center gap-2 mt-8 pt-6 border-t border-blue-400/20">

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import HeroProceduralBackground from '@/components/ui/HeroProceduralBackground';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { Award, Star, ShieldCheck, Sparkles, MapPin, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 const REVIEWS = [
@@ -34,13 +34,24 @@ import { ArrowRight } from 'lucide-react';
 
 export default function AboutHero() {
   const [currentReview, setCurrentReview] = useState(0);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [isPageHidden, setIsPageHidden] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    const handleVisibility = () => setIsPageHidden(document.hidden);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  }, []);
+
+  // Auto-rotate reviews only while nobody is reading or interacting with them
+  useEffect(() => {
+    if (prefersReducedMotion || isInteracting || isPageHidden) return;
     const timer = setInterval(() => {
       setCurrentReview((prev) => (prev + 1) % REVIEWS.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [prefersReducedMotion, isInteracting, isPageHidden]);
 
   return (
     <section 
@@ -59,7 +70,7 @@ export default function AboutHero() {
           
           {/* Left Column: Copy Content (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 text-center lg:text-left space-y-6 sm:space-y-8"
@@ -144,7 +155,7 @@ export default function AboutHero() {
 
           {/* Right Column: Verified Reputation Card & Live Reviews Widget (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"
@@ -184,14 +195,22 @@ export default function AboutHero() {
                 </div>
 
                 {/* Live Google Reviews Carousel */}
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10 relative min-h-[140px] flex flex-col justify-between">
+                <div
+                  className="p-4 rounded-xl bg-white/5 border border-white/10 relative min-h-[140px] flex flex-col justify-between"
+                  onMouseEnter={() => setIsInteracting(true)}
+                  onMouseLeave={() => setIsInteracting(false)}
+                  onFocus={() => setIsInteracting(true)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setIsInteracting(false);
+                  }}
+                >
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentReview}
                       initial={{ opacity: 0, x: 12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -12 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ opacity: 0, x: -12, transition: { duration: 0.15 } }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="space-y-2"
                     >
                       <p className="font-sans text-xs sm:text-sm text-white/90 italic leading-relaxed">

@@ -67,7 +67,7 @@ export default function FaqHero() {
           
           {/* Left Column: Monumental Headline & Smart Search (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6 sm:space-y-8"
@@ -109,7 +109,7 @@ export default function FaqHero() {
                     <button
                       type="button"
                       onClick={() => setSearchQuery('')}
-                      className="min-w-[44px] min-h-[44px] flex items-center justify-center text-xs font-subheading uppercase text-brand-blue-400 hover:text-[#0950F6] px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0950F6]"
+                      className="animate-in fade-in zoom-in-95 duration-200 ease-out-expo min-w-[44px] min-h-[44px] flex items-center justify-center text-xs font-subheading uppercase text-brand-blue-400 hover:text-[#0950F6] px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0950F6]"
                     >
                       Limpiar
                     </button>
@@ -123,8 +123,8 @@ export default function FaqHero() {
                   <motion.div
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.2 }}
+                    exit={{ opacity: 0, y: -6, transition: { duration: 0.15 } }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-brand-blue-100 shadow-2xl p-3 z-30 space-y-1.5"
                   >
                     <span className="text-[10px] font-subheading uppercase tracking-wider text-brand-blue-400 font-bold px-2 block">
@@ -171,7 +171,7 @@ export default function FaqHero() {
 
           {/* Right Column: Floating "Respuesta Rápida" Accordion Card (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5"

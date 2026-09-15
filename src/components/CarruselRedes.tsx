@@ -126,10 +126,10 @@ export default function CarruselRedes() {
             return (
               <motion.div
                 key={net.id}
-                initial={{ opacity: 0, y: 35, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.6, delay: index * 0.15, ease: [0.215, 0.61, 0.355, 1] }}
+                transition={{ duration: 0.5, delay: Math.min(index * 0.06, 0.3), ease: [0.16, 1, 0.3, 1] }}
                 className={`social-block group relative rounded-3xl p-2 transition-all duration-300 border ${net.cardBorder} bg-midnight-abyss/85 backdrop-blur-md hover:-translate-y-1.5 shadow-2xl`}
               >
                 {/* Internal Glow on Hover */}

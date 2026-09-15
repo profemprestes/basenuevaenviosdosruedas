@@ -3,6 +3,7 @@
 import React from 'react';
 import { ArrowRight, Package, MapPin, FastForward, Zap, ShieldCheck, Sparkles } from 'lucide-react';
 import { HERO_CONTENT } from '@/content/home';
+import { useRouteRide } from '@/hooks/useRouteRide';
 
 interface HeroSectionProps {
   onOpenQuoteModal: () => void;
@@ -13,6 +14,7 @@ const HIGHLIGHT_ICONS = [Package, MapPin, FastForward];
 
 export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: HeroSectionProps) {
   const hero = HERO_CONTENT;
+  const { rootRef, trailRef, riderRef } = useRouteRide<HTMLDivElement>();
 
   return (
     <section
@@ -41,7 +43,7 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
             {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-md mb-6 animate-pulse">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F2E40A] text-[#002273] shadow-md mb-6">
               <Sparkles className="w-3.5 h-3.5 fill-[#002273] text-[#002273]" aria-hidden="true" />
               <span className="font-bebas text-sm sm:text-base tracking-wider uppercase font-bold">
                 {hero.topBadge}
@@ -108,7 +110,11 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
 
           {/* Right Column: Interactive Dispatch Visual Card */}
           <div className="lg:col-span-5 flex justify-center z-10">
-            <div className="w-full max-w-md bg-[#00277e]/90 border border-blue-400/30 rounded-[32px] p-4 sm:p-5 shadow-2xl backdrop-blur-md relative overflow-hidden group hover:border-blue-400/60 transition-all">
+            <div
+              ref={rootRef}
+              data-phase="arrived"
+              className="route-ride w-full max-w-md bg-[#00277e]/90 border border-blue-400/30 rounded-[32px] p-4 sm:p-5 shadow-2xl backdrop-blur-md relative overflow-hidden group hover:border-blue-400/60 transition-colors duration-300"
+            >
               {/* Card Header Bar */}
               <div className="flex items-center justify-between pb-3.5 border-b border-blue-400/20">
                 <div className="flex items-center gap-2">
@@ -154,23 +160,48 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                   <polygon points="120,115 150,100 180,115 150,130" fill="#3b82f6" />
 
                   <path
-                    d="M 60 110 Q 110 135 150 120 T 230 115"
-                    fill="none"
-                    stroke="#F2E40A"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    className="animate-pulse"
-                    filter="drop-shadow(0 0 8px #F2E40A)"
-                  />
-                  <path
                     d="M 150 120 L 150 160"
                     fill="none"
                     stroke="#F2E40A"
                     strokeWidth="3"
                     strokeDasharray="4 4"
+                    opacity="0.6"
                   />
 
-                  <circle cx="110" cy="125" r="5" fill="#FFFFFF" stroke="#F2E40A" strokeWidth="2" />
+                  {/* Planned route (static) */}
+                  <path
+                    d="M 60 110 Q 110 135 150 120 T 230 115"
+                    fill="none"
+                    stroke="#60a5fa"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeDasharray="3 6"
+                    opacity="0.55"
+                  />
+
+                  {/* Travelled trail: drawn behind the rider by useRouteRide */}
+                  <path
+                    ref={trailRef}
+                    d="M 60 110 Q 110 135 150 120 T 230 115"
+                    fill="none"
+                    stroke="#F2E40A"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    filter="drop-shadow(0 0 6px #F2E40A)"
+                  />
+
+                  {/* Origin */}
+                  <circle cx="60" cy="110" r="6" fill="#041b4d" stroke="#F2E40A" strokeWidth="2" />
+
+                  {/* Destination + arrival ring */}
+                  <circle className="route-dest-ring" cx="230" cy="115" r="7" fill="none" stroke="#34d399" strokeWidth="2" />
+                  <circle cx="230" cy="115" r="6" fill="#041b4d" stroke="#34d399" strokeWidth="2" />
+
+                  {/* Rider */}
+                  <g ref={riderRef} transform="translate(230 115)">
+                    <circle r="11" fill="#F2E40A" opacity="0.22" />
+                    <circle r="5" fill="#FFFFFF" stroke="#F2E40A" strokeWidth="2" />
+                  </g>
                 </svg>
 
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
@@ -191,8 +222,11 @@ export default function HeroSection({ onOpenQuoteModal, onScrollToServices }: He
                   </div>
                 </div>
 
-                <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-[#001742]/90 border border-[#F2E40A]/40 text-[#F2E40A] font-mono-data text-[11px] flex items-center gap-1.5 shadow-lg">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <div className="route-status absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-[#001742]/90 border border-[#F2E40A]/40 text-[#F2E40A] font-mono-data text-[11px] flex items-center gap-1.5 shadow-lg">
+                  <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+                    <span className="route-status-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  </span>
                   <span>{hero.cadeteStatus}</span>
                 </div>
               </div>

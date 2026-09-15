@@ -1,6 +1,23 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
+  /* Motion tokens */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-quick: cubic-bezier(0.4, 0, 1, 1);
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-pulse-subtle: pulse-subtle 2.4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-33.3333%); }
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.82; }
+  }
+
   --font-anton: var(--font-anton), 'Anton', Impact, sans-serif;
   --font-bebas: var(--font-bebas), 'Bebas Neue', sans-serif;
   --font-outfit: var(--font-outfit), 'Outfit', sans-serif;
@@ -94,6 +111,71 @@
 
 .glow-green {
   box-shadow: 0 0 20px -2px rgba(37, 211, 102, 0.45);
+}
+
+/* Route ride: dispatch visual driven by useRouteRide (data-phase = riding | arrived | reset) */
+.route-ride .route-dest-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.route-ride[data-phase="arrived"] .route-dest-ring {
+  animation: route-arrive 900ms var(--ease-out-expo) both;
+}
+
+.route-ride .route-status {
+  transition: border-color 300ms var(--ease-out-expo), color 300ms var(--ease-out-expo);
+}
+
+.route-ride[data-phase="arrived"] .route-status {
+  border-color: rgba(52, 211, 153, 0.7);
+}
+
+.route-ride .route-status-ping {
+  animation: route-beacon 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.route-ride[data-phase="arrived"] .route-status-ping,
+.route-ride[data-phase="reset"] .route-status-ping {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes route-arrive {
+  from { opacity: 0.9; transform: scale(0.5); }
+  to { opacity: 0; transform: scale(2.4); }
+}
+
+@keyframes route-beacon {
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Reduced motion: stop decorative loops and spatial travel, keep fades and state colour */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-ping,
+  .animate-pulse,
+  .animate-bounce,
+  .animate-marquee,
+  .animate-pulse-subtle,
+  .route-ride .route-status-ping,
+  .route-ride .route-dest-ring {
+    animation: none !important;
+  }
+
+  .animate-in,
+  .animate-out {
+    --tw-enter-translate-x: 0 !important;
+    --tw-enter-translate-y: 0 !important;
+    --tw-exit-translate-x: 0 !important;
+    --tw-exit-translate-y: 0 !important;
+    --tw-enter-scale: 1 !important;
+    --tw-exit-scale: 1 !important;
+  }
 }
 
 /* Custom scrollbar */

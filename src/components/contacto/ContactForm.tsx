@@ -75,7 +75,7 @@ export default function ContactForm() {
 
               {/* SLA Badge */}
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF12E]/15 border border-[#FFF12E]/40 text-[#FFF12E] text-xs font-mono font-bold uppercase tracking-wider tabular-nums">
-                <Clock className="w-3.5 h-3.5 text-[#FFF12E] animate-pulse" />
+                <Clock className="w-3.5 h-3.5 text-[#FFF12E]" />
                 Atención comercial &lt; 2 MIN
               </span>
             </div>
@@ -94,8 +94,8 @@ export default function ContactForm() {
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="py-8 text-center space-y-5"
               >
                 <div className="w-16 h-16 rounded-full bg-[#FFF12E] text-[#0950F6] mx-auto flex items-center justify-center shadow-glow-yellow">
@@ -124,11 +124,12 @@ export default function ContactForm() {
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="space-y-5"
               >
                 {status === 'error' && (
-                  <div className="p-3.5 bg-red-500/20 border border-red-500/40 rounded-xl flex items-center gap-3 text-red-200 text-xs font-sans">
+                  <div className="animate-in fade-in slide-in-from-top-1 duration-200 ease-out-expo p-3.5 bg-red-500/20 border border-red-500/40 rounded-xl flex items-center gap-3 text-red-200 text-xs font-sans">
                     <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                     <span>Por favor, ingresá tu nombre para iniciar el contacto.</span>
                   </div>

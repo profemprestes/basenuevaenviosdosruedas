@@ -269,7 +269,10 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Testimonial Cards Carousel Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch mb-12">
+        <div
+          key={`${activeCategory}-${startIndex}`}
+          className="animate-in fade-in duration-300 ease-out-expo grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch mb-12"
+        >
           {displayedReviews.map((rev) => (
             <ReviewCard key={rev.id} rev={rev} />
           ))}

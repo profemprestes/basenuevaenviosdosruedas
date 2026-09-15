@@ -34,22 +34,17 @@ export function Sparkles({
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationFrameId: number;
-    let width = (canvas.width = containerRef.current?.offsetWidth || 800);
-    let height = (canvas.height = containerRef.current?.offsetHeight || 600);
-
-    const handleResize = () => {
-      if (containerRef.current && canvas) {
-        width = canvas.width = containerRef.current.offsetWidth;
-        height = canvas.height = containerRef.current.offsetHeight;
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
+    let animationFrameId = 0;
+    let running = false;
+    let inView = false;
+    let width = (canvas.width = container.offsetWidth || 800);
+    let height = (canvas.height = container.offsetHeight || 600);
+    const reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const count = Math.min(Math.floor(density / 6), 120);
     const particles = Array.from({ length: count }, () => {
@@ -66,9 +61,19 @@ export function Sparkles({
       };
     });
 
-    const render = () => {
+    const draw = () => {
       ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        ctx.fillStyle = color;
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.alpha));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
 
+    const step = () => {
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.y -= p.speedY;
@@ -85,22 +90,61 @@ export function Sparkles({
         }
         if (p.x < 0) p.x = width;
         if (p.x > width) p.x = 0;
-
-        ctx.fillStyle = color;
-        ctx.globalAlpha = Math.max(0, Math.min(1, p.alpha));
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
       }
-
-      animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    const loop = () => {
+      step();
+      draw();
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    const start = () => {
+      if (running) return;
+      running = true;
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    const stop = () => {
+      if (!running) return;
+      running = false;
+      cancelAnimationFrame(animationFrameId);
+    };
+
+    // Reduced motion: one static frame. Otherwise loop only while visible and the tab is active.
+    const sync = () => {
+      if (reduceQuery.matches) {
+        stop();
+        draw();
+        return;
+      }
+      if (inView && !document.hidden) start();
+      else stop();
+    };
+
+    const handleResize = () => {
+      width = canvas.width = container.offsetWidth;
+      height = canvas.height = container.offsetHeight;
+      if (!running) draw();
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      sync();
+    });
+
+    draw();
+    observer.observe(container);
+    window.addEventListener("resize", handleResize);
+    document.addEventListener("visibilitychange", sync);
+    reduceQuery.addEventListener("change", sync);
 
     return () => {
+      stop();
+      observer.disconnect();
       window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
+      document.removeEventListener("visibilitychange", sync);
+      reduceQuery.removeEventListener("change", sync);
     };
   }, [density, size, minSize, speed, minSpeed, opacity, color]);
 

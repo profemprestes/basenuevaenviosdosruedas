@@ -33,16 +33,7 @@ export default function ExpressFeatures() {
       id="express-features"
       className="py-24 bg-[#F8FAFC] relative z-10 overflow-hidden border-t border-brand-blue-100"
     >
-      <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{
-          hidden: { opacity: 0, y: 30 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
-        }}
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Header Segment */}
@@ -74,10 +65,10 @@ export default function ExpressFeatures() {
               return (
                 <motion.div
                   key={feat.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1, duration: 0.5, ease: "easeOut" }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: Math.min(idx * 0.06, 0.3), ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -4 }}
                   className="bg-brand-blue-50/80 border border-brand-blue-100 p-2 rounded-[28px] shadow-float hover:shadow-antigravity-deep hover:border-brand-blue-300 transition-all duration-300 flex flex-col group cursor-default relative overflow-hidden"
                 >
@@ -103,7 +94,7 @@ export default function ExpressFeatures() {
           </div>
 
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

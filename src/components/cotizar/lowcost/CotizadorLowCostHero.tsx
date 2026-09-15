@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView, useReducedMotion } from 'motion/react';
 import {
   ShoppingBag,
   Percent,
@@ -40,18 +40,31 @@ const SIMULATED_LOWCOST_TRIPS = [
 
 export default function CotizadorLowCostHero() {
   const [tripIndex, setTripIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { amount: 0.2 });
+  const prefersReducedMotion = useReducedMotion();
+  const [isPageHidden, setIsPageHidden] = useState(false);
 
   useEffect(() => {
+    const handleVisibility = () => setIsPageHidden(document.hidden);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  }, []);
+
+  // Cycle simulated trips only while the hero is visible and motion is welcome
+  useEffect(() => {
+    if (!isInView || isPageHidden || prefersReducedMotion) return;
     const interval = setInterval(() => {
       setTripIndex((prev) => (prev + 1) % SIMULATED_LOWCOST_TRIPS.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isInView, isPageHidden, prefersReducedMotion]);
 
   const currentTrip = SIMULATED_LOWCOST_TRIPS[tripIndex];
 
   return (
     <section
+      ref={sectionRef}
       id="cotizador-lowcost-hero"
       className="relative w-full overflow-hidden bg-[#0950F6] text-white min-h-[72vh] flex items-center pt-24 pb-16 lg:pt-28 lg:pb-20 border-b border-white/10"
     >
@@ -63,7 +76,7 @@ export default function CotizadorLowCostHero() {
           
           {/* LEFT COLUMN: Headline & Value Proposition (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
@@ -140,8 +153,8 @@ export default function CotizadorLowCostHero() {
                     key={tripIndex}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.25 }}
+                    exit={{ opacity: 0, y: -6, transition: { duration: 0.15 } }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                     className="space-y-4"
                   >
                     {/* ORIGEN */}

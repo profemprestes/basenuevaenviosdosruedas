@@ -55,7 +55,8 @@ export default function NewsletterSubscribe() {
                     className="flex flex-col sm:flex-row gap-3 w-full"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <input
                       type="email"
@@ -81,7 +82,8 @@ export default function NewsletterSubscribe() {
                     className="py-4 text-center space-y-3 flex flex-col items-center justify-center"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3 }}
+                    exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <div className="p-2.5 bg-brand-blue-50 border border-brand-blue-100 text-brand-blue-700 rounded-full w-fit">
                       <CheckCircle2 className="h-6 w-6 text-[#0950F6]" />

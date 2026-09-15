@@ -87,7 +87,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         </div>
 
         {error ? (
-          <p className="font-mono text-[10px] text-red-500 font-medium">{error}</p>
+          <p className="animate-in fade-in slide-in-from-top-1 duration-200 ease-out-expo font-mono text-[10px] text-red-500 font-medium">{error}</p>
         ) : helpText ? (
           <p className="font-mono text-[10px] text-brand-blue-400">{helpText}</p>
         ) : null}

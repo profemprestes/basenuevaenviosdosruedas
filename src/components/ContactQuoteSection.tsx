@@ -102,7 +102,7 @@ export default function ContactQuoteSection() {
                   {submitted && (
                     <div
                       aria-live="polite"
-                      className="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-emerald-800 text-xs font-outfit"
+                      className="animate-in fade-in zoom-in-95 duration-300 ease-out-expo mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2 text-emerald-800 text-xs font-outfit"
                     >
                       <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" aria-hidden="true" />
                       <span>{content.successMessage}</span>

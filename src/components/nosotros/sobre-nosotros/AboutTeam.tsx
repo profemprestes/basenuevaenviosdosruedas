@@ -68,10 +68,10 @@ export default function AboutTeam() {
             return (
               <motion.div
                 key={stat.role}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.08 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: Math.min(idx * 0.06, 0.3) }}
                 className="rounded-[28px] bg-white/10 backdrop-blur-md border border-white/20 p-2 shadow-2xl"
               >
                 <div className="rounded-[20px] bg-[#052C87] p-6 border border-white/10 shadow-sm flex flex-col justify-between h-full text-white space-y-5 relative overflow-hidden">

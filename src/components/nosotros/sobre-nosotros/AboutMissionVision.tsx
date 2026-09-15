@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
 import { Target, Eye, Rocket, ArrowRight, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -30,11 +29,7 @@ export default function AboutMissionVision() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
 
           {/* Card 1: Nuestra Misión (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="lg:col-span-7 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col justify-between h-full text-brand-blue-700 space-y-6">
@@ -57,14 +52,10 @@ export default function AboutMissionVision() {
                 <span>COMPROMISO OPERATIVO PERMANENTE</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Card 2: Nuestra Visión (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          <div
             className="lg:col-span-5 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col justify-between h-full text-brand-blue-700 space-y-6">
@@ -87,14 +78,10 @@ export default function AboutMissionVision() {
                 <span>VISIÓN DE FUTURO 2026</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Card 3: Compromiso e Innovación CTA (12 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
             className="lg:col-span-12 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
           >
             <div className="rounded-[20px] bg-[#052C87] p-6 sm:p-8 border border-white/10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6 text-white">
@@ -130,7 +117,7 @@ export default function AboutMissionVision() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 

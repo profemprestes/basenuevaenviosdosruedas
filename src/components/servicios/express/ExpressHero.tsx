@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import HeroProceduralBackground from '@/components/ui/HeroProceduralBackground';
 import { motion } from 'motion/react';
+import { useRouteRide } from '@/hooks/useRouteRide';
 import {
   ArrowRight,
   Phone,
@@ -11,6 +12,7 @@ import {
 } from 'lucide-react';
 
 export default function ExpressHero() {
+  const { rootRef, trailRef, riderRef } = useRouteRide<HTMLDivElement>();
 
   return (
     <section
@@ -35,7 +37,7 @@ export default function ExpressHero() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="-rotate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-subheading font-bold uppercase tracking-widest bg-dark-blue border border-signal-yellow/30 text-signal-yellow shadow-glow-yellow"
             >
               <Zap className="h-4 w-4 text-signal-yellow shrink-0" />
@@ -120,7 +122,11 @@ export default function ExpressHero() {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FFF12E]/20 via-[#0950F6]/30 to-[#FFF12E]/10 rounded-[32px] blur-2xl pointer-events-none" />
 
             {/* Double Bezel System: outer rounded-[28px], inner rounded-[20px] */}
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 p-2.5 rounded-[28px] shadow-2xl relative z-10">
+            <div
+              ref={rootRef}
+              data-phase="arrived"
+              className="route-ride w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 p-2.5 rounded-[28px] shadow-2xl relative z-10"
+            >
               <div className="bg-[#052C87] text-white p-6 sm:p-7 rounded-[20px] border border-white/10 relative overflow-hidden space-y-6">
                 {/* Background Radar Watermark Icon */}
                 <Zap className="absolute -bottom-6 -right-6 h-48 w-48 text-white/[0.04] pointer-events-none select-none" />
@@ -155,38 +161,29 @@ export default function ExpressHero() {
                         strokeLinecap="round"
                         opacity="0.35"
                       />
-                      {/* Active Route Pulse Stroke */}
+                      {/* Travelled trail: drawn behind the rider by useRouteRide */}
                       <path
+                        ref={trailRef}
                         d="M 25 50 C 85 15, 140 85, 215 40 L 295 50"
                         stroke="#FFEC01"
                         strokeWidth="3.5"
                         strokeLinecap="round"
-                        strokeDasharray="8 8"
-                        className="animate-pulse"
                       />
 
                       {/* Origin Beacon */}
                       <circle cx="25" cy="50" r="9" fill="#0636A5" stroke="#FFFFFF" strokeWidth="2" />
                       <circle cx="25" cy="50" r="3.5" fill="#FFEC01" />
 
-                      {/* Moving Rider Beacon */}
-                      <motion.circle
-                        r="6"
-                        fill="#FFEC01"
-                        animate={{
-                          cx: [25, 75, 140, 215, 295],
-                          cy: [50, 25, 75, 40, 50],
-                        }}
-                        transition={{
-                          duration: 3.5,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }}
-                      />
-
-                      {/* Destination Beacon */}
+                      {/* Destination Beacon + arrival ring */}
+                      <circle className="route-dest-ring" cx="295" cy="50" r="9" fill="none" stroke="#34d399" strokeWidth="2" />
                       <circle cx="295" cy="50" r="9" fill="#0636A5" stroke="#FFFFFF" strokeWidth="2" />
                       <circle cx="295" cy="50" r="3.5" fill="#FFEC01" />
+
+                      {/* Rider */}
+                      <g ref={riderRef} transform="translate(295 50)">
+                        <circle r="12" fill="#FFEC01" opacity="0.22" />
+                        <circle r="6" fill="#FFEC01" stroke="#052C87" strokeWidth="1.5" />
+                      </g>
                     </svg>
 
                     {/* Telemetry Labels */}

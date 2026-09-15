@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import HeroProceduralBackground from '@/components/ui/HeroProceduralBackground';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, MapPin, Send, CheckCircle2, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 
 const CHANNELS = [
@@ -60,7 +60,7 @@ export default function ContactHero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Headline & Channels (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-8"
@@ -74,33 +74,24 @@ export default function ContactHero() {
             </div>
 
             {/* Monumental Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            <h1
               className="font-display uppercase tracking-tight leading-[0.98] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white"
             >
               ¿Hablamos<br />
               <span className="italic text-[#FFF12E] drop-shadow-[0_2px_16px_rgba(255,241,46,0.4)]">
                 ahora?
               </span>
-            </motion.h1>
+            </h1>
 
             {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            <p
               className="max-w-xl font-sans leading-relaxed text-lg sm:text-xl text-white/90"
             >
               Sin formularios complejos ni esperas. Elegí el canal que mejor se adapte al ritmo de tu e-commerce.
-            </motion.p>
+            </p>
 
             {/* Office Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            <div
               className="flex flex-wrap gap-8 pt-6 border-t border-white/20"
             >
               <div className="grid gap-1">
@@ -119,12 +110,12 @@ export default function ContactHero() {
                   Lunes a Sábado · Turnos 2026
                 </span>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Column: Contact Channel Cards (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-4 sm:space-y-5"
@@ -159,11 +150,7 @@ export default function ContactHero() {
         </div>
 
         {/* Bottom Section: "Pedí un plan a medida" */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        <div
           className="pt-12 sm:pt-16 border-t border-white/20"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -239,10 +226,13 @@ export default function ContactHero() {
                 {/* Accent line top */}
                 <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#0950F6] via-white to-[#FFF12E]" />
 
+                <AnimatePresence mode="wait" initial={false}>
                 {submitted ? (
                   <motion.div
+                    key="plan-success"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="py-10 text-center space-y-4"
                   >
                     <div className="w-14 h-14 rounded-full bg-[#FFF12E] text-[#0950F6] mx-auto flex items-center justify-center shadow-glow-yellow">
@@ -267,7 +257,12 @@ export default function ContactHero() {
                     </a>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4 pt-2">
+                  <motion.form
+                    key="plan-form"
+                    onSubmit={handleSubmit}
+                    exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                    className="space-y-4 pt-2"
+                  >
                     <div>
                       <span className="font-subheading text-xs uppercase tracking-wider text-[#FFF12E] font-bold block">
                         COTIZACIÓN INMEDIATA
@@ -352,12 +347,13 @@ export default function ContactHero() {
                     <p className="text-center font-sans text-xs text-white/60 pt-1">
                       Atención comercial directa en Mar del Plata · Sin costos de apertura de cuenta
                     </p>
-                  </form>
+                  </motion.form>
                 )}
+                </AnimatePresence>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

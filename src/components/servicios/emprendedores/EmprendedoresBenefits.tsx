@@ -40,16 +40,7 @@ export default function EmprendedoresBenefits() {
       id="emprendedores-benefits" 
       className="py-24 bg-[#052C87] relative z-10 overflow-hidden border-t border-b border-white/10 text-white"
     >
-      <motion.div 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{
-          hidden: { opacity: 0, y: 40 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-        }}
-      >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Block */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -75,11 +66,11 @@ export default function EmprendedoresBenefits() {
             return (
               <motion.div
                 key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -5, x: 2 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: Math.min(idx * 0.06, 0.3), ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
                 className={`${spanClass} bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-[28px] shadow-float hover:shadow-antigravity-deep transition-all duration-300 flex flex-col justify-between text-left group relative overflow-hidden`}
               >
                 <div className="bg-white p-8 rounded-[20px] h-full space-y-5 text-[#052C87] relative overflow-hidden">
@@ -103,7 +94,7 @@ export default function EmprendedoresBenefits() {
           })}
         </div>
 
-      </motion.div>
+      </div>
     </section>
   );
 }

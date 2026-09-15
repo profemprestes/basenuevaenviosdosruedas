@@ -42,7 +42,7 @@ export default function LowCostHero() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="rotate-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-subheading font-bold uppercase tracking-widest bg-dark-blue border border-signal-yellow/30 text-signal-yellow shadow-glow-yellow"
             >
               <TrendingDown className="h-4 w-4 text-signal-yellow shrink-0" />

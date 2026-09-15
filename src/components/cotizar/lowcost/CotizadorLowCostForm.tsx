@@ -204,7 +204,7 @@ export default function CotizadorLowCostForm({ priceRanges = [] }: { priceRanges
               </div>
 
               {error && (
-                <div className="bg-red-500/20 text-red-200 border border-red-500/40 text-xs px-4 py-3 rounded-xl flex items-center gap-2 font-sans font-medium">
+                <div className="animate-in fade-in slide-in-from-top-1 duration-200 ease-out-expo bg-red-500/20 text-red-200 border border-red-500/40 text-xs px-4 py-3 rounded-xl flex items-center gap-2 font-sans font-medium">
                   <AlertTriangle className="h-4 w-4 text-red-400 shrink-0" />
                   <span>{error}</span>
                 </div>
@@ -247,7 +247,8 @@ export default function CotizadorLowCostForm({ priceRanges = [] }: { priceRanges
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
+                  exit={{ opacity: 0, y: 10, transition: { duration: 0.15 } }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   className="rounded-[20px] bg-white/10 backdrop-blur-md border border-white/20 p-2 shadow-xl w-full"
                 >
                   <div className="bg-[#052C87] p-5 rounded-xl border border-white/10 space-y-4 text-white">

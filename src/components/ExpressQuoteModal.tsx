@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { X, MapPin, Calculator, Package, MessageCircle } from 'lucide-react';
 import { useQuoteCalculator } from '@/hooks/useQuoteCalculator';
 import { useModal } from '@/hooks/useModal';
@@ -28,7 +29,8 @@ function ServiceOptionButton({ option, isActive, onClick }: ServiceOptionButtonP
       onClick={onClick}
       aria-pressed={isActive}
       className={cn(
-        'p-3 rounded-2xl border text-center transition font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer',
+        'p-3 rounded-2xl border text-center font-bebas text-sm uppercase focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer',
+        'transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out-expo active:scale-[0.96]',
         isActive
           ? option.id === 'flex'
             ? 'bg-[#F2E40A] text-[#002273] border-[#F2E40A] shadow font-bold'
@@ -55,6 +57,7 @@ function WeightOptionButton({ option, isActive, onClick }: WeightOptionButtonPro
       aria-pressed={isActive}
       className={cn(
         'p-2.5 rounded-xl border text-center font-outfit text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-[#0C59F2] cursor-pointer',
+        'transition-[background-color,border-color,color,transform] duration-200 ease-out-expo active:scale-[0.96]',
         isActive
           ? 'bg-blue-50 border-[#0C59F2] text-[#0C59F2]'
           : 'bg-white border-slate-200 text-slate-600'
@@ -101,14 +104,21 @@ export default function ExpressQuoteModal({
     }
   }, [preselectedService, setService]);
 
-  if (!isOpen) return null;
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in"
+    <AnimatePresence>
+    {isOpen && (
+    <motion.div
+      key="express-quote-backdrop"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.22 } }}
+      exit={{ opacity: 0, transition: { duration: 0.18, delay: 0.04 } }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
       onClick={handleBackdropClick}
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 28, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
+        exit={{ opacity: 0, y: 12, scale: 0.98, transition: { duration: 0.16, ease: [0.4, 0, 1, 1] } }}
         role="dialog"
         aria-modal="true"
         aria-labelledby="express-modal-title"
@@ -234,8 +244,18 @@ export default function ExpressQuoteModal({
               <Badge variant="blue-dark" className="text-xs mb-1 block">
                 {content.tariffBadge}
               </Badge>
-              <div className="font-anton text-3xl sm:text-4xl text-[#F2E40A] leading-none mt-0.5">
-                ${totalPrice.toLocaleString('es-AR')}
+              <div className="font-anton text-3xl sm:text-4xl text-[#F2E40A] leading-none mt-0.5 tabular-nums">
+                <span className="inline-flex overflow-hidden align-bottom">
+                  <motion.span
+                    key={totalPrice}
+                    initial={{ y: '55%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    className="inline-block"
+                  >
+                    ${totalPrice.toLocaleString('es-AR')}
+                  </motion.span>
+                </span>
                 <span className="text-xs text-blue-200 font-outfit font-normal ml-1.5">
                   {content.currencySuffix}
                 </span>
@@ -277,7 +297,9 @@ export default function ExpressQuoteModal({
             </a>
           </div>
         </footer>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+    )}
+    </AnimatePresence>
   );
 }

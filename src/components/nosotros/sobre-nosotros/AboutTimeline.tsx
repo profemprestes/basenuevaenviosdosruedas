@@ -92,10 +92,10 @@ export default function AboutTimeline() {
 
                   {/* Card Content Column - Double Bezel */}
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.45 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full sm:w-[45%] rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
                   >
                     <div className="rounded-[20px] bg-white p-5 sm:p-6 border border-brand-blue-50/50 shadow-sm text-brand-blue-700 flex flex-col space-y-2">

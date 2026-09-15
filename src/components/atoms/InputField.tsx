@@ -65,7 +65,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           />
         </div>
         {error && (
-          <p id={errorId} className="mt-1.5 text-sm text-red-600 font-outfit" role="alert">
+          <p id={errorId} className="animate-in fade-in slide-in-from-top-1 duration-200 ease-out-expo mt-1.5 text-sm text-red-600 font-outfit" role="alert">
             {error}
           </p>
         )}

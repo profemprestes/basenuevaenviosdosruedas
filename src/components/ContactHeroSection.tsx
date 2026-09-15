@@ -1,12 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { MessageCircle, Phone, Mail, ArrowRight, Sparkles, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { CONTACT_HERO_CONTENT } from '@/content/quote';
 import { Badge, Button } from '@/components/atoms';
 import { cn } from '@/lib/utils';
+
+/** Gentle hover float for the product shot; only runs while visible and when motion is welcome. */
+function FloatingProduct({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+  const prefersReducedMotion = useReducedMotion();
+  const shouldFloat = isInView && !prefersReducedMotion;
+
+  return (
+    <motion.div
+      ref={ref}
+      animate={shouldFloat ? { y: [-5, 5, -5] } : { y: 0 }}
+      transition={shouldFloat ? { repeat: Infinity, duration: 4.5, ease: 'easeInOut' } : { duration: 0.3 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 const ICON_MAP = {
   MessageCircle,
@@ -133,9 +152,9 @@ export default function ContactHeroSection() {
           {/* Right Column: High-Impact 3D Box Packaging Visual */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full max-w-[420px] aspect-square flex items-center justify-center"
             >
               {/* Decorative Brand Framing Rings */}
@@ -143,9 +162,7 @@ export default function ContactHeroSection() {
               <div className="absolute inset-0 rounded-[36px] bg-gradient-to-b from-[#00277e]/5 to-transparent border border-blue-200/50 pointer-events-none" />
 
               {/* Floating Box Image with subtle hovering physics */}
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
+              <FloatingProduct
                 className="relative z-10 w-[88%] h-[88%] flex items-center justify-center drop-shadow-2xl"
               >
                 <Image
@@ -156,7 +173,7 @@ export default function ContactHeroSection() {
                   priority
                   className="w-full h-full object-contain filter drop-shadow-xl"
                 />
-              </motion.div>
+              </FloatingProduct>
 
               {/* Floating Badge Indicator: Base Central */}
               <div className="absolute -bottom-2 -left-2 sm:bottom-4 sm:left-2 z-20 px-4 py-2.5 rounded-2xl bg-[#002273] text-white border-2 border-[#F2E40A] shadow-xl flex items-center gap-2.5">

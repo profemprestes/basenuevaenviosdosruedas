@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function NetworksChannels() {
@@ -13,15 +12,8 @@ export default function NetworksChannels() {
     >
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-yellow-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <motion.div
+      <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{
-          hidden: { opacity: 0, y: 40 },
-          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-        }}
       >
 
         {/* Header Block */}
@@ -42,10 +34,7 @@ export default function NetworksChannels() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
           {/* WhatsApp: Full width 12 columns (Main Call Channel con #25D366 exclusivo para soporte directo) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+          <div
             className="lg:col-span-12 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal hover:shadow-lg transition-all"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-brand-blue">
@@ -87,14 +76,10 @@ export default function NetworksChannels() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Instagram: 6 columns */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          <div
             className="lg:col-span-6 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal hover:shadow-lg transition-all"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col justify-between h-full text-brand-blue min-h-[340px]">
@@ -139,14 +124,10 @@ export default function NetworksChannels() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Facebook: 6 columns (Utilizando Social Facebook Blue #1877F2 para badge/acento) */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
             className="lg:col-span-6 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal hover:shadow-lg transition-all"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col justify-between h-full text-brand-blue min-h-[340px]">
@@ -191,11 +172,11 @@ export default function NetworksChannels() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 
-      </motion.div>
+      </div>
     </section>
   );
 }

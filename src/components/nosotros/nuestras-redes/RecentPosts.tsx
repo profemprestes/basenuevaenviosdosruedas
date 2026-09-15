@@ -120,10 +120,10 @@ export default function RecentPosts() {
             return (
               <motion.div
                 key={post.url}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: Math.min(idx * 0.06, 0.3) }}
                 className={`rounded-[28px] bg-white/10 backdrop-blur-md border border-white/20 p-2 shadow-2xl flex flex-col justify-between ${
                   isFeatured ? 'md:col-span-12 lg:col-span-8' : 'md:col-span-6 lg:col-span-4'
                 }`}

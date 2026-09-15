@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
 import { MessageSquare, ShieldCheck, Truck, Sparkles, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -33,11 +32,7 @@ export default function AboutAdvantages() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           
           {/* Card 1: Soporte Humano Directo (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="lg:col-span-7 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col justify-between h-full text-brand-blue-700 space-y-6">
@@ -57,14 +52,10 @@ export default function AboutAdvantages() {
                 <span>COMUNICACIÓN DIRECTA VÍA WHATSAPP</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Card 2: Flota Propia Coordinada (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          <div
             className="lg:col-span-5 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col justify-between h-full text-brand-blue-700 space-y-6">
@@ -80,18 +71,14 @@ export default function AboutAdvantages() {
                 </p>
               </div>
               <div className="pt-4 border-t border-brand-blue-50 flex items-center gap-2 text-xs font-subheading font-bold uppercase tracking-wider text-[#0950F6]">
-                <Sparkles className="h-4 w-4 text-brand-yellow-500 fill-brand-yellow-500 animate-pulse" />
+                <Sparkles className="h-4 w-4 text-brand-yellow-500 fill-brand-yellow-500" />
                 <span>COBERTURA TOTAL GENERAL PUEYRREDÓN</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Card 3: Garantía de Puntualidad (12 cols full width) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
             className="lg:col-span-12 rounded-[28px] bg-brand-blue-50/80 border border-brand-blue-100 p-2 shadow-minimal"
           >
             <div className="rounded-[20px] bg-white p-6 sm:p-8 border border-brand-blue-50/50 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -120,7 +107,7 @@ export default function AboutAdvantages() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 

@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { motion, type Transition, type Variants } from "motion/react"
+import { motion, useInView, type Transition, type Variants } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface TextProps {
@@ -130,11 +130,14 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
       reset: () => setIsAnimating(false),
     }))
 
+    // autoStart begins the reveal once the text scrolls into view, not on mount offscreen.
+    const isInView = useInView(containerRef, { once: true, amount: 0.4 })
+
     useEffect(() => {
-      if (autoStart) {
+      if (autoStart && isInView) {
         startAnimation()
       }
-    }, [autoStart, startAnimation])
+    }, [autoStart, isInView, startAnimation])
 
     const variants: Variants = {
       hidden: { y: reverse ? "-100%" : "100%" },

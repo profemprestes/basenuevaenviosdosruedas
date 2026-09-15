@@ -88,14 +88,14 @@ export default function NetworksHero() {
           
           {/* Left Column: Headline & Channel Cards (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left"
           >
             {/* Speed Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-yellow-500/40 bg-[#052C87]/90 text-brand-yellow-500 text-xs sm:text-sm font-subheading uppercase tracking-widest shadow-md backdrop-blur-md transform -rotate-1">
-              <Share2 className="h-4 w-4 text-brand-yellow-500 animate-pulse shrink-0" />
+              <Share2 className="h-4 w-4 text-brand-yellow-500 shrink-0" />
               <span>COMUNIDAD EN MOVIMIENTO · SOCIAL MEDIA 2026</span>
             </div>
 
@@ -135,7 +135,6 @@ export default function NetworksHero() {
                               {ch.name}
                             </span>
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-yellow-50 text-[10px] font-subheading font-bold uppercase text-brand-blue-900 border border-brand-yellow-200 transform -rotate-1">
-                              <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow-500 animate-pulse" />
                               {ch.badge}
                             </span>
                           </div>
@@ -158,7 +157,7 @@ export default function NetworksHero() {
 
           {/* Right Column: Floating Social Proof & Live Follower Widget (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative"

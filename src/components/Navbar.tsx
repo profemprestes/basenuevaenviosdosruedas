@@ -82,7 +82,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
               <div
                 id="services-menu-dropdown"
                 onMouseLeave={() => setServicesDropdown(false)}
-                className="absolute left-0 mt-1 w-64 bg-[#002273] border border-blue-400/30 rounded-2xl shadow-2xl p-2 text-white z-50 animate-in fade-in slide-in-from-top-2"
+                className="absolute left-0 mt-1 w-64 bg-[#002273] border border-blue-400/30 rounded-2xl shadow-2xl p-2 text-white z-50 origin-top animate-in fade-in slide-in-from-top-2 zoom-in-[0.98] duration-200 ease-out-expo"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="nav-servicios"
@@ -185,7 +185,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
         <nav
           id="mobile-navigation-drawer"
           aria-label="Navegación móvil"
-          className="md:hidden bg-[#002273] border-b border-blue-400/30 px-5 pt-3 pb-6 space-y-3"
+          className="md:hidden bg-[#002273] border-b border-blue-400/30 px-5 pt-3 pb-6 space-y-3 animate-in fade-in slide-in-from-top-3 duration-300 ease-out-expo"
         >
           <button
             type="button"

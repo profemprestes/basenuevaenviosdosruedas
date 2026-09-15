@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'motion/react';
 import { ShieldCheck, Handshake, Heart } from 'lucide-react';
 
 export default function AboutValues() {
@@ -52,11 +51,7 @@ export default function AboutValues() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Featured Value (Cuidado Extremo) - 7 cols */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
             className="lg:col-span-7 rounded-[28px] bg-white/10 backdrop-blur-md border border-white/20 p-2 shadow-2xl"
           >
             <div className="rounded-[20px] bg-white p-7 sm:p-10 border border-brand-blue-50/50 shadow-sm flex flex-col gap-6 text-brand-blue-700 h-full justify-between">
@@ -76,7 +71,7 @@ export default function AboutValues() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Secondary Values - 5 cols */}
           <div className="lg:col-span-5 flex flex-col gap-6">
@@ -85,12 +80,8 @@ export default function AboutValues() {
               .map((val, idx) => {
                 const Icon = val.icon;
                 return (
-                  <motion.div
+                  <div
                     key={val.title}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: (idx + 1) * 0.1 }}
                     className="rounded-[28px] bg-white/10 backdrop-blur-md border border-white/20 p-2 shadow-2xl flex-1"
                   >
                     <div className="rounded-[20px] bg-white p-6 sm:p-7 border border-brand-blue-50/50 shadow-sm flex flex-col gap-4 text-brand-blue-700 h-full justify-between">
@@ -107,7 +98,7 @@ export default function AboutValues() {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
           </div>

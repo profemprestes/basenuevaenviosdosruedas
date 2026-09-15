@@ -58,7 +58,7 @@ export default function ExpressPricing() {
       transition: {
         delay: Math.min(i * 0.06, 0.36),
         duration: 0.55,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     }),
     hidden: {

@@ -33,13 +33,13 @@ export const timelineVariants = {
   /** Blur reveal — cinematic, for headlines */
   blurIn: {
     hidden:  { opacity: 0, y: 20, filter: 'blur(12px)' },
-    visible: { opacity: 1, y: 0,  filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] } },
+    visible: { opacity: 1, y: 0,  filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const } },
   } as Variants,
 
   /** Clip reveal from bottom — editorial feel */
   clipUp: {
     hidden:  { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
-    visible: { clipPath: 'inset(0% 0 0 0)',   opacity: 1, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } },
+    visible: { clipPath: 'inset(0% 0 0 0)',   opacity: 1, transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } },
   } as Variants,
 
   /** Stagger container — apply to parent for child stagger */

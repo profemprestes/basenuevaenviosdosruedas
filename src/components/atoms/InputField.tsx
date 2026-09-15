@@ -37,7 +37,7 @@ export const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         >
           {label}
           {required && (
-            <span className="text-[#F2E40A] ml-1" aria-hidden="true">*</span>
+            <span className="text-red-500 font-bold ml-1" aria-hidden="true" title="Campo obligatorio">*</span>
           )}
         </label>
         <div className="relative">

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Zap, ChevronLeft, ChevronRight, Truck, Info, Clock, DollarSign, ArrowRight } from 'lucide-react';
+import { Zap, ChevronLeft, ChevronRight, Truck, Info, Clock, DollarSign, ArrowRight, MapPin } from 'lucide-react';
 import { LOGISTICS_SERVICES, SERVICES_SECTION_CONTENT, type LogisticsServiceItem } from '@/content/services';
 import { useCarousel } from '@/hooks/useCarousel';
 import { Badge, Button, Card, IconBadge } from '@/components/atoms';
@@ -96,7 +96,7 @@ function ServiceCard({
         </div>
 
         <div className={locationStyles}>
-          <span aria-hidden="true">📍</span>
+          <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
           <span>{svc.location}</span>
         </div>
 
@@ -116,19 +116,6 @@ function ServiceCard({
 
       <div className="pt-2 flex flex-col gap-2">
         <Button
-          variant="ghost"
-          size="sm"
-          className="flex items-center justify-center gap-1.5 text-xs font-bebas uppercase tracking-wider py-1"
-          leftIcon={<Info className="w-3.5 h-3.5" />}
-          onClick={(e) => {
-            e.stopPropagation();
-            onOpenFichaTecnica();
-          }}
-        >
-          MIRÁ LA FICHA TÉCNICA
-        </Button>
-
-        <Button
           variant={isHighlight ? 'dark' : 'blue-outline'}
           size="md"
           fullWidth
@@ -140,6 +127,23 @@ function ServiceCard({
         >
           {isHighlight ? 'COTIZAR FLEX' : 'COTIZAR ESTE PLAN'}
         </Button>
+
+        <button
+          type="button"
+          className={cn(
+            'inline-flex items-center justify-center gap-1.5 text-xs font-outfit font-medium py-1 transition-colors cursor-pointer',
+            isHighlight
+              ? 'text-[#002273]/80 hover:text-[#002273] underline-offset-2 hover:underline'
+              : 'text-blue-200 hover:text-white underline-offset-2 hover:underline'
+          )}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenFichaTecnica();
+          }}
+        >
+          <Info className="w-3.5 h-3.5" />
+          <span>Ver especificaciones y ficha técnica</span>
+        </button>
       </div>
     </article>
   );
@@ -163,7 +167,7 @@ export default function ServicesCarouselSection({
   } = useCarousel({
     items: LOGISTICS_SERVICES as LogisticsServiceItem[],
     initialIndex: 2,
-    autoRotate: true,
+    autoRotate: false,
     autoRotateInterval: 4500,
   });
 

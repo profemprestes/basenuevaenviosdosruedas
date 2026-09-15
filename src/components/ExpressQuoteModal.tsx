@@ -207,17 +207,22 @@ export default function ExpressQuoteModal({
           </fieldset>
 
           {/* Extra: Cash collection */}
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-200">
-            <input
-              type="checkbox"
-              id="cash"
-              checked={needsCashCollection}
-              onChange={(e) => setNeedsCashCollection(e.target.checked)}
-              className="w-4 h-4 text-[#0C59F2] rounded focus:ring-[#0C59F2] cursor-pointer"
-            />
-            <label htmlFor="cash" className="font-outfit text-xs sm:text-sm text-slate-700 cursor-pointer">
-              {content.cashCollectionText}
-            </label>
+          <div className="flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+            <div className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                id="cash"
+                checked={needsCashCollection}
+                onChange={(e) => setNeedsCashCollection(e.target.checked)}
+                className="w-4 h-4 text-[#0C59F2] rounded focus:ring-[#0C59F2] cursor-pointer"
+              />
+              <label htmlFor="cash" className="font-outfit text-xs sm:text-sm text-slate-700 cursor-pointer select-none">
+                {content.cashCollectionText}
+              </label>
+            </div>
+            <span className="font-mono text-xs font-bold text-[#0C59F2] bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md shrink-0">
+              +$400
+            </span>
           </div>
 
           {/* Pricing Result Card */}
@@ -245,20 +250,32 @@ export default function ExpressQuoteModal({
         </div>
 
         {/* Modal Footer Actions */}
-        <footer className="p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-3">
-          <Button variant="ghost" size="md" onClick={onClose}>
-            {content.backButtonText}
-          </Button>
+        <footer className="p-5 bg-slate-50 border-t border-slate-200 flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
+            <Button variant="ghost" size="md" onClick={onClose}>
+              {content.backButtonText}
+            </Button>
 
-          <Button
-            variant="primary"
-            size="lg"
-            fullWidth
-            leftIcon={<MessageCircle className="w-5 h-5 fill-[#002273]" />}
-            onClick={sendWhatsApp}
-          >
-            {content.ctaButtonText}
-          </Button>
+            <Button
+              variant="primary"
+              size="lg"
+              fullWidth
+              leftIcon={<MessageCircle className="w-5 h-5 fill-[#002273]" />}
+              onClick={sendWhatsApp}
+            >
+              {content.ctaButtonText}
+            </Button>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 text-xs font-outfit text-slate-500 pt-1 text-center">
+            <span>¿Sin WhatsApp Web o preferís llamar?</span>
+            <a
+              href="tel:+542236602699"
+              className="text-[#0C59F2] font-semibold hover:underline"
+            >
+              Llamar al 223 660-2699
+            </a>
+          </div>
         </footer>
       </div>
     </div>

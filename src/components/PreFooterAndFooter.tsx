@@ -201,7 +201,7 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/enviosdosruedas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-blue-900/60 border border-blue-400/30 hover:bg-[#F2E40A] hover:text-[#002273] text-white flex items-center justify-center transition"
@@ -211,7 +211,7 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
                 </a>
 
                 <a
-                  href="https://facebook.com"
+                  href="https://facebook.com/enviosdosruedas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-blue-900/60 border border-blue-400/30 hover:bg-[#F2E40A] hover:text-[#002273] text-white flex items-center justify-center transition"
@@ -309,7 +309,14 @@ export default function PreFooterAndFooter({ onOpenQuoteModal }: PreFooterAndFoo
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-outfit text-blue-200">
           <div>
             <span className="font-semibold text-white">{footer.copyright}</span>
-            <span className="hidden sm:inline"> Sobre Nosotros · Preguntas Frecuentes · Nuestras Redes</span>
+            <span className="hidden sm:inline">
+              {' '}
+              <a href="/nosotros/sobre-nosotros" className="hover:text-white transition-colors">Sobre Nosotros</a>
+              {' · '}
+              <a href="/nosotros/preguntas-frecuentes" className="hover:text-white transition-colors">Preguntas Frecuentes</a>
+              {' · '}
+              <a href="/nosotros/nuestras-redes" className="hover:text-white transition-colors">Nuestras Redes</a>
+            </span>
           </div>
 
           <div className="flex items-center gap-4">

@@ -202,7 +202,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section id="opiniones" className="w-full py-20 lg:py-28 bg-[#FFFFFF] relative">
+    <section id="opiniones" className="w-full py-20 lg:py-28 bg-slate-50/70 border-t border-b border-slate-200/60 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">

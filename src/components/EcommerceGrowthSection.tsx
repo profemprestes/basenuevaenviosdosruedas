@@ -50,7 +50,7 @@ function EcommerceCard({
   className,
 }: EcommerceCardProps) {
   const variantStyles = {
-    dark: 'bg-[#00277e]/90 border border-blue-400/30 text-white',
+    dark: 'bg-[#08163d] border border-blue-400/30 text-white shadow-xl',
     yellow: 'bg-[#F2E40A] text-[#002273]',
     white: 'bg-white text-slate-900 border border-slate-200/90',
   };
@@ -118,7 +118,7 @@ export default function EcommerceGrowthSection({
     <section
       id="ecommerce"
       aria-label="Crecimiento para E-Commerce"
-      className="w-full py-20 lg:py-28 bg-[#0C59F2] bg-tech-grid relative overflow-hidden"
+      className="w-full py-20 lg:py-28 bg-[#002273] bg-tech-grid relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
